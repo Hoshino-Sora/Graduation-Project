@@ -1,0 +1,10 @@
+Epilepsy_Classification_Project/
+│
+├── data/                   # 存放Bonn和CHB-MIT数据集（注意：此文件夹要在.gitignore中排除，避免撑爆Git）
+├── config.py               # 全局配置文件（所有超参数、文件路径、采样率、窗口大小必须写在这里，严禁硬编码）
+├── data_loader.py          # 数据解析模块（针对EDF/TXT格式的读取引擎）
+├── preprocess.py           # 预处理模块（滤波、去噪、滑动切窗对齐发作区间）
+├── models.py               # 模型定义模块（存放你的CNN/RNN/Transformer等网络架构）
+├── train.py                # 训练主脚本（包含训练循环、验证逻辑、模型保存）
+├── evaluate.py             # 评估与测试脚本（输出混淆矩阵、Accuracy、Sensitivity、Specificity）
+└── utils.py                # 工具函数（日志记录、绘图等）

@@ -1,8 +1,9 @@
 from data_loader import load_bonn_dataset
-from preprocesser import preprocess_eeg
+from preprocess import preprocess_eeg
+import config
 
 if __name__ == "__main__":
-    TEST_PATH = "./datasets/bonn/" 
+    TEST_PATH = config.BONN_DATA_PATH 
     
     print("开始加载Bonn数据...")
     X, y = load_bonn_dataset(TEST_PATH)

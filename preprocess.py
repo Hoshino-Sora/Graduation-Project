@@ -68,6 +68,14 @@ def process_single_edf(edf_file_path, seizure_intervals, window_sec=config.CHBMI
         raw.rename_channels(rename_mapping)
     # =========================================================================================
 
+    # ================= 核心新增：临床级信号滤波去噪 =================
+    # 1. 陷波滤波 (Notch Filter)
+    raw.notch_filter(freqs=60.0, verbose=False)
+    
+    # 2. 带通滤波 (Bandpass Filter)
+    raw.filter(l_freq=0.5, h_freq=50.0, verbose=False)
+    # ================================================================
+
     # 1. 物理阉割：强制通道对齐 (解决 Channels changed 问题)
     try:
         raw.pick(config.CHBMIT_TARGET_CHANNELS)
@@ -108,6 +116,8 @@ def process_single_edf(edf_file_path, seizure_intervals, window_sec=config.CHBMI
         labels.append(is_seizure)
         
     return np.array(windows), np.array(labels)
+
+
 
 # --- 测试代码 ---
 if __name__ == "__main__":

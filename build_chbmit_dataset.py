@@ -21,14 +21,14 @@ def build_chbmit_dataset(summary_file_path, edf_folder_path, output_dir):
     for filename, intervals in meta_index.items():
         edf_path = os.path.join(edf_folder_path, filename)
         
-        # 跳过不存在的文件（防止你只下载了部分数据测试）
+        # 跳过不存在的文件
         if not os.path.exists(edf_path):
             print(f"文件未找到，跳过: {edf_path}")
             continue
             
         print(f"[{processed_count+1}/{total_files}] 正在处理 {filename} ...")
         
-        # 调用我们之前写好的核心切窗引擎
+        # 调用核心切窗引擎
         X, y = process_single_edf(edf_path, intervals)
         
         if X is not None and y is not None:
@@ -55,10 +55,10 @@ if __name__ == "__main__":
     folder_name = f"win{win_sec}s_ov{ov_sec}s"
     
     # 核心控制台：想要跑全量，修改这个列表即可
-    target_patients = ['chb01', 'chb02', 'chb04'] 
+    # target_patients = ['chb01', 'chb02', 'chb04'] 
     
     # 全量 24 个病人的列表生成式 (留作备用，需要跑全库时取消注释)：
-    # target_patients = [f"chb{i:02d}" for i in range(1, 25)] 
+    target_patients = [f"chb{i:02d}" for i in range(1, 25)] 
     
     print(f"启动 CHB-MIT 全库批量切片流水线 (参数: 窗口={win_sec}s, 重叠={ov_sec}s)...")
     print(f"待处理患者列表: {target_patients}\n" + "="*50)

@@ -1,4 +1,15 @@
-datasets/
+# --- 基础忽略 ---
 __pycache__/
 log.txt
 overview.txt
+.vscode/
+.idea/
+
+# --- 核心保活逻辑 ---
+datasets/**
+outputs/**
+
+!**/.gitkeep
+
+# 如果以后有特定的模型不想被忽略
+# !outputs/models/my_best_model.pth

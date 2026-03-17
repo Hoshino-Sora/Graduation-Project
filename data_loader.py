@@ -2,6 +2,7 @@ import os
 import re
 import numpy as np
 import glob
+import config
 
 def load_bonn_dataset(base_path):
     """
@@ -11,8 +12,7 @@ def load_bonn_dataset(base_path):
     """
     # 定义类别映射：这里我们将 A,B,C,D 设为0 (非发作)，E设为1 (发作)
     # 这是典型的二分类任务设定。如果你要做三分类或五分类，在这里改逻辑
-    folder_mapping = {'Z': 0, 'O': 0, 'N': 0, 'F': 0, 'S': 1} 
-    # 如果你的文件夹叫 Z, O, N, F, S，请自行修改上面的字典键值
+    folder_mapping = config.BONN_FOLDER_MAPPING 
     
     all_data = []
     all_labels = []
@@ -33,7 +33,7 @@ def load_bonn_dataset(base_path):
                 signal = np.loadtxt(file)
                 
                 # 内存泄漏/数据脏乱排查：确保每个文件绝对是4097个点
-                if signal.shape[0] != 4097:
+                if signal.shape[0] != config.BONN_TOTAL_POINTS:
                     print(f"数据异常警告: 文件 {file} 的长度为 {signal.shape[0]}，跳过。")
                     continue
                     
@@ -107,8 +107,8 @@ if __name__ == "__main__":
 
 # # --- 本地测试入口 ---
 # if __name__ == "__main__":
-#     # TODO: 把这里的路径换成你电脑上真实的Bonn数据集解压路径
-#     TEST_PATH = "./datasets/bonn/" 
+
+#     TEST_PATH = config.BONN_DATA_PATH 
     
 #     print("开始加载Bonn数据...")
 #     X, y = load_bonn_dataset(TEST_PATH)

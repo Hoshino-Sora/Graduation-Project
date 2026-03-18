@@ -1,13 +1,20 @@
 import os
+import sys
 
 # ==========================================
 # 1. 全局路径配置
 # ==========================================
-# 获取当前 config.py 所在的绝对目录 (项目根目录)
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-# 数据集根目录
-DATASET_ROOT = os.path.join(BASE_DIR, 'datasets')
+# 自动探测运行环境：如果是 Linux 且存在 autodl-tmp 数据盘，则判定为云端
+if sys.platform.startswith('linux') and os.path.exists('/root/autodl-tmp'):
+    print("☁️ 检测到云端算力平台 (AutoDL)，自动切换至数据盘挂载路径...")
+    # 你的代码目录
+    BASE_DIR = '/root/autodl-tmp/Graduation_Project'
+    # 你的海量数据存放目录 (绝不能放系统盘)
+    DATASET_ROOT = '/root/autodl-tmp/datasets'
+else:
+    print("💻 检测到本地开发环境，使用相对路径...")
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    DATASET_ROOT = os.path.join(BASE_DIR, 'datasets')
 
 # 子数据集路径
 BONN_DATA_PATH = os.path.join(DATASET_ROOT, 'bonn')
@@ -18,6 +25,11 @@ PROCESSED_DATA_PATH = os.path.join(DATASET_ROOT, 'processed_chbmit')
 
 # 专门存放自动生成的各种图表的目录
 FIG_PATH = os.path.join(BASE_DIR, 'outputs', 'figures')
+MODEL_PATH = os.path.join(BASE_DIR, 'outputs', 'models')
+
+os.makedirs(PROCESSED_DATA_PATH, exist_ok=True)
+os.makedirs(FIG_PATH, exist_ok=True)
+os.makedirs(MODEL_PATH, exist_ok=True)
 
 # ==========================================
 # 2. Bonn 数据集配置 (短片段单通道)

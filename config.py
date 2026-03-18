@@ -6,13 +6,13 @@ import sys
 # ==========================================
 # 自动探测运行环境：如果是 Linux 且存在 autodl-tmp 数据盘，则判定为云端
 if sys.platform.startswith('linux') and os.path.exists('/root/autodl-tmp'):
-    print("☁️ 检测到云端算力平台 (AutoDL)，自动切换至数据盘挂载路径...")
+    print("检测到云端算力平台 (AutoDL)，自动切换至数据盘挂载路径...")
     # 你的代码目录
     BASE_DIR = '/root/autodl-tmp/Graduation_Project'
     # 你的海量数据存放目录 (绝不能放系统盘)
-    DATASET_ROOT = '/root/autodl-tmp/datasets'
+    DATASET_ROOT = os.path.join(BASE_DIR, 'datasets')
 else:
-    print("💻 检测到本地开发环境，使用相对路径...")
+    print("检测到本地开发环境，使用相对路径...")
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     DATASET_ROOT = os.path.join(BASE_DIR, 'datasets')
 

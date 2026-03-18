@@ -86,10 +86,6 @@ def process_single_edf(edf_file_path, seizure_intervals, window_sec=config.CHBMI
     # 获取底层 numpy 矩阵，维度变为 (18通道, 序列总长度)
     data = raw.get_data() 
     total_samples = data.shape[1]
-
-    # 获取底层 numpy 矩阵，维度变为 (18通道, 序列总长度)
-    data = raw.get_data() 
-    total_samples = data.shape[1]
     
     # 核心修复：通道级 Z-score 标准化 (防止神经网络梯度爆炸)
     # 脑电电压在微伏级别，不标准化 TCN 根本没法学
@@ -99,9 +95,6 @@ def process_single_edf(edf_file_path, seizure_intervals, window_sec=config.CHBMI
         ch_std = np.std(data[ch_idx, :])
         # 加上 1e-8 防止除以零
         data[ch_idx, :] = (data[ch_idx, :] - ch_mean) / (ch_std + 1e-8)
-
-    # 2. 滑动切窗参数计算
-    window_size = int(window_sec * FS)
     
     # 2. 滑动切窗参数计算
     window_size = int(window_sec * FS)

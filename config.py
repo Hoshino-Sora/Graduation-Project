@@ -45,12 +45,13 @@ CHBMIT_TARGET_CHANNELS = [
 ]
 
 # ==========================================
-# 4. 模型与训练配置 (预留，下周用)
+# 4. 模型与训练配置
 # ==========================================
 BATCH_SIZE = 64
-LEARNING_RATE = 1e-5
-EPOCHS = 1
+LEARNING_RATE = 1e-4
+EPOCHS = 5
 RANDOM_SEED = 42                 # 固定随机种子，保证实验可复现
+FORCE_POSITIVE_VAL=False
 
 # 新增：网络架构超参数 (消融实验必备)
 LSTM_HIDDEN_SIZE = 64            # BiLSTM 隐藏层维度

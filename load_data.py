@@ -2,6 +2,7 @@ import os
 import glob
 import numpy as np
 import torch
+import math
 from torch.utils.data import Dataset, DataLoader, ConcatDataset
 import config
 
@@ -49,35 +50,71 @@ class CHBMITDataset(Dataset):
         
         return x_tensor, y_tensor
 
-def get_patient_dataloader(patient_id, batch_size, shuffle=True):
+def get_unified_dataloaders(patients_list, val_ratio=0.2, batch_size=64, force_positive_val=False, is_test=False):
     """
-    后勤部工厂：根据病人 ID，自动扫盘、拼接、打包，直接发货 DataLoader
+    大一统后勤发货工厂
+    - is_test=False (训练模式): 执行时间轴切分，返回 (train_loader, val_loader)，默认打乱训练集。
+    - is_test=True (测试模式): 拒绝切分，无损打包全量数据，返回 test_loader，绝对不打乱时间轴！
     """
-    print(f"正在组装 {patient_id} 的全部数据...")
+    mode_name = "【终极体检】" if is_test else "【训练沙箱/全量】"
+    print(f"\n后勤部接到 {mode_name} 指令！目标名单：{patients_list}")
     
-    # 指向该病人的预处理文件夹
-    data_dir = os.path.join(config.PROCESSED_DATA_PATH, patient_id, "win2s_ov0s")
+    train_datasets = []
+    val_or_test_datasets = [] # 训练模式下它是 Val，测试模式下它是 Test
     
-    # 自动扫盘
-    x_files = sorted(glob.glob(os.path.join(data_dir, "*_X.npy")))
-    y_files = sorted(glob.glob(os.path.join(data_dir, "*_y.npy")))
-    
-    if len(x_files) == 0:
-        raise FileNotFoundError(f"警报：在 {data_dir} 下没有找到任何文件！")
+    for pid in patients_list:
+        data_dir = os.path.join(config.PROCESSED_DATA_PATH, pid, "win2s_ov0s")
+        x_files = sorted(glob.glob(os.path.join(data_dir, "*_X.npy")))
+        y_files = sorted(glob.glob(os.path.join(data_dir, "*_y.npy")))
         
-    # 拼装小型 Dataset
-    sub_datasets = []
-    for x_path, y_path in zip(x_files, y_files):
-        sub_datasets.append(CHBMITDataset(x_path=x_path, y_path=y_path))
-        
-    # 航母级无缝拼接!
-    full_dataset = ConcatDataset(sub_datasets)
-    
-    # 打包成流水线传送带 DataLoader
-    dataloader = DataLoader(full_dataset, batch_size=batch_size, shuffle=shuffle)
-    
-    print(f"发货完毕！{patient_id} 快递里有：{len(full_dataset)} 个时间切窗。")
-    return dataloader
+        if len(x_files) == 0:
+            print(f"警告：跳过 {pid}，未找到数据文件！")
+            continue
+            
+        if is_test:
+            # 测试模式：完全不切分，全盘端走！
+            for x, y in zip(x_files, y_files):
+                val_or_test_datasets.append(CHBMITDataset(x, y))
+        else:
+            # 训练模式：执行 80/20 时间轴切分
+            split_idx = math.floor(len(x_files) * (1 - val_ratio))
+            
+            # 沙箱智能锚点保护
+            if force_positive_val:
+                has_seizure_in_val = False
+                for y_f in y_files[split_idx:]:
+                    if np.any(np.load(y_f, mmap_mode='r') == 1):
+                        has_seizure_in_val = True
+                        break
+                while not has_seizure_in_val and split_idx > 0:
+                    split_idx -= 1
+                    if np.any(np.load(y_files[split_idx], mmap_mode='r') == 1):
+                        print(f"    [沙箱模式] 触发智能锚点！{pid} 切分点已前移至 {split_idx}")
+                        has_seizure_in_val = True
+
+            # 装填兵力
+            for x, y in zip(x_files[:split_idx], y_files[:split_idx]):
+                train_datasets.append(CHBMITDataset(x, y))
+            for x, y in zip(x_files[split_idx:], y_files[split_idx:]):
+                val_or_test_datasets.append(CHBMITDataset(x, y))
+                
+    # ==========================================
+    # 最终打包发货
+    # ==========================================
+    if is_test:
+        test_dataset = ConcatDataset(val_or_test_datasets)
+        # 极其致命：测试集绝对不能打乱 (shuffle=False)
+        test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+        print(f"测试军团发货完毕！总兵力: {len(test_dataset)} 窗 (时间轴已锁定)。\n")
+        return test_loader
+    else:
+        train_dataset = ConcatDataset(train_datasets)
+        val_dataset = ConcatDataset(val_or_test_datasets)
+        # 训练打乱，验证不打乱
+        train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+        val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
+        print(f"训练军团发货完毕！Train: {len(train_dataset)} 窗 | Val: {len(val_dataset)} 窗。\n")
+        return train_loader, val_loader
 
 # --- 独立联调测试 (Sanity Check) ---
 if __name__ == "__main__":

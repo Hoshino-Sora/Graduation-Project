@@ -64,6 +64,6 @@ python build_chbmit_dataset.py
 ## 📅 进度追踪 (Progress & Roadmap)
 
 - [x] **Week 1-2**: 环境搭建，完成 Bonn 与 CHB-MIT 多源数据集的解析与切片持久化流水线。
-- [X] **Week 3**: 基线模型构建，完成基于离散小波变换 (DWT) 的传统集成学习基线。
+- [x] **Week 3**: 基线模型构建，完成基于离散小波变换 (DWT) 的传统集成学习基线。
 - [ ] **Week 4-5**: 构建端到端深度学习检测基线（TCN-BiLSTM），引入后处理框架。
 - [ ] **Week 6-7**: 改进算法融合（MixUp 增强与双分支网络），深入消融实验对比。

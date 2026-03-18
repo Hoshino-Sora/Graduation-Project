@@ -1,40 +1,39 @@
-# 工具箱：utils.py
 import matplotlib.pyplot as plt
 import os
 import config
 
-def plot_learning_curve(loss_history, acc_history, save_path=None):
+def plot_training_curves(train_losses, val_losses, val_f1s):
     """
-    绘制双轴学习曲线，自动保存为高清图片
+    终极双联屏监控：左边看 Loss 缠斗，右边看 F1 飙车
     """
-    # 如果没传路径，就去 config 里拿默认的
-    if save_path is None:
-        save_path = os.path.join(config.FIG_PATH, 'training_curve.png')
-        
-    # 自动剥离出文件夹路径，如果文件夹不存在，自动帮你新建！
-    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+    os.makedirs(os.path.join(config.BASE_DIR, 'outputs', 'figures'), exist_ok=True)
     
-    print(f"正在绘制训练曲线并保存至 {save_path}...")
-    epochs = range(1, len(loss_history) + 1)
+    epochs = range(1, len(train_losses) + 1)
     
-    fig, ax1 = plt.subplots(figsize=(10, 6))
+    # 画一张 12x5 的宽屏大画布
+    plt.figure(figsize=(12, 5))
     
-    color = 'tab:red'
-    ax1.set_xlabel('Epoch', fontsize=12)
-    ax1.set_ylabel('Loss', color=color, fontsize=12)
-    ax1.plot(epochs, loss_history, color=color, marker='o', label='Training Loss')
-    ax1.tick_params(axis='y', labelcolor=color)
-    ax1.grid(True, linestyle='--', alpha=0.6)
+    # 左图：Loss 曲线对比
+    plt.subplot(1, 2, 1)
+    plt.plot(epochs, train_losses, 'b-', label='Train Loss', linewidth=2)
+    plt.plot(epochs, val_losses, 'r--', label='Val Loss', linewidth=2)
+    plt.title('Loss: Train vs Validation')
+    plt.xlabel('Epochs')
+    plt.ylabel('Loss (CrossEntropy)')
+    plt.legend()
+    plt.grid(True)
     
-    ax2 = ax1.twinx()  
-    color = 'tab:blue'
-    ax2.set_ylabel('Accuracy (%)', color=color, fontsize=12)  
-    ax2.plot(epochs, acc_history, color=color, marker='s', label='Training Accuracy')
-    ax2.tick_params(axis='y', labelcolor=color)
+    # 右图：F1 黄金指标趋势
+    plt.subplot(1, 2, 2)
+    plt.plot(epochs, val_f1s, 'g-o', label='Val F1-Score', linewidth=2, markersize=6)
+    plt.title('Medical Gold Standard: Validation F1')
+    plt.xlabel('Epochs')
+    plt.ylabel('F1-Score')
+    plt.legend()
+    plt.grid(True)
     
-    plt.title('TCN-BiLSTM Training Learning Curve', fontsize=14, fontweight='bold')
-    fig.tight_layout()  
-    
+    plt.tight_layout()
+    save_path = os.path.join(config.BASE_DIR, 'outputs', 'figures', 'training_dashboard.png')
     plt.savefig(save_path, dpi=300)
+    print(f"\n双联屏训练战报已高清保存至: {save_path}")
     plt.close()
-    print("曲线绘制完成！请在目录中查看。")

@@ -5,7 +5,7 @@ import numpy as np
 # 导入咱们的“中枢神经”和“后勤/前线部队”
 import config
 from models import TCN_BiLSTM
-from load_data import get_patient_dataloader
+from load_data import get_unified_dataloaders
 from post_process import majority_voting_filter, extract_events, merge_close_events
 
 def evaluate_patient(patient_id="chb01"):
@@ -16,7 +16,7 @@ def evaluate_patient(patient_id="chb01"):
     # 1. 组装模型并加载“最强大脑”
     # ==========================================
     model = TCN_BiLSTM(num_channels=config.NUM_CHANNELS, num_classes=config.NUM_CLASSES).to(device)
-    model_path = os.path.join(config.BASE_DIR, 'outputs', 'models', 'latest_model.pth')
+    model_path = os.path.join(config.BASE_DIR, 'outputs', 'models', 'best_model.pth')
     
     if os.path.exists(model_path):
         model.load_state_dict(torch.load(model_path, map_location=device))
@@ -29,10 +29,14 @@ def evaluate_patient(patient_id="chb01"):
     # ==========================================
     # 2. 挂载测试数据管道 (集团军发货)
     # ==========================================
-    # 生死红线：shuffle=False！绝对不能打乱时间轴！
-    dataloader = get_patient_dataloader(patient_id=patient_id, 
-                                        batch_size=config.BATCH_SIZE, 
-                                        shuffle=False)
+
+    test_patients = ["chb01"]
+    # 开启 is_test=True 模式！
+    dataloader = get_unified_dataloaders(
+        patients_list=test_patients,
+        batch_size=config.BATCH_SIZE,
+        is_test=True  # 👈 开启大一统工厂的“测试直通车”
+    )
     
     # ==========================================
     # 3. 机器推理阶段 (生成原始 0/1 序列)
@@ -65,7 +69,7 @@ def evaluate_patient(patient_id="chb01"):
     raw_ai_events = extract_events(smoothed_predictions, window_duration=config.CHBMIT_WINDOW_SEC)
     real_events = extract_events(true_labels, window_duration=config.CHBMIT_WINDOW_SEC)
     
-    # 🌟 你的神级发明：动态绑定 1.5 倍 Collar 容差
+    # 动态绑定 1.5 倍 Collar 容差
     fusion_gap = 1.5 * config.COLLAR_TOLERANCE
     print(f"启动宏观事件融合引擎 (容忍断档 <= {fusion_gap}秒)...")
     ai_events = merge_close_events(raw_ai_events, min_gap=fusion_gap)

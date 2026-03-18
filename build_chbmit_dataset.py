@@ -58,7 +58,7 @@ if __name__ == "__main__":
     # target_patients = ['chb01', 'chb02', 'chb04'] 
     
     # 全量 24 个病人的列表生成式 (留作备用，需要跑全库时取消注释)：
-    target_patients = [f"chb{i:02d}" for i in range(1, 25)] 
+    target_patients = [f"chb{i:02d}" for i in range(1, 4)] 
     
     print(f"启动 CHB-MIT 全库批量切片流水线 (参数: 窗口={win_sec}s, 重叠={ov_sec}s)...")
     print(f"待处理患者列表: {target_patients}\n" + "="*50)

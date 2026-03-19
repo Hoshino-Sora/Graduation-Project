@@ -67,7 +67,7 @@ FORCE_POSITIVE_VAL=False
 
 # 新增：网络架构超参数 (消融实验必备)
 LSTM_HIDDEN_SIZE = 32            # BiLSTM 隐藏层维度
-DROPOUT_RATE = 0.5               # 全连接层防过拟合概率
+DROPOUT_RATE = 0.1               # 全连接层防过拟合概率
 
 # 动态读取通道数，防止后续修改通道列表时漏改！
 NUM_CHANNELS = len(CHBMIT_TARGET_CHANNELS)  # 自动算出 18

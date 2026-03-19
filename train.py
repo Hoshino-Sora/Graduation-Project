@@ -13,7 +13,7 @@ from load_data import get_unified_dataloaders
 from utils import plot_training_curves
 
 class FocalLoss(nn.Module):
-    def __init__(self, alpha=None, gamma=2.0, reduction='mean'):
+    def __init__(self, alpha=None, gamma=config.GAMMA, reduction='mean'):
         super(FocalLoss, self).__init__()
         self.gamma = gamma
         self.reduction = reduction

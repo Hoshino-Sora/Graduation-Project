@@ -5,6 +5,7 @@ import torch
 import math
 from torch.utils.data import Dataset, DataLoader, ConcatDataset
 import config
+import sys
 
 class CHBMITDataset(Dataset):
     """
@@ -101,18 +102,20 @@ def get_unified_dataloaders(patients_list, val_ratio=0.2, batch_size=64, force_p
     # ==========================================
     # 最终打包发货
     # ==========================================
+    num_workers = 12 if sys.platform.startswith('linux') else 0
+
     if is_test:
         test_dataset = ConcatDataset(val_or_test_datasets)
         # 极其致命：测试集绝对不能打乱 (shuffle=False)
-        test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=12, pin_memory=True)
+        test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers, pin_memory=True)
         print(f"测试军团发货完毕！总兵力: {len(test_dataset)} 窗 (时间轴已锁定)。\n")
         return test_loader
     else:
         train_dataset = ConcatDataset(train_datasets)
         val_dataset = ConcatDataset(val_or_test_datasets)
         # 训练打乱，验证不打乱
-        train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=12, pin_memory=True)
-        val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=12, pin_memory=True)
+        train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers, pin_memory=True)
+        val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers, pin_memory=True)
         print(f"训练军团发货完毕！Train: {len(train_dataset)} 窗 | Val: {len(val_dataset)} 窗。\n")
         return train_loader, val_loader
 

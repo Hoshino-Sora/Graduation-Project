@@ -61,12 +61,12 @@ CHBMIT_TARGET_CHANNELS = [
 # ==========================================
 BATCH_SIZE = 1024
 LEARNING_RATE = 5e-4
-EPOCHS = 80
+EPOCHS = 100
 RANDOM_SEED = 42                 # 固定随机种子，保证实验可复现
 FORCE_POSITIVE_VAL=False
 
 # 新增：网络架构超参数 (消融实验必备)
-LSTM_HIDDEN_SIZE = 64            # BiLSTM 隐藏层维度
+LSTM_HIDDEN_SIZE = 32            # BiLSTM 隐藏层维度
 DROPOUT_RATE = 0.5               # 全连接层防过拟合概率
 
 # 动态读取通道数，防止后续修改通道列表时漏改！
@@ -76,13 +76,14 @@ NUM_CLASSES = 2                             # 0:正常, 1:发作
 # 针对 1:89 极度不平衡数据的“狙击手权重” 
 # 0代表正常(权重1)，1代表发作(权重89，严惩漏报！)
 LOSS_WEIGHTS = [1.0, 5.0]
+GAMMA = 1
 # 断点续训总开关：
 # True = 机器意外重启时接着跑；False = 无视旧存档，从 Epoch 1 全新开机（消融实验必备！）
 RESUME_TRAINING = False
 
 # 临床敏感度阈值：默认 0.5。降到 0.3 代表“宁可错杀伪影，绝不漏报发作”
 PREDICT_THRESHOLD = 0.5
-
+PREDICT_THRESHOLD_TEST = 0.4
 # 早停机制 (Early Stopping) 耐心值：
 # 如果连续 16 轮 Val F1 都没有打破历史记录，说明模型已经开始死记硬背（严重过拟合），强行拔电源！
 EARLY_STOP_PATIENCE = 16

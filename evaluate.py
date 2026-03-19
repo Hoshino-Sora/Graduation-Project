@@ -54,7 +54,7 @@ def evaluate_patient(patient_id="chb01"):
             # --- 爆改后 (强行降阈值到 0.2) ---
             probs = torch.softmax(outputs.data, dim=1)
             # 只要有 20% 的怀疑是发作，直接亮红灯报警！
-            predicted = (probs[:, 1] > 0.2).int()
+            predicted = (probs[:, 1] > config.PREDICT_THRESHOLD_TEST).int()
             
             all_predictions.extend(predicted.cpu().numpy())
             all_labels.extend(labels.numpy())

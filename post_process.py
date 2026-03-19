@@ -80,6 +80,19 @@ def merge_close_events(events, min_gap):
             
     return merged
 
+def filter_short_events(events, min_duration=10.0):
+    """
+    终极物理超度：将持续时间极短的孤立伪影（如咬牙、眨眼）强行抹除！
+    :param events: 事件列表
+    :param min_duration: 最小存活时间 (秒)。小于这个时间的统统删掉。
+    :return: 干净的事件列表
+    """
+    valid_events = []
+    for ev in events:
+        if ev['duration'] >= min_duration:
+            valid_events.append(ev)
+    return valid_events
+
 # --- 独立联调测试 ---
 if __name__ == "__main__":
     print("=== 医疗 AI 后处理引擎测试 ===")

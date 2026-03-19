@@ -6,7 +6,7 @@ import numpy as np
 import config
 from models import TCN_BiLSTM
 from load_data import get_unified_dataloaders
-from post_process import majority_voting_filter, extract_events, merge_close_events
+from post_process import majority_voting_filter, extract_events, merge_close_events, filter_short_events
 
 def evaluate_patient(patient_id="chb01"):
     print(f"=== 开启 AI 脑电临床评估流水线 ({patient_id} 专场) ===")
@@ -51,7 +51,10 @@ def evaluate_patient(patient_id="chb01"):
             outputs = model(inputs)
             
             # Argmax：赢家通吃
-            _, predicted = torch.max(outputs.data, 1)
+            # --- 爆改后 (强行降阈值到 0.2) ---
+            probs = torch.softmax(outputs.data, dim=1)
+            # 只要有 20% 的怀疑是发作，直接亮红灯报警！
+            predicted = (probs[:, 1] > 0.2).int()
             
             all_predictions.extend(predicted.cpu().numpy())
             all_labels.extend(labels.numpy())
@@ -69,10 +72,13 @@ def evaluate_patient(patient_id="chb01"):
     raw_ai_events = extract_events(smoothed_predictions, window_duration=config.CHBMIT_WINDOW_SEC)
     real_events = extract_events(true_labels, window_duration=config.CHBMIT_WINDOW_SEC)
     
-    # 动态绑定 1.5 倍 Collar 容差
-    fusion_gap = 1.5 * config.COLLAR_TOLERANCE
+    # 动态绑定 2 倍 Collar 容差
+    fusion_gap = 2 * config.COLLAR_TOLERANCE
     print(f"启动宏观事件融合引擎 (容忍断档 <= {fusion_gap}秒)...")
     ai_events = merge_close_events(raw_ai_events, min_gap=fusion_gap)
+
+    print("启动物理超度：清除持续时间不足 10 秒的孤立肌电伪影...")
+    ai_events = filter_short_events(ai_events, min_duration=10.0)
     
     # ==========================================
     # 5. 打印最终临床体检报告

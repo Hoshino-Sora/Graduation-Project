@@ -1274,919 +1274,1480 @@ libgomp: Invalid value for environment variable OMP_NUM_THREADS
 
 [全新启动] 断点续训未开启或无旧存档，无视干扰，开启全新训练流水线...
 
-   [Epoch 1/100] Batch [50/1304] | Train Loss: 0.0220
-   [Epoch 1/100] Batch [100/1304] | Train Loss: 0.0300
-   [Epoch 1/100] Batch [150/1304] | Train Loss: 0.0047
-   [Epoch 1/100] Batch [200/1304] | Train Loss: 0.0155
-   [Epoch 1/100] Batch [250/1304] | Train Loss: 0.0228
-   [Epoch 1/100] Batch [300/1304] | Train Loss: 0.0230
-   [Epoch 1/100] Batch [350/1304] | Train Loss: 0.0151
-   [Epoch 1/100] Batch [400/1304] | Train Loss: 0.0123
-   [Epoch 1/100] Batch [450/1304] | Train Loss: 0.0223
-   [Epoch 1/100] Batch [500/1304] | Train Loss: 0.0178
-   [Epoch 1/100] Batch [550/1304] | Train Loss: 0.0058
-   [Epoch 1/100] Batch [600/1304] | Train Loss: 0.0045
-   [Epoch 1/100] Batch [650/1304] | Train Loss: 0.0509
-   [Epoch 1/100] Batch [700/1304] | Train Loss: 0.0163
-   [Epoch 1/100] Batch [750/1304] | Train Loss: 0.0224
-   [Epoch 1/100] Batch [800/1304] | Train Loss: 0.0265
-   [Epoch 1/100] Batch [850/1304] | Train Loss: 0.0089
-   [Epoch 1/100] Batch [900/1304] | Train Loss: 0.0244
-   [Epoch 1/100] Batch [950/1304] | Train Loss: 0.0079
-   [Epoch 1/100] Batch [1000/1304] | Train Loss: 0.0095
-   [Epoch 1/100] Batch [1050/1304] | Train Loss: 0.0060
-   [Epoch 1/100] Batch [1100/1304] | Train Loss: 0.0249
-   [Epoch 1/100] Batch [1150/1304] | Train Loss: 0.0181
-   [Epoch 1/100] Batch [1200/1304] | Train Loss: 0.0134
-   [Epoch 1/100] Batch [1250/1304] | Train Loss: 0.0333
-   [Epoch 1/100] Batch [1300/1304] | Train Loss: 0.0133
+   [Epoch 1/100] Batch [50/1304] | Train Loss: 0.0444
+   [Epoch 1/100] Batch [100/1304] | Train Loss: 0.0050
+   [Epoch 1/100] Batch [150/1304] | Train Loss: 0.0223
+   [Epoch 1/100] Batch [200/1304] | Train Loss: 0.0192
+   [Epoch 1/100] Batch [250/1304] | Train Loss: 0.0066
+   [Epoch 1/100] Batch [300/1304] | Train Loss: 0.0281
+   [Epoch 1/100] Batch [350/1304] | Train Loss: 0.0032
+   [Epoch 1/100] Batch [400/1304] | Train Loss: 0.0143
+   [Epoch 1/100] Batch [450/1304] | Train Loss: 0.0135
+   [Epoch 1/100] Batch [500/1304] | Train Loss: 0.0230
+   [Epoch 1/100] Batch [550/1304] | Train Loss: 0.0048
+   [Epoch 1/100] Batch [600/1304] | Train Loss: 0.0077
+   [Epoch 1/100] Batch [650/1304] | Train Loss: 0.0118
+   [Epoch 1/100] Batch [700/1304] | Train Loss: 0.0238
+   [Epoch 1/100] Batch [750/1304] | Train Loss: 0.0255
+   [Epoch 1/100] Batch [800/1304] | Train Loss: 0.0051
+   [Epoch 1/100] Batch [850/1304] | Train Loss: 0.0106
+   [Epoch 1/100] Batch [900/1304] | Train Loss: 0.0033
+   [Epoch 1/100] Batch [950/1304] | Train Loss: 0.0045
+   [Epoch 1/100] Batch [1000/1304] | Train Loss: 0.0261
+   [Epoch 1/100] Batch [1050/1304] | Train Loss: 0.0180
+   [Epoch 1/100] Batch [1100/1304] | Train Loss: 0.0240
+   [Epoch 1/100] Batch [1150/1304] | Train Loss: 0.0543
+   [Epoch 1/100] Batch [1200/1304] | Train Loss: 0.0037
+   [Epoch 1/100] Batch [1250/1304] | Train Loss: 0.0234
+   [Epoch 1/100] Batch [1300/1304] | Train Loss: 0.0064
 Epoch 1 结束，正在进行验证集全量体检...
 --------------------------------------------------
    Epoch [1/100] 战报:
-   Train Loss: 0.0221 | Val Loss: 0.0380
-   Val F1-Score: 0.4534
+   Train Loss: 0.0220 | Val Loss: 0.0333
+   Val F1-Score: 0.3843
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
-破纪录了！Val F1 从 0.0000 提升至 0.4534，正在保存神级权重...
+破纪录了！Val F1 从 0.0000 提升至 0.3843，正在保存神级权重...
 --------------------------------------------------
 
-   [Epoch 2/100] Batch [50/1304] | Train Loss: 0.0220
-   [Epoch 2/100] Batch [100/1304] | Train Loss: 0.0032
-   [Epoch 2/100] Batch [150/1304] | Train Loss: 0.0092
-   [Epoch 2/100] Batch [200/1304] | Train Loss: 0.0216
-   [Epoch 2/100] Batch [250/1304] | Train Loss: 0.0077
-   [Epoch 2/100] Batch [300/1304] | Train Loss: 0.0349
-   [Epoch 2/100] Batch [350/1304] | Train Loss: 0.0271
-   [Epoch 2/100] Batch [400/1304] | Train Loss: 0.0180
-   [Epoch 2/100] Batch [450/1304] | Train Loss: 0.0188
-   [Epoch 2/100] Batch [500/1304] | Train Loss: 0.0051
-   [Epoch 2/100] Batch [550/1304] | Train Loss: 0.0122
-   [Epoch 2/100] Batch [600/1304] | Train Loss: 0.0075
-   [Epoch 2/100] Batch [650/1304] | Train Loss: 0.0240
-   [Epoch 2/100] Batch [700/1304] | Train Loss: 0.0292
-   [Epoch 2/100] Batch [750/1304] | Train Loss: 0.0082
-   [Epoch 2/100] Batch [800/1304] | Train Loss: 0.0197
-   [Epoch 2/100] Batch [850/1304] | Train Loss: 0.0022
-   [Epoch 2/100] Batch [900/1304] | Train Loss: 0.0157
-   [Epoch 2/100] Batch [950/1304] | Train Loss: 0.0146
-   [Epoch 2/100] Batch [1000/1304] | Train Loss: 0.0212
-   [Epoch 2/100] Batch [1050/1304] | Train Loss: 0.0135
-   [Epoch 2/100] Batch [1100/1304] | Train Loss: 0.0295
-   [Epoch 2/100] Batch [1150/1304] | Train Loss: 0.0019
-   [Epoch 2/100] Batch [1200/1304] | Train Loss: 0.0208
-   [Epoch 2/100] Batch [1250/1304] | Train Loss: 0.0064
-   [Epoch 2/100] Batch [1300/1304] | Train Loss: 0.0311
+   [Epoch 2/100] Batch [50/1304] | Train Loss: 0.0045
+   [Epoch 2/100] Batch [100/1304] | Train Loss: 0.0039
+   [Epoch 2/100] Batch [150/1304] | Train Loss: 0.0037
+   [Epoch 2/100] Batch [200/1304] | Train Loss: 0.0040
+   [Epoch 2/100] Batch [250/1304] | Train Loss: 0.0176
+   [Epoch 2/100] Batch [300/1304] | Train Loss: 0.0052
+   [Epoch 2/100] Batch [350/1304] | Train Loss: 0.0151
+   [Epoch 2/100] Batch [400/1304] | Train Loss: 0.0018
+   [Epoch 2/100] Batch [450/1304] | Train Loss: 0.0114
+   [Epoch 2/100] Batch [500/1304] | Train Loss: 0.0133
+   [Epoch 2/100] Batch [550/1304] | Train Loss: 0.0050
+   [Epoch 2/100] Batch [600/1304] | Train Loss: 0.0209
+   [Epoch 2/100] Batch [650/1304] | Train Loss: 0.0155
+   [Epoch 2/100] Batch [700/1304] | Train Loss: 0.0226
+   [Epoch 2/100] Batch [750/1304] | Train Loss: 0.0229
+   [Epoch 2/100] Batch [800/1304] | Train Loss: 0.0161
+   [Epoch 2/100] Batch [850/1304] | Train Loss: 0.0124
+   [Epoch 2/100] Batch [900/1304] | Train Loss: 0.0154
+   [Epoch 2/100] Batch [950/1304] | Train Loss: 0.0334
+   [Epoch 2/100] Batch [1000/1304] | Train Loss: 0.0019
+   [Epoch 2/100] Batch [1050/1304] | Train Loss: 0.0176
+   [Epoch 2/100] Batch [1100/1304] | Train Loss: 0.0041
+   [Epoch 2/100] Batch [1150/1304] | Train Loss: 0.0038
+   [Epoch 2/100] Batch [1200/1304] | Train Loss: 0.0142
+   [Epoch 2/100] Batch [1250/1304] | Train Loss: 0.0209
+   [Epoch 2/100] Batch [1300/1304] | Train Loss: 0.0310
 Epoch 2 结束，正在进行验证集全量体检...
 --------------------------------------------------
    Epoch [2/100] 战报:
-   Train Loss: 0.0154 | Val Loss: 0.0306
-   Val F1-Score: 0.4317
+   Train Loss: 0.0145 | Val Loss: 0.0306
+   Val F1-Score: 0.3258
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
 早停警告: 连续 1/16 轮未打破记录。
 --------------------------------------------------
 
-   [Epoch 3/100] Batch [50/1304] | Train Loss: 0.0099
-   [Epoch 3/100] Batch [100/1304] | Train Loss: 0.0086
-   [Epoch 3/100] Batch [150/1304] | Train Loss: 0.0085
-   [Epoch 3/100] Batch [200/1304] | Train Loss: 0.0247
-   [Epoch 3/100] Batch [250/1304] | Train Loss: 0.0074
-   [Epoch 3/100] Batch [300/1304] | Train Loss: 0.0107
-   [Epoch 3/100] Batch [350/1304] | Train Loss: 0.0133
-   [Epoch 3/100] Batch [400/1304] | Train Loss: 0.0120
-   [Epoch 3/100] Batch [450/1304] | Train Loss: 0.0234
-   [Epoch 3/100] Batch [500/1304] | Train Loss: 0.0123
-   [Epoch 3/100] Batch [550/1304] | Train Loss: 0.0363
-   [Epoch 3/100] Batch [600/1304] | Train Loss: 0.0382
-   [Epoch 3/100] Batch [650/1304] | Train Loss: 0.0257
-   [Epoch 3/100] Batch [700/1304] | Train Loss: 0.0191
-   [Epoch 3/100] Batch [750/1304] | Train Loss: 0.0056
-   [Epoch 3/100] Batch [800/1304] | Train Loss: 0.0271
-   [Epoch 3/100] Batch [850/1304] | Train Loss: 0.0243
-   [Epoch 3/100] Batch [900/1304] | Train Loss: 0.0149
-   [Epoch 3/100] Batch [950/1304] | Train Loss: 0.0157
-   [Epoch 3/100] Batch [1000/1304] | Train Loss: 0.0126
-   [Epoch 3/100] Batch [1050/1304] | Train Loss: 0.0160
-   [Epoch 3/100] Batch [1100/1304] | Train Loss: 0.0064
-   [Epoch 3/100] Batch [1150/1304] | Train Loss: 0.0093
-   [Epoch 3/100] Batch [1200/1304] | Train Loss: 0.0222
-   [Epoch 3/100] Batch [1250/1304] | Train Loss: 0.0098
-   [Epoch 3/100] Batch [1300/1304] | Train Loss: 0.0099
+   [Epoch 3/100] Batch [50/1304] | Train Loss: 0.0087
+   [Epoch 3/100] Batch [100/1304] | Train Loss: 0.0122
+   [Epoch 3/100] Batch [150/1304] | Train Loss: 0.0024
+   [Epoch 3/100] Batch [200/1304] | Train Loss: 0.0110
+   [Epoch 3/100] Batch [250/1304] | Train Loss: 0.0274
+   [Epoch 3/100] Batch [300/1304] | Train Loss: 0.0193
+   [Epoch 3/100] Batch [350/1304] | Train Loss: 0.0101
+   [Epoch 3/100] Batch [400/1304] | Train Loss: 0.0128
+   [Epoch 3/100] Batch [450/1304] | Train Loss: 0.0135
+   [Epoch 3/100] Batch [500/1304] | Train Loss: 0.0155
+   [Epoch 3/100] Batch [550/1304] | Train Loss: 0.0091
+   [Epoch 3/100] Batch [600/1304] | Train Loss: 0.0081
+   [Epoch 3/100] Batch [650/1304] | Train Loss: 0.0130
+   [Epoch 3/100] Batch [700/1304] | Train Loss: 0.0114
+   [Epoch 3/100] Batch [750/1304] | Train Loss: 0.0054
+   [Epoch 3/100] Batch [800/1304] | Train Loss: 0.0077
+   [Epoch 3/100] Batch [850/1304] | Train Loss: 0.0041
+   [Epoch 3/100] Batch [900/1304] | Train Loss: 0.0079
+   [Epoch 3/100] Batch [950/1304] | Train Loss: 0.0328
+   [Epoch 3/100] Batch [1000/1304] | Train Loss: 0.0032
+   [Epoch 3/100] Batch [1050/1304] | Train Loss: 0.0024
+   [Epoch 3/100] Batch [1100/1304] | Train Loss: 0.0063
+   [Epoch 3/100] Batch [1150/1304] | Train Loss: 0.0113
+   [Epoch 3/100] Batch [1200/1304] | Train Loss: 0.0067
+   [Epoch 3/100] Batch [1250/1304] | Train Loss: 0.0123
+   [Epoch 3/100] Batch [1300/1304] | Train Loss: 0.0060
 Epoch 3 结束，正在进行验证集全量体检...
 --------------------------------------------------
    Epoch [3/100] 战报:
-   Train Loss: 0.0137 | Val Loss: 0.0343
-   Val F1-Score: 0.4825
+   Train Loss: 0.0130 | Val Loss: 0.0317
+   Val F1-Score: 0.4735
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
-破纪录了！Val F1 从 0.4534 提升至 0.4825，正在保存神级权重...
+破纪录了！Val F1 从 0.3843 提升至 0.4735，正在保存神级权重...
 --------------------------------------------------
 
-   [Epoch 4/100] Batch [50/1304] | Train Loss: 0.0324
-   [Epoch 4/100] Batch [100/1304] | Train Loss: 0.0017
-   [Epoch 4/100] Batch [150/1304] | Train Loss: 0.0105
-   [Epoch 4/100] Batch [200/1304] | Train Loss: 0.0077
-   [Epoch 4/100] Batch [250/1304] | Train Loss: 0.0044
-   [Epoch 4/100] Batch [300/1304] | Train Loss: 0.0419
-   [Epoch 4/100] Batch [350/1304] | Train Loss: 0.0099
-   [Epoch 4/100] Batch [400/1304] | Train Loss: 0.0245
-   [Epoch 4/100] Batch [450/1304] | Train Loss: 0.0133
-   [Epoch 4/100] Batch [500/1304] | Train Loss: 0.0198
-   [Epoch 4/100] Batch [550/1304] | Train Loss: 0.0078
-   [Epoch 4/100] Batch [600/1304] | Train Loss: 0.0157
-   [Epoch 4/100] Batch [650/1304] | Train Loss: 0.0118
-   [Epoch 4/100] Batch [700/1304] | Train Loss: 0.0227
-   [Epoch 4/100] Batch [750/1304] | Train Loss: 0.0056
-   [Epoch 4/100] Batch [800/1304] | Train Loss: 0.0226
-   [Epoch 4/100] Batch [850/1304] | Train Loss: 0.0081
-   [Epoch 4/100] Batch [900/1304] | Train Loss: 0.0140
-   [Epoch 4/100] Batch [950/1304] | Train Loss: 0.0060
-   [Epoch 4/100] Batch [1000/1304] | Train Loss: 0.0099
-   [Epoch 4/100] Batch [1050/1304] | Train Loss: 0.0063
-   [Epoch 4/100] Batch [1100/1304] | Train Loss: 0.0019
-   [Epoch 4/100] Batch [1150/1304] | Train Loss: 0.0033
-   [Epoch 4/100] Batch [1200/1304] | Train Loss: 0.0189
-   [Epoch 4/100] Batch [1250/1304] | Train Loss: 0.0063
-   [Epoch 4/100] Batch [1300/1304] | Train Loss: 0.0314
+   [Epoch 4/100] Batch [50/1304] | Train Loss: 0.0211
+   [Epoch 4/100] Batch [100/1304] | Train Loss: 0.0264
+   [Epoch 4/100] Batch [150/1304] | Train Loss: 0.0016
+   [Epoch 4/100] Batch [200/1304] | Train Loss: 0.0397
+   [Epoch 4/100] Batch [250/1304] | Train Loss: 0.0180
+   [Epoch 4/100] Batch [300/1304] | Train Loss: 0.0127
+   [Epoch 4/100] Batch [350/1304] | Train Loss: 0.0140
+   [Epoch 4/100] Batch [400/1304] | Train Loss: 0.0014
+   [Epoch 4/100] Batch [450/1304] | Train Loss: 0.0040
+   [Epoch 4/100] Batch [500/1304] | Train Loss: 0.0026
+   [Epoch 4/100] Batch [550/1304] | Train Loss: 0.0323
+   [Epoch 4/100] Batch [600/1304] | Train Loss: 0.0149
+   [Epoch 4/100] Batch [650/1304] | Train Loss: 0.0144
+   [Epoch 4/100] Batch [700/1304] | Train Loss: 0.0130
+   [Epoch 4/100] Batch [750/1304] | Train Loss: 0.0036
+   [Epoch 4/100] Batch [800/1304] | Train Loss: 0.0115
+   [Epoch 4/100] Batch [850/1304] | Train Loss: 0.0116
+   [Epoch 4/100] Batch [900/1304] | Train Loss: 0.0238
+   [Epoch 4/100] Batch [950/1304] | Train Loss: 0.0049
+   [Epoch 4/100] Batch [1000/1304] | Train Loss: 0.0019
+   [Epoch 4/100] Batch [1050/1304] | Train Loss: 0.0174
+   [Epoch 4/100] Batch [1100/1304] | Train Loss: 0.0051
+   [Epoch 4/100] Batch [1150/1304] | Train Loss: 0.0121
+   [Epoch 4/100] Batch [1200/1304] | Train Loss: 0.0256
+   [Epoch 4/100] Batch [1250/1304] | Train Loss: 0.0110
+   [Epoch 4/100] Batch [1300/1304] | Train Loss: 0.0298
 Epoch 4 结束，正在进行验证集全量体检...
 --------------------------------------------------
    Epoch [4/100] 战报:
-   Train Loss: 0.0127 | Val Loss: 0.0299
-   Val F1-Score: 0.5030
+   Train Loss: 0.0120 | Val Loss: 0.0344
+   Val F1-Score: 0.4556
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
-破纪录了！Val F1 从 0.4825 提升至 0.5030，正在保存神级权重...
+早停警告: 连续 1/16 轮未打破记录。
 --------------------------------------------------
 
-   [Epoch 5/100] Batch [50/1304] | Train Loss: 0.0201
-   [Epoch 5/100] Batch [100/1304] | Train Loss: 0.0126
-   [Epoch 5/100] Batch [150/1304] | Train Loss: 0.0069
-   [Epoch 5/100] Batch [200/1304] | Train Loss: 0.0048
-   [Epoch 5/100] Batch [250/1304] | Train Loss: 0.0105
-   [Epoch 5/100] Batch [300/1304] | Train Loss: 0.0035
-   [Epoch 5/100] Batch [350/1304] | Train Loss: 0.0133
-   [Epoch 5/100] Batch [400/1304] | Train Loss: 0.0178
-   [Epoch 5/100] Batch [450/1304] | Train Loss: 0.0039
-   [Epoch 5/100] Batch [500/1304] | Train Loss: 0.0031
-   [Epoch 5/100] Batch [550/1304] | Train Loss: 0.0209
-   [Epoch 5/100] Batch [600/1304] | Train Loss: 0.0180
-   [Epoch 5/100] Batch [650/1304] | Train Loss: 0.0064
-   [Epoch 5/100] Batch [700/1304] | Train Loss: 0.0154
-   [Epoch 5/100] Batch [750/1304] | Train Loss: 0.0276
-   [Epoch 5/100] Batch [800/1304] | Train Loss: 0.0062
-   [Epoch 5/100] Batch [850/1304] | Train Loss: 0.0012
-   [Epoch 5/100] Batch [900/1304] | Train Loss: 0.0173
-   [Epoch 5/100] Batch [950/1304] | Train Loss: 0.0111
-   [Epoch 5/100] Batch [1000/1304] | Train Loss: 0.0044
-   [Epoch 5/100] Batch [1050/1304] | Train Loss: 0.0140
-   [Epoch 5/100] Batch [1100/1304] | Train Loss: 0.0071
-   [Epoch 5/100] Batch [1150/1304] | Train Loss: 0.0053
-   [Epoch 5/100] Batch [1200/1304] | Train Loss: 0.0111
-   [Epoch 5/100] Batch [1250/1304] | Train Loss: 0.0038
-   [Epoch 5/100] Batch [1300/1304] | Train Loss: 0.0262
+   [Epoch 5/100] Batch [50/1304] | Train Loss: 0.0147
+   [Epoch 5/100] Batch [100/1304] | Train Loss: 0.0124
+   [Epoch 5/100] Batch [150/1304] | Train Loss: 0.0129
+   [Epoch 5/100] Batch [200/1304] | Train Loss: 0.0074
+   [Epoch 5/100] Batch [250/1304] | Train Loss: 0.0071
+   [Epoch 5/100] Batch [300/1304] | Train Loss: 0.0018
+   [Epoch 5/100] Batch [350/1304] | Train Loss: 0.0064
+   [Epoch 5/100] Batch [400/1304] | Train Loss: 0.0057
+   [Epoch 5/100] Batch [450/1304] | Train Loss: 0.0104
+   [Epoch 5/100] Batch [500/1304] | Train Loss: 0.0017
+   [Epoch 5/100] Batch [550/1304] | Train Loss: 0.0174
+   [Epoch 5/100] Batch [600/1304] | Train Loss: 0.0039
+   [Epoch 5/100] Batch [650/1304] | Train Loss: 0.0044
+   [Epoch 5/100] Batch [700/1304] | Train Loss: 0.0197
+   [Epoch 5/100] Batch [750/1304] | Train Loss: 0.0057
+   [Epoch 5/100] Batch [800/1304] | Train Loss: 0.0033
+   [Epoch 5/100] Batch [850/1304] | Train Loss: 0.0092
+   [Epoch 5/100] Batch [900/1304] | Train Loss: 0.0114
+   [Epoch 5/100] Batch [950/1304] | Train Loss: 0.0056
+   [Epoch 5/100] Batch [1000/1304] | Train Loss: 0.0125
+   [Epoch 5/100] Batch [1050/1304] | Train Loss: 0.0035
+   [Epoch 5/100] Batch [1100/1304] | Train Loss: 0.0133
+   [Epoch 5/100] Batch [1150/1304] | Train Loss: 0.0182
+   [Epoch 5/100] Batch [1200/1304] | Train Loss: 0.0062
+   [Epoch 5/100] Batch [1250/1304] | Train Loss: 0.0062
+   [Epoch 5/100] Batch [1300/1304] | Train Loss: 0.0103
 Epoch 5 结束，正在进行验证集全量体检...
 --------------------------------------------------
    Epoch [5/100] 战报:
-   Train Loss: 0.0117 | Val Loss: 0.0269
-   Val F1-Score: 0.4735
-最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
-早停警告: 连续 1/16 轮未打破记录。
---------------------------------------------------
-
-   [Epoch 6/100] Batch [50/1304] | Train Loss: 0.0125
-   [Epoch 6/100] Batch [100/1304] | Train Loss: 0.0073
-   [Epoch 6/100] Batch [150/1304] | Train Loss: 0.0161
-   [Epoch 6/100] Batch [200/1304] | Train Loss: 0.0042
-   [Epoch 6/100] Batch [250/1304] | Train Loss: 0.0204
-   [Epoch 6/100] Batch [300/1304] | Train Loss: 0.0010
-   [Epoch 6/100] Batch [350/1304] | Train Loss: 0.0022
-   [Epoch 6/100] Batch [400/1304] | Train Loss: 0.0042
-   [Epoch 6/100] Batch [450/1304] | Train Loss: 0.0284
-   [Epoch 6/100] Batch [500/1304] | Train Loss: 0.0046
-   [Epoch 6/100] Batch [550/1304] | Train Loss: 0.0022
-   [Epoch 6/100] Batch [600/1304] | Train Loss: 0.0019
-   [Epoch 6/100] Batch [650/1304] | Train Loss: 0.0046
-   [Epoch 6/100] Batch [700/1304] | Train Loss: 0.0309
-   [Epoch 6/100] Batch [750/1304] | Train Loss: 0.0142
-   [Epoch 6/100] Batch [800/1304] | Train Loss: 0.0146
-   [Epoch 6/100] Batch [850/1304] | Train Loss: 0.0179
-   [Epoch 6/100] Batch [900/1304] | Train Loss: 0.0015
-   [Epoch 6/100] Batch [950/1304] | Train Loss: 0.0141
-   [Epoch 6/100] Batch [1000/1304] | Train Loss: 0.0195
-   [Epoch 6/100] Batch [1050/1304] | Train Loss: 0.0094
-   [Epoch 6/100] Batch [1100/1304] | Train Loss: 0.0054
-   [Epoch 6/100] Batch [1150/1304] | Train Loss: 0.0036
-   [Epoch 6/100] Batch [1200/1304] | Train Loss: 0.0420
-   [Epoch 6/100] Batch [1250/1304] | Train Loss: 0.0118
-   [Epoch 6/100] Batch [1300/1304] | Train Loss: 0.0168
-Epoch 6 结束，正在进行验证集全量体检...
---------------------------------------------------
-   Epoch [6/100] 战报:
-   Train Loss: 0.0110 | Val Loss: 0.0299
-   Val F1-Score: 0.5299
-最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
-破纪录了！Val F1 从 0.5030 提升至 0.5299，正在保存神级权重...
---------------------------------------------------
-
-   [Epoch 7/100] Batch [50/1304] | Train Loss: 0.0311
-   [Epoch 7/100] Batch [100/1304] | Train Loss: 0.0131
-   [Epoch 7/100] Batch [150/1304] | Train Loss: 0.0099
-   [Epoch 7/100] Batch [200/1304] | Train Loss: 0.0057
-   [Epoch 7/100] Batch [250/1304] | Train Loss: 0.0061
-   [Epoch 7/100] Batch [300/1304] | Train Loss: 0.0074
-   [Epoch 7/100] Batch [350/1304] | Train Loss: 0.0018
-   [Epoch 7/100] Batch [400/1304] | Train Loss: 0.0074
-   [Epoch 7/100] Batch [450/1304] | Train Loss: 0.0059
-   [Epoch 7/100] Batch [500/1304] | Train Loss: 0.0079
-   [Epoch 7/100] Batch [550/1304] | Train Loss: 0.0291
-   [Epoch 7/100] Batch [600/1304] | Train Loss: 0.0038
-   [Epoch 7/100] Batch [650/1304] | Train Loss: 0.0021
-   [Epoch 7/100] Batch [700/1304] | Train Loss: 0.0033
-   [Epoch 7/100] Batch [750/1304] | Train Loss: 0.0041
-   [Epoch 7/100] Batch [800/1304] | Train Loss: 0.0047
-   [Epoch 7/100] Batch [850/1304] | Train Loss: 0.0024
-   [Epoch 7/100] Batch [900/1304] | Train Loss: 0.0152
-   [Epoch 7/100] Batch [950/1304] | Train Loss: 0.0218
-   [Epoch 7/100] Batch [1000/1304] | Train Loss: 0.0094
-   [Epoch 7/100] Batch [1050/1304] | Train Loss: 0.0162
-   [Epoch 7/100] Batch [1100/1304] | Train Loss: 0.0029
-   [Epoch 7/100] Batch [1150/1304] | Train Loss: 0.0033
-   [Epoch 7/100] Batch [1200/1304] | Train Loss: 0.0031
-   [Epoch 7/100] Batch [1250/1304] | Train Loss: 0.0030
-   [Epoch 7/100] Batch [1300/1304] | Train Loss: 0.0118
-Epoch 7 结束，正在进行验证集全量体检...
---------------------------------------------------
-   Epoch [7/100] 战报:
-   Train Loss: 0.0106 | Val Loss: 0.0299
-   Val F1-Score: 0.3133
-最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
-早停警告: 连续 1/16 轮未打破记录。
---------------------------------------------------
-
-   [Epoch 8/100] Batch [50/1304] | Train Loss: 0.0179
-   [Epoch 8/100] Batch [100/1304] | Train Loss: 0.0022
-   [Epoch 8/100] Batch [150/1304] | Train Loss: 0.0063
-   [Epoch 8/100] Batch [200/1304] | Train Loss: 0.0031
-   [Epoch 8/100] Batch [250/1304] | Train Loss: 0.0048
-   [Epoch 8/100] Batch [300/1304] | Train Loss: 0.0188
-   [Epoch 8/100] Batch [350/1304] | Train Loss: 0.0051
-   [Epoch 8/100] Batch [400/1304] | Train Loss: 0.0118
-   [Epoch 8/100] Batch [450/1304] | Train Loss: 0.0022
-   [Epoch 8/100] Batch [500/1304] | Train Loss: 0.0040
-   [Epoch 8/100] Batch [550/1304] | Train Loss: 0.0245
-   [Epoch 8/100] Batch [600/1304] | Train Loss: 0.0008
-   [Epoch 8/100] Batch [650/1304] | Train Loss: 0.0234
-   [Epoch 8/100] Batch [700/1304] | Train Loss: 0.0014
-   [Epoch 8/100] Batch [750/1304] | Train Loss: 0.0162
-   [Epoch 8/100] Batch [800/1304] | Train Loss: 0.0060
-   [Epoch 8/100] Batch [850/1304] | Train Loss: 0.0013
-   [Epoch 8/100] Batch [900/1304] | Train Loss: 0.0202
-   [Epoch 8/100] Batch [950/1304] | Train Loss: 0.0033
-   [Epoch 8/100] Batch [1000/1304] | Train Loss: 0.0124
-   [Epoch 8/100] Batch [1050/1304] | Train Loss: 0.0152
-   [Epoch 8/100] Batch [1100/1304] | Train Loss: 0.0020
-   [Epoch 8/100] Batch [1150/1304] | Train Loss: 0.0334
-   [Epoch 8/100] Batch [1200/1304] | Train Loss: 0.0084
-   [Epoch 8/100] Batch [1250/1304] | Train Loss: 0.0412
-   [Epoch 8/100] Batch [1300/1304] | Train Loss: 0.0156
-Epoch 8 结束，正在进行验证集全量体检...
---------------------------------------------------
-   Epoch [8/100] 战报:
-   Train Loss: 0.0100 | Val Loss: 0.0310
-   Val F1-Score: 0.5510
-最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
-破纪录了！Val F1 从 0.5299 提升至 0.5510，正在保存神级权重...
---------------------------------------------------
-
-   [Epoch 9/100] Batch [50/1304] | Train Loss: 0.0061
-   [Epoch 9/100] Batch [100/1304] | Train Loss: 0.0050
-   [Epoch 9/100] Batch [150/1304] | Train Loss: 0.0024
-   [Epoch 9/100] Batch [200/1304] | Train Loss: 0.0096
-   [Epoch 9/100] Batch [250/1304] | Train Loss: 0.0037
-   [Epoch 9/100] Batch [300/1304] | Train Loss: 0.0222
-   [Epoch 9/100] Batch [350/1304] | Train Loss: 0.0013
-   [Epoch 9/100] Batch [400/1304] | Train Loss: 0.0077
-   [Epoch 9/100] Batch [450/1304] | Train Loss: 0.0006
-   [Epoch 9/100] Batch [500/1304] | Train Loss: 0.0063
-   [Epoch 9/100] Batch [550/1304] | Train Loss: 0.0025
-   [Epoch 9/100] Batch [600/1304] | Train Loss: 0.0032
-   [Epoch 9/100] Batch [650/1304] | Train Loss: 0.0203
-   [Epoch 9/100] Batch [700/1304] | Train Loss: 0.0279
-   [Epoch 9/100] Batch [750/1304] | Train Loss: 0.0028
-   [Epoch 9/100] Batch [800/1304] | Train Loss: 0.0063
-   [Epoch 9/100] Batch [850/1304] | Train Loss: 0.0267
-   [Epoch 9/100] Batch [900/1304] | Train Loss: 0.0160
-   [Epoch 9/100] Batch [950/1304] | Train Loss: 0.0011
-   [Epoch 9/100] Batch [1000/1304] | Train Loss: 0.0032
-   [Epoch 9/100] Batch [1050/1304] | Train Loss: 0.0048
-   [Epoch 9/100] Batch [1100/1304] | Train Loss: 0.0084
-   [Epoch 9/100] Batch [1150/1304] | Train Loss: 0.0114
-   [Epoch 9/100] Batch [1200/1304] | Train Loss: 0.0073
-   [Epoch 9/100] Batch [1250/1304] | Train Loss: 0.0170
-   [Epoch 9/100] Batch [1300/1304] | Train Loss: 0.0073
-Epoch 9 结束，正在进行验证集全量体检...
---------------------------------------------------
-   Epoch [9/100] 战报:
-   Train Loss: 0.0098 | Val Loss: 0.0294
-   Val F1-Score: 0.5425
-最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
-早停警告: 连续 1/16 轮未打破记录。
---------------------------------------------------
-
-   [Epoch 10/100] Batch [50/1304] | Train Loss: 0.0122
-   [Epoch 10/100] Batch [100/1304] | Train Loss: 0.0006
-   [Epoch 10/100] Batch [150/1304] | Train Loss: 0.0078
-   [Epoch 10/100] Batch [200/1304] | Train Loss: 0.0017
-   [Epoch 10/100] Batch [250/1304] | Train Loss: 0.0179
-   [Epoch 10/100] Batch [300/1304] | Train Loss: 0.0044
-   [Epoch 10/100] Batch [350/1304] | Train Loss: 0.0093
-   [Epoch 10/100] Batch [400/1304] | Train Loss: 0.0104
-   [Epoch 10/100] Batch [450/1304] | Train Loss: 0.0039
-   [Epoch 10/100] Batch [500/1304] | Train Loss: 0.0005
-   [Epoch 10/100] Batch [550/1304] | Train Loss: 0.0021
-   [Epoch 10/100] Batch [600/1304] | Train Loss: 0.0240
-   [Epoch 10/100] Batch [650/1304] | Train Loss: 0.0072
-   [Epoch 10/100] Batch [700/1304] | Train Loss: 0.0018
-   [Epoch 10/100] Batch [750/1304] | Train Loss: 0.0065
-   [Epoch 10/100] Batch [800/1304] | Train Loss: 0.0074
-   [Epoch 10/100] Batch [850/1304] | Train Loss: 0.0057
-   [Epoch 10/100] Batch [900/1304] | Train Loss: 0.0159
-   [Epoch 10/100] Batch [950/1304] | Train Loss: 0.0099
-   [Epoch 10/100] Batch [1000/1304] | Train Loss: 0.0028
-   [Epoch 10/100] Batch [1050/1304] | Train Loss: 0.0015
-   [Epoch 10/100] Batch [1100/1304] | Train Loss: 0.0075
-   [Epoch 10/100] Batch [1150/1304] | Train Loss: 0.0055
-   [Epoch 10/100] Batch [1200/1304] | Train Loss: 0.0046
-   [Epoch 10/100] Batch [1250/1304] | Train Loss: 0.0263
-   [Epoch 10/100] Batch [1300/1304] | Train Loss: 0.0027
-Epoch 10 结束，正在进行验证集全量体检...
---------------------------------------------------
-   Epoch [10/100] 战报:
-   Train Loss: 0.0096 | Val Loss: 0.0276
-   Val F1-Score: 0.5578
-最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
-破纪录了！Val F1 从 0.5510 提升至 0.5578，正在保存神级权重...
---------------------------------------------------
-
-   [Epoch 11/100] Batch [50/1304] | Train Loss: 0.0029
-   [Epoch 11/100] Batch [100/1304] | Train Loss: 0.0151
-   [Epoch 11/100] Batch [150/1304] | Train Loss: 0.0019
-   [Epoch 11/100] Batch [200/1304] | Train Loss: 0.0158
-   [Epoch 11/100] Batch [250/1304] | Train Loss: 0.0081
-   [Epoch 11/100] Batch [300/1304] | Train Loss: 0.0055
-   [Epoch 11/100] Batch [350/1304] | Train Loss: 0.0096
-   [Epoch 11/100] Batch [400/1304] | Train Loss: 0.0111
-   [Epoch 11/100] Batch [450/1304] | Train Loss: 0.0022
-   [Epoch 11/100] Batch [500/1304] | Train Loss: 0.0068
-   [Epoch 11/100] Batch [550/1304] | Train Loss: 0.0022
-   [Epoch 11/100] Batch [600/1304] | Train Loss: 0.0163
-   [Epoch 11/100] Batch [650/1304] | Train Loss: 0.0028
-   [Epoch 11/100] Batch [700/1304] | Train Loss: 0.0007
-   [Epoch 11/100] Batch [750/1304] | Train Loss: 0.0023
-   [Epoch 11/100] Batch [800/1304] | Train Loss: 0.0036
-   [Epoch 11/100] Batch [850/1304] | Train Loss: 0.0062
-   [Epoch 11/100] Batch [900/1304] | Train Loss: 0.0322
-   [Epoch 11/100] Batch [950/1304] | Train Loss: 0.0096
-   [Epoch 11/100] Batch [1000/1304] | Train Loss: 0.0021
-   [Epoch 11/100] Batch [1050/1304] | Train Loss: 0.0035
-   [Epoch 11/100] Batch [1100/1304] | Train Loss: 0.0016
-   [Epoch 11/100] Batch [1150/1304] | Train Loss: 0.0067
-   [Epoch 11/100] Batch [1200/1304] | Train Loss: 0.0027
-   [Epoch 11/100] Batch [1250/1304] | Train Loss: 0.0023
-   [Epoch 11/100] Batch [1300/1304] | Train Loss: 0.0013
-Epoch 11 结束，正在进行验证集全量体检...
---------------------------------------------------
-   Epoch [11/100] 战报:
-   Train Loss: 0.0094 | Val Loss: 0.0311
-   Val F1-Score: 0.5425
-最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
-早停警告: 连续 1/16 轮未打破记录。
---------------------------------------------------
-
-   [Epoch 12/100] Batch [50/1304] | Train Loss: 0.0016
-   [Epoch 12/100] Batch [100/1304] | Train Loss: 0.0136
-   [Epoch 12/100] Batch [150/1304] | Train Loss: 0.0115
-   [Epoch 12/100] Batch [200/1304] | Train Loss: 0.0096
-   [Epoch 12/100] Batch [250/1304] | Train Loss: 0.0116
-   [Epoch 12/100] Batch [300/1304] | Train Loss: 0.0043
-   [Epoch 12/100] Batch [350/1304] | Train Loss: 0.0187
-   [Epoch 12/100] Batch [400/1304] | Train Loss: 0.0236
-   [Epoch 12/100] Batch [450/1304] | Train Loss: 0.0027
-   [Epoch 12/100] Batch [500/1304] | Train Loss: 0.0024
-   [Epoch 12/100] Batch [550/1304] | Train Loss: 0.0029
-   [Epoch 12/100] Batch [600/1304] | Train Loss: 0.0039
-   [Epoch 12/100] Batch [650/1304] | Train Loss: 0.0117
-   [Epoch 12/100] Batch [700/1304] | Train Loss: 0.0043
-   [Epoch 12/100] Batch [750/1304] | Train Loss: 0.0049
-   [Epoch 12/100] Batch [800/1304] | Train Loss: 0.0176
-   [Epoch 12/100] Batch [850/1304] | Train Loss: 0.0028
-   [Epoch 12/100] Batch [900/1304] | Train Loss: 0.0107
-   [Epoch 12/100] Batch [950/1304] | Train Loss: 0.0051
-   [Epoch 12/100] Batch [1000/1304] | Train Loss: 0.0018
-   [Epoch 12/100] Batch [1050/1304] | Train Loss: 0.0033
-   [Epoch 12/100] Batch [1100/1304] | Train Loss: 0.0255
-   [Epoch 12/100] Batch [1150/1304] | Train Loss: 0.0070
-   [Epoch 12/100] Batch [1200/1304] | Train Loss: 0.0100
-   [Epoch 12/100] Batch [1250/1304] | Train Loss: 0.0043
-   [Epoch 12/100] Batch [1300/1304] | Train Loss: 0.0266
-Epoch 12 结束，正在进行验证集全量体检...
---------------------------------------------------
-   Epoch [12/100] 战报:
-   Train Loss: 0.0092 | Val Loss: 0.0297
-   Val F1-Score: 0.4676
+   Train Loss: 0.0111 | Val Loss: 0.0267
+   Val F1-Score: 0.3635
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
 早停警告: 连续 2/16 轮未打破记录。
 --------------------------------------------------
 
-   [Epoch 13/100] Batch [50/1304] | Train Loss: 0.0029
-   [Epoch 13/100] Batch [100/1304] | Train Loss: 0.0027
-   [Epoch 13/100] Batch [150/1304] | Train Loss: 0.0069
-   [Epoch 13/100] Batch [200/1304] | Train Loss: 0.0055
-   [Epoch 13/100] Batch [250/1304] | Train Loss: 0.0050
-   [Epoch 13/100] Batch [300/1304] | Train Loss: 0.0069
-   [Epoch 13/100] Batch [350/1304] | Train Loss: 0.0021
-   [Epoch 13/100] Batch [400/1304] | Train Loss: 0.0153
-   [Epoch 13/100] Batch [450/1304] | Train Loss: 0.0019
-   [Epoch 13/100] Batch [500/1304] | Train Loss: 0.0068
-   [Epoch 13/100] Batch [550/1304] | Train Loss: 0.0111
-   [Epoch 13/100] Batch [600/1304] | Train Loss: 0.0028
-   [Epoch 13/100] Batch [650/1304] | Train Loss: 0.0017
-   [Epoch 13/100] Batch [700/1304] | Train Loss: 0.0016
-   [Epoch 13/100] Batch [750/1304] | Train Loss: 0.0020
-   [Epoch 13/100] Batch [800/1304] | Train Loss: 0.0026
-   [Epoch 13/100] Batch [850/1304] | Train Loss: 0.0275
-   [Epoch 13/100] Batch [900/1304] | Train Loss: 0.0013
-   [Epoch 13/100] Batch [950/1304] | Train Loss: 0.0012
-   [Epoch 13/100] Batch [1000/1304] | Train Loss: 0.0182
-   [Epoch 13/100] Batch [1050/1304] | Train Loss: 0.0019
-   [Epoch 13/100] Batch [1100/1304] | Train Loss: 0.0032
-   [Epoch 13/100] Batch [1150/1304] | Train Loss: 0.0191
-   [Epoch 13/100] Batch [1200/1304] | Train Loss: 0.0219
-   [Epoch 13/100] Batch [1250/1304] | Train Loss: 0.0204
-   [Epoch 13/100] Batch [1300/1304] | Train Loss: 0.0010
-Epoch 13 结束，正在进行验证集全量体检...
+   [Epoch 6/100] Batch [50/1304] | Train Loss: 0.0181
+   [Epoch 6/100] Batch [100/1304] | Train Loss: 0.0047
+   [Epoch 6/100] Batch [150/1304] | Train Loss: 0.0052
+   [Epoch 6/100] Batch [200/1304] | Train Loss: 0.0012
+   [Epoch 6/100] Batch [250/1304] | Train Loss: 0.0149
+   [Epoch 6/100] Batch [300/1304] | Train Loss: 0.0131
+   [Epoch 6/100] Batch [350/1304] | Train Loss: 0.0121
+   [Epoch 6/100] Batch [400/1304] | Train Loss: 0.0087
+   [Epoch 6/100] Batch [450/1304] | Train Loss: 0.0029
+   [Epoch 6/100] Batch [500/1304] | Train Loss: 0.0152
+   [Epoch 6/100] Batch [550/1304] | Train Loss: 0.0089
+   [Epoch 6/100] Batch [600/1304] | Train Loss: 0.0062
+   [Epoch 6/100] Batch [650/1304] | Train Loss: 0.0028
+   [Epoch 6/100] Batch [700/1304] | Train Loss: 0.0144
+   [Epoch 6/100] Batch [750/1304] | Train Loss: 0.0023
+   [Epoch 6/100] Batch [800/1304] | Train Loss: 0.0123
+   [Epoch 6/100] Batch [850/1304] | Train Loss: 0.0028
+   [Epoch 6/100] Batch [900/1304] | Train Loss: 0.0145
+   [Epoch 6/100] Batch [950/1304] | Train Loss: 0.0132
+   [Epoch 6/100] Batch [1000/1304] | Train Loss: 0.0149
+   [Epoch 6/100] Batch [1050/1304] | Train Loss: 0.0011
+   [Epoch 6/100] Batch [1100/1304] | Train Loss: 0.0020
+   [Epoch 6/100] Batch [1150/1304] | Train Loss: 0.0314
+   [Epoch 6/100] Batch [1200/1304] | Train Loss: 0.0204
+   [Epoch 6/100] Batch [1250/1304] | Train Loss: 0.0105
+   [Epoch 6/100] Batch [1300/1304] | Train Loss: 0.0078
+Epoch 6 结束，正在进行验证集全量体检...
 --------------------------------------------------
-   Epoch [13/100] 战报:
-   Train Loss: 0.0089 | Val Loss: 0.0295
-   Val F1-Score: 0.5182
+   Epoch [6/100] 战报:
+   Train Loss: 0.0105 | Val Loss: 0.0270
+   Val F1-Score: 0.5499
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+破纪录了！Val F1 从 0.4735 提升至 0.5499，正在保存神级权重...
+--------------------------------------------------
+
+   [Epoch 7/100] Batch [50/1304] | Train Loss: 0.0084
+   [Epoch 7/100] Batch [100/1304] | Train Loss: 0.0261
+   [Epoch 7/100] Batch [150/1304] | Train Loss: 0.0034
+   [Epoch 7/100] Batch [200/1304] | Train Loss: 0.0109
+   [Epoch 7/100] Batch [250/1304] | Train Loss: 0.0027
+   [Epoch 7/100] Batch [300/1304] | Train Loss: 0.0147
+   [Epoch 7/100] Batch [350/1304] | Train Loss: 0.0019
+   [Epoch 7/100] Batch [400/1304] | Train Loss: 0.0062
+   [Epoch 7/100] Batch [450/1304] | Train Loss: 0.0129
+   [Epoch 7/100] Batch [500/1304] | Train Loss: 0.0092
+   [Epoch 7/100] Batch [550/1304] | Train Loss: 0.0181
+   [Epoch 7/100] Batch [600/1304] | Train Loss: 0.0055
+   [Epoch 7/100] Batch [650/1304] | Train Loss: 0.0076
+   [Epoch 7/100] Batch [700/1304] | Train Loss: 0.0060
+   [Epoch 7/100] Batch [750/1304] | Train Loss: 0.0117
+   [Epoch 7/100] Batch [800/1304] | Train Loss: 0.0065
+   [Epoch 7/100] Batch [850/1304] | Train Loss: 0.0103
+   [Epoch 7/100] Batch [900/1304] | Train Loss: 0.0104
+   [Epoch 7/100] Batch [950/1304] | Train Loss: 0.0007
+   [Epoch 7/100] Batch [1000/1304] | Train Loss: 0.0055
+   [Epoch 7/100] Batch [1050/1304] | Train Loss: 0.0464
+   [Epoch 7/100] Batch [1100/1304] | Train Loss: 0.0020
+   [Epoch 7/100] Batch [1150/1304] | Train Loss: 0.0042
+   [Epoch 7/100] Batch [1200/1304] | Train Loss: 0.0236
+   [Epoch 7/100] Batch [1250/1304] | Train Loss: 0.0017
+   [Epoch 7/100] Batch [1300/1304] | Train Loss: 0.0051
+Epoch 7 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [7/100] 战报:
+   Train Loss: 0.0102 | Val Loss: 0.0257
+   Val F1-Score: 0.4516
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 1/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 8/100] Batch [50/1304] | Train Loss: 0.0120
+   [Epoch 8/100] Batch [100/1304] | Train Loss: 0.0037
+   [Epoch 8/100] Batch [150/1304] | Train Loss: 0.0285
+   [Epoch 8/100] Batch [200/1304] | Train Loss: 0.0016
+   [Epoch 8/100] Batch [250/1304] | Train Loss: 0.0137
+   [Epoch 8/100] Batch [300/1304] | Train Loss: 0.0316
+   [Epoch 8/100] Batch [350/1304] | Train Loss: 0.0077
+   [Epoch 8/100] Batch [400/1304] | Train Loss: 0.0154
+   [Epoch 8/100] Batch [450/1304] | Train Loss: 0.0135
+   [Epoch 8/100] Batch [500/1304] | Train Loss: 0.0008
+   [Epoch 8/100] Batch [550/1304] | Train Loss: 0.0034
+   [Epoch 8/100] Batch [600/1304] | Train Loss: 0.0029
+   [Epoch 8/100] Batch [650/1304] | Train Loss: 0.0021
+   [Epoch 8/100] Batch [700/1304] | Train Loss: 0.0135
+   [Epoch 8/100] Batch [750/1304] | Train Loss: 0.0019
+   [Epoch 8/100] Batch [800/1304] | Train Loss: 0.0121
+   [Epoch 8/100] Batch [850/1304] | Train Loss: 0.0196
+   [Epoch 8/100] Batch [900/1304] | Train Loss: 0.0145
+   [Epoch 8/100] Batch [950/1304] | Train Loss: 0.0050
+   [Epoch 8/100] Batch [1000/1304] | Train Loss: 0.0035
+   [Epoch 8/100] Batch [1050/1304] | Train Loss: 0.0047
+   [Epoch 8/100] Batch [1100/1304] | Train Loss: 0.0203
+   [Epoch 8/100] Batch [1150/1304] | Train Loss: 0.0143
+   [Epoch 8/100] Batch [1200/1304] | Train Loss: 0.0162
+   [Epoch 8/100] Batch [1250/1304] | Train Loss: 0.0030
+   [Epoch 8/100] Batch [1300/1304] | Train Loss: 0.0067
+Epoch 8 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [8/100] 战报:
+   Train Loss: 0.0098 | Val Loss: 0.0284
+   Val F1-Score: 0.4790
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 2/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 9/100] Batch [50/1304] | Train Loss: 0.0021
+   [Epoch 9/100] Batch [100/1304] | Train Loss: 0.0011
+   [Epoch 9/100] Batch [150/1304] | Train Loss: 0.0024
+   [Epoch 9/100] Batch [200/1304] | Train Loss: 0.0049
+   [Epoch 9/100] Batch [250/1304] | Train Loss: 0.0009
+   [Epoch 9/100] Batch [300/1304] | Train Loss: 0.0032
+   [Epoch 9/100] Batch [350/1304] | Train Loss: 0.0159
+   [Epoch 9/100] Batch [400/1304] | Train Loss: 0.0146
+   [Epoch 9/100] Batch [450/1304] | Train Loss: 0.0033
+   [Epoch 9/100] Batch [500/1304] | Train Loss: 0.0020
+   [Epoch 9/100] Batch [550/1304] | Train Loss: 0.0008
+   [Epoch 9/100] Batch [600/1304] | Train Loss: 0.0050
+   [Epoch 9/100] Batch [650/1304] | Train Loss: 0.0146
+   [Epoch 9/100] Batch [700/1304] | Train Loss: 0.0219
+   [Epoch 9/100] Batch [750/1304] | Train Loss: 0.0084
+   [Epoch 9/100] Batch [800/1304] | Train Loss: 0.0153
+   [Epoch 9/100] Batch [850/1304] | Train Loss: 0.0008
+   [Epoch 9/100] Batch [900/1304] | Train Loss: 0.0049
+   [Epoch 9/100] Batch [950/1304] | Train Loss: 0.0097
+   [Epoch 9/100] Batch [1000/1304] | Train Loss: 0.0077
+   [Epoch 9/100] Batch [1050/1304] | Train Loss: 0.0016
+   [Epoch 9/100] Batch [1100/1304] | Train Loss: 0.0064
+   [Epoch 9/100] Batch [1150/1304] | Train Loss: 0.0085
+   [Epoch 9/100] Batch [1200/1304] | Train Loss: 0.0019
+   [Epoch 9/100] Batch [1250/1304] | Train Loss: 0.0151
+   [Epoch 9/100] Batch [1300/1304] | Train Loss: 0.0170
+Epoch 9 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [9/100] 战报:
+   Train Loss: 0.0095 | Val Loss: 0.0252
+   Val F1-Score: 0.4682
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
 早停警告: 连续 3/16 轮未打破记录。
 --------------------------------------------------
 
-   [Epoch 14/100] Batch [50/1304] | Train Loss: 0.0139
-   [Epoch 14/100] Batch [100/1304] | Train Loss: 0.0179
-   [Epoch 14/100] Batch [150/1304] | Train Loss: 0.0073
-   [Epoch 14/100] Batch [200/1304] | Train Loss: 0.0011
-   [Epoch 14/100] Batch [250/1304] | Train Loss: 0.0056
-   [Epoch 14/100] Batch [300/1304] | Train Loss: 0.0017
-   [Epoch 14/100] Batch [350/1304] | Train Loss: 0.0027
-   [Epoch 14/100] Batch [400/1304] | Train Loss: 0.0067
-   [Epoch 14/100] Batch [450/1304] | Train Loss: 0.0029
-   [Epoch 14/100] Batch [500/1304] | Train Loss: 0.0012
-   [Epoch 14/100] Batch [550/1304] | Train Loss: 0.0064
-   [Epoch 14/100] Batch [600/1304] | Train Loss: 0.0153
-   [Epoch 14/100] Batch [650/1304] | Train Loss: 0.0282
-   [Epoch 14/100] Batch [700/1304] | Train Loss: 0.0021
-   [Epoch 14/100] Batch [750/1304] | Train Loss: 0.0104
-   [Epoch 14/100] Batch [800/1304] | Train Loss: 0.0100
-   [Epoch 14/100] Batch [850/1304] | Train Loss: 0.0172
-   [Epoch 14/100] Batch [900/1304] | Train Loss: 0.0201
-   [Epoch 14/100] Batch [950/1304] | Train Loss: 0.0140
-   [Epoch 14/100] Batch [1000/1304] | Train Loss: 0.0012
-   [Epoch 14/100] Batch [1050/1304] | Train Loss: 0.0079
-   [Epoch 14/100] Batch [1100/1304] | Train Loss: 0.0029
-   [Epoch 14/100] Batch [1150/1304] | Train Loss: 0.0133
-   [Epoch 14/100] Batch [1200/1304] | Train Loss: 0.0021
-   [Epoch 14/100] Batch [1250/1304] | Train Loss: 0.0007
-   [Epoch 14/100] Batch [1300/1304] | Train Loss: 0.0292
-Epoch 14 结束，正在进行验证集全量体检...
+   [Epoch 10/100] Batch [50/1304] | Train Loss: 0.0242
+   [Epoch 10/100] Batch [100/1304] | Train Loss: 0.0008
+   [Epoch 10/100] Batch [150/1304] | Train Loss: 0.0054
+   [Epoch 10/100] Batch [200/1304] | Train Loss: 0.0018
+   [Epoch 10/100] Batch [250/1304] | Train Loss: 0.0028
+   [Epoch 10/100] Batch [300/1304] | Train Loss: 0.0154
+   [Epoch 10/100] Batch [350/1304] | Train Loss: 0.0182
+   [Epoch 10/100] Batch [400/1304] | Train Loss: 0.0082
+   [Epoch 10/100] Batch [450/1304] | Train Loss: 0.0071
+   [Epoch 10/100] Batch [500/1304] | Train Loss: 0.0012
+   [Epoch 10/100] Batch [550/1304] | Train Loss: 0.0168
+   [Epoch 10/100] Batch [600/1304] | Train Loss: 0.0100
+   [Epoch 10/100] Batch [650/1304] | Train Loss: 0.0030
+   [Epoch 10/100] Batch [700/1304] | Train Loss: 0.0305
+   [Epoch 10/100] Batch [750/1304] | Train Loss: 0.0021
+   [Epoch 10/100] Batch [800/1304] | Train Loss: 0.0033
+   [Epoch 10/100] Batch [850/1304] | Train Loss: 0.0057
+   [Epoch 10/100] Batch [900/1304] | Train Loss: 0.0075
+   [Epoch 10/100] Batch [950/1304] | Train Loss: 0.0017
+   [Epoch 10/100] Batch [1000/1304] | Train Loss: 0.0007
+   [Epoch 10/100] Batch [1050/1304] | Train Loss: 0.0025
+   [Epoch 10/100] Batch [1100/1304] | Train Loss: 0.0022
+   [Epoch 10/100] Batch [1150/1304] | Train Loss: 0.0031
+   [Epoch 10/100] Batch [1200/1304] | Train Loss: 0.0060
+   [Epoch 10/100] Batch [1250/1304] | Train Loss: 0.0088
+   [Epoch 10/100] Batch [1300/1304] | Train Loss: 0.0177
+Epoch 10 结束，正在进行验证集全量体检...
 --------------------------------------------------
-   Epoch [14/100] 战报:
-   Train Loss: 0.0086 | Val Loss: 0.0289
-   Val F1-Score: 0.5439
+   Epoch [10/100] 战报:
+   Train Loss: 0.0092 | Val Loss: 0.0255
+   Val F1-Score: 0.4216
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
 早停警告: 连续 4/16 轮未打破记录。
 --------------------------------------------------
 
-   [Epoch 15/100] Batch [50/1304] | Train Loss: 0.0084
-   [Epoch 15/100] Batch [100/1304] | Train Loss: 0.0047
-   [Epoch 15/100] Batch [150/1304] | Train Loss: 0.0149
-   [Epoch 15/100] Batch [200/1304] | Train Loss: 0.0078
-   [Epoch 15/100] Batch [250/1304] | Train Loss: 0.0114
-   [Epoch 15/100] Batch [300/1304] | Train Loss: 0.0086
-   [Epoch 15/100] Batch [350/1304] | Train Loss: 0.0064
-   [Epoch 15/100] Batch [400/1304] | Train Loss: 0.0054
-   [Epoch 15/100] Batch [450/1304] | Train Loss: 0.0143
-   [Epoch 15/100] Batch [500/1304] | Train Loss: 0.0103
-   [Epoch 15/100] Batch [550/1304] | Train Loss: 0.0291
-   [Epoch 15/100] Batch [600/1304] | Train Loss: 0.0024
-   [Epoch 15/100] Batch [650/1304] | Train Loss: 0.0101
-   [Epoch 15/100] Batch [700/1304] | Train Loss: 0.0189
-   [Epoch 15/100] Batch [750/1304] | Train Loss: 0.0065
-   [Epoch 15/100] Batch [800/1304] | Train Loss: 0.0012
-   [Epoch 15/100] Batch [850/1304] | Train Loss: 0.0008
-   [Epoch 15/100] Batch [900/1304] | Train Loss: 0.0259
-   [Epoch 15/100] Batch [950/1304] | Train Loss: 0.0121
-   [Epoch 15/100] Batch [1000/1304] | Train Loss: 0.0159
-   [Epoch 15/100] Batch [1050/1304] | Train Loss: 0.0020
-   [Epoch 15/100] Batch [1100/1304] | Train Loss: 0.0022
-   [Epoch 15/100] Batch [1150/1304] | Train Loss: 0.0084
-   [Epoch 15/100] Batch [1200/1304] | Train Loss: 0.0018
-   [Epoch 15/100] Batch [1250/1304] | Train Loss: 0.0015
-   [Epoch 15/100] Batch [1300/1304] | Train Loss: 0.0478
-Epoch 15 结束，正在进行验证集全量体检...
+   [Epoch 11/100] Batch [50/1304] | Train Loss: 0.0068
+   [Epoch 11/100] Batch [100/1304] | Train Loss: 0.0068
+   [Epoch 11/100] Batch [150/1304] | Train Loss: 0.0385
+   [Epoch 11/100] Batch [200/1304] | Train Loss: 0.0140
+   [Epoch 11/100] Batch [250/1304] | Train Loss: 0.0025
+   [Epoch 11/100] Batch [300/1304] | Train Loss: 0.0143
+   [Epoch 11/100] Batch [350/1304] | Train Loss: 0.0011
+   [Epoch 11/100] Batch [400/1304] | Train Loss: 0.0034
+   [Epoch 11/100] Batch [450/1304] | Train Loss: 0.0020
+   [Epoch 11/100] Batch [500/1304] | Train Loss: 0.0032
+   [Epoch 11/100] Batch [550/1304] | Train Loss: 0.0021
+   [Epoch 11/100] Batch [600/1304] | Train Loss: 0.0100
+   [Epoch 11/100] Batch [650/1304] | Train Loss: 0.0049
+   [Epoch 11/100] Batch [700/1304] | Train Loss: 0.0043
+   [Epoch 11/100] Batch [750/1304] | Train Loss: 0.0285
+   [Epoch 11/100] Batch [800/1304] | Train Loss: 0.0046
+   [Epoch 11/100] Batch [850/1304] | Train Loss: 0.0026
+   [Epoch 11/100] Batch [900/1304] | Train Loss: 0.0020
+   [Epoch 11/100] Batch [950/1304] | Train Loss: 0.0131
+   [Epoch 11/100] Batch [1000/1304] | Train Loss: 0.0042
+   [Epoch 11/100] Batch [1050/1304] | Train Loss: 0.0087
+   [Epoch 11/100] Batch [1100/1304] | Train Loss: 0.0230
+   [Epoch 11/100] Batch [1150/1304] | Train Loss: 0.0058
+   [Epoch 11/100] Batch [1200/1304] | Train Loss: 0.0083
+   [Epoch 11/100] Batch [1250/1304] | Train Loss: 0.0127
+   [Epoch 11/100] Batch [1300/1304] | Train Loss: 0.0129
+Epoch 11 结束，正在进行验证集全量体检...
 --------------------------------------------------
-   Epoch [15/100] 战报:
-   Train Loss: 0.0087 | Val Loss: 0.0263
-   Val F1-Score: 0.5461
+   Epoch [11/100] 战报:
+   Train Loss: 0.0091 | Val Loss: 0.0344
+   Val F1-Score: 0.5412
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
 早停警告: 连续 5/16 轮未打破记录。
 --------------------------------------------------
 
-   [Epoch 16/100] Batch [50/1304] | Train Loss: 0.0109
-   [Epoch 16/100] Batch [100/1304] | Train Loss: 0.0014
-   [Epoch 16/100] Batch [150/1304] | Train Loss: 0.0010
-   [Epoch 16/100] Batch [200/1304] | Train Loss: 0.0016
-   [Epoch 16/100] Batch [250/1304] | Train Loss: 0.0087
-   [Epoch 16/100] Batch [300/1304] | Train Loss: 0.0012
-   [Epoch 16/100] Batch [350/1304] | Train Loss: 0.0045
-   [Epoch 16/100] Batch [400/1304] | Train Loss: 0.0381
-   [Epoch 16/100] Batch [450/1304] | Train Loss: 0.0226
-   [Epoch 16/100] Batch [500/1304] | Train Loss: 0.0211
-   [Epoch 16/100] Batch [550/1304] | Train Loss: 0.0042
-   [Epoch 16/100] Batch [600/1304] | Train Loss: 0.0023
-   [Epoch 16/100] Batch [650/1304] | Train Loss: 0.0105
-   [Epoch 16/100] Batch [700/1304] | Train Loss: 0.0121
-   [Epoch 16/100] Batch [750/1304] | Train Loss: 0.0165
-   [Epoch 16/100] Batch [800/1304] | Train Loss: 0.0130
-   [Epoch 16/100] Batch [850/1304] | Train Loss: 0.0179
-   [Epoch 16/100] Batch [900/1304] | Train Loss: 0.0156
-   [Epoch 16/100] Batch [950/1304] | Train Loss: 0.0030
-   [Epoch 16/100] Batch [1000/1304] | Train Loss: 0.0130
-   [Epoch 16/100] Batch [1050/1304] | Train Loss: 0.0128
-   [Epoch 16/100] Batch [1100/1304] | Train Loss: 0.0037
-   [Epoch 16/100] Batch [1150/1304] | Train Loss: 0.0154
-   [Epoch 16/100] Batch [1200/1304] | Train Loss: 0.0183
-   [Epoch 16/100] Batch [1250/1304] | Train Loss: 0.0055
-   [Epoch 16/100] Batch [1300/1304] | Train Loss: 0.0101
-Epoch 16 结束，正在进行验证集全量体检...
+   [Epoch 12/100] Batch [50/1304] | Train Loss: 0.0032
+   [Epoch 12/100] Batch [100/1304] | Train Loss: 0.0058
+   [Epoch 12/100] Batch [150/1304] | Train Loss: 0.0045
+   [Epoch 12/100] Batch [200/1304] | Train Loss: 0.0131
+   [Epoch 12/100] Batch [250/1304] | Train Loss: 0.0152
+   [Epoch 12/100] Batch [300/1304] | Train Loss: 0.0064
+   [Epoch 12/100] Batch [350/1304] | Train Loss: 0.0179
+   [Epoch 12/100] Batch [400/1304] | Train Loss: 0.0177
+   [Epoch 12/100] Batch [450/1304] | Train Loss: 0.0123
+   [Epoch 12/100] Batch [500/1304] | Train Loss: 0.0153
+   [Epoch 12/100] Batch [550/1304] | Train Loss: 0.0076
+   [Epoch 12/100] Batch [600/1304] | Train Loss: 0.0157
+   [Epoch 12/100] Batch [650/1304] | Train Loss: 0.0027
+   [Epoch 12/100] Batch [700/1304] | Train Loss: 0.0027
+   [Epoch 12/100] Batch [750/1304] | Train Loss: 0.0054
+   [Epoch 12/100] Batch [800/1304] | Train Loss: 0.0138
+   [Epoch 12/100] Batch [850/1304] | Train Loss: 0.0009
+   [Epoch 12/100] Batch [900/1304] | Train Loss: 0.0044
+   [Epoch 12/100] Batch [950/1304] | Train Loss: 0.0034
+   [Epoch 12/100] Batch [1000/1304] | Train Loss: 0.0138
+   [Epoch 12/100] Batch [1050/1304] | Train Loss: 0.0015
+   [Epoch 12/100] Batch [1100/1304] | Train Loss: 0.0075
+   [Epoch 12/100] Batch [1150/1304] | Train Loss: 0.0024
+   [Epoch 12/100] Batch [1200/1304] | Train Loss: 0.0251
+   [Epoch 12/100] Batch [1250/1304] | Train Loss: 0.0093
+   [Epoch 12/100] Batch [1300/1304] | Train Loss: 0.0299
+Epoch 12 结束，正在进行验证集全量体检...
 --------------------------------------------------
-   Epoch [16/100] 战报:
-   Train Loss: 0.0087 | Val Loss: 0.0292
-   Val F1-Score: 0.5434
+   Epoch [12/100] 战报:
+   Train Loss: 0.0090 | Val Loss: 0.0316
+   Val F1-Score: 0.5246
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
 早停警告: 连续 6/16 轮未打破记录。
 --------------------------------------------------
 
-   [Epoch 17/100] Batch [50/1304] | Train Loss: 0.0007
-   [Epoch 17/100] Batch [100/1304] | Train Loss: 0.0050
-   [Epoch 17/100] Batch [150/1304] | Train Loss: 0.0043
-   [Epoch 17/100] Batch [200/1304] | Train Loss: 0.0057
-   [Epoch 17/100] Batch [250/1304] | Train Loss: 0.0073
-   [Epoch 17/100] Batch [300/1304] | Train Loss: 0.0063
-   [Epoch 17/100] Batch [350/1304] | Train Loss: 0.0207
-   [Epoch 17/100] Batch [400/1304] | Train Loss: 0.0029
-   [Epoch 17/100] Batch [450/1304] | Train Loss: 0.0008
-   [Epoch 17/100] Batch [500/1304] | Train Loss: 0.0081
-   [Epoch 17/100] Batch [550/1304] | Train Loss: 0.0026
-   [Epoch 17/100] Batch [600/1304] | Train Loss: 0.0022
-   [Epoch 17/100] Batch [650/1304] | Train Loss: 0.0097
-   [Epoch 17/100] Batch [700/1304] | Train Loss: 0.0288
-   [Epoch 17/100] Batch [750/1304] | Train Loss: 0.0101
-   [Epoch 17/100] Batch [800/1304] | Train Loss: 0.0034
-   [Epoch 17/100] Batch [850/1304] | Train Loss: 0.0053
-   [Epoch 17/100] Batch [900/1304] | Train Loss: 0.0223
-   [Epoch 17/100] Batch [950/1304] | Train Loss: 0.0121
-   [Epoch 17/100] Batch [1000/1304] | Train Loss: 0.0017
-   [Epoch 17/100] Batch [1050/1304] | Train Loss: 0.0050
-   [Epoch 17/100] Batch [1100/1304] | Train Loss: 0.0185
-   [Epoch 17/100] Batch [1150/1304] | Train Loss: 0.0015
-   [Epoch 17/100] Batch [1200/1304] | Train Loss: 0.0215
-   [Epoch 17/100] Batch [1250/1304] | Train Loss: 0.0092
-   [Epoch 17/100] Batch [1300/1304] | Train Loss: 0.0048
-Epoch 17 结束，正在进行验证集全量体检...
+   [Epoch 13/100] Batch [50/1304] | Train Loss: 0.0133
+   [Epoch 13/100] Batch [100/1304] | Train Loss: 0.0130
+   [Epoch 13/100] Batch [150/1304] | Train Loss: 0.0123
+   [Epoch 13/100] Batch [200/1304] | Train Loss: 0.0051
+   [Epoch 13/100] Batch [250/1304] | Train Loss: 0.0010
+   [Epoch 13/100] Batch [300/1304] | Train Loss: 0.0178
+   [Epoch 13/100] Batch [350/1304] | Train Loss: 0.0110
+   [Epoch 13/100] Batch [400/1304] | Train Loss: 0.0122
+   [Epoch 13/100] Batch [450/1304] | Train Loss: 0.0127
+   [Epoch 13/100] Batch [500/1304] | Train Loss: 0.0120
+   [Epoch 13/100] Batch [550/1304] | Train Loss: 0.0135
+   [Epoch 13/100] Batch [600/1304] | Train Loss: 0.0082
+   [Epoch 13/100] Batch [650/1304] | Train Loss: 0.0067
+   [Epoch 13/100] Batch [700/1304] | Train Loss: 0.0088
+   [Epoch 13/100] Batch [750/1304] | Train Loss: 0.0085
+   [Epoch 13/100] Batch [800/1304] | Train Loss: 0.0237
+   [Epoch 13/100] Batch [850/1304] | Train Loss: 0.0035
+   [Epoch 13/100] Batch [900/1304] | Train Loss: 0.0005
+   [Epoch 13/100] Batch [950/1304] | Train Loss: 0.0051
+   [Epoch 13/100] Batch [1000/1304] | Train Loss: 0.0069
+   [Epoch 13/100] Batch [1050/1304] | Train Loss: 0.0033
+   [Epoch 13/100] Batch [1100/1304] | Train Loss: 0.0033
+   [Epoch 13/100] Batch [1150/1304] | Train Loss: 0.0011
+   [Epoch 13/100] Batch [1200/1304] | Train Loss: 0.0066
+   [Epoch 13/100] Batch [1250/1304] | Train Loss: 0.0015
+   [Epoch 13/100] Batch [1300/1304] | Train Loss: 0.0057
+Epoch 13 结束，正在进行验证集全量体检...
 --------------------------------------------------
-   Epoch [17/100] 战报:
-   Train Loss: 0.0085 | Val Loss: 0.0285
-   Val F1-Score: 0.5553
+   Epoch [13/100] 战报:
+   Train Loss: 0.0086 | Val Loss: 0.0276
+   Val F1-Score: 0.4724
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
 早停警告: 连续 7/16 轮未打破记录。
 --------------------------------------------------
 
-   [Epoch 18/100] Batch [50/1304] | Train Loss: 0.0082
-   [Epoch 18/100] Batch [100/1304] | Train Loss: 0.0177
-   [Epoch 18/100] Batch [150/1304] | Train Loss: 0.0007
-   [Epoch 18/100] Batch [200/1304] | Train Loss: 0.0240
-   [Epoch 18/100] Batch [250/1304] | Train Loss: 0.0089
-   [Epoch 18/100] Batch [300/1304] | Train Loss: 0.0141
-   [Epoch 18/100] Batch [350/1304] | Train Loss: 0.0022
-   [Epoch 18/100] Batch [400/1304] | Train Loss: 0.0229
-   [Epoch 18/100] Batch [450/1304] | Train Loss: 0.0058
-   [Epoch 18/100] Batch [500/1304] | Train Loss: 0.0057
-   [Epoch 18/100] Batch [550/1304] | Train Loss: 0.0017
-   [Epoch 18/100] Batch [600/1304] | Train Loss: 0.0100
-   [Epoch 18/100] Batch [650/1304] | Train Loss: 0.0105
-   [Epoch 18/100] Batch [700/1304] | Train Loss: 0.0080
-   [Epoch 18/100] Batch [750/1304] | Train Loss: 0.0132
-   [Epoch 18/100] Batch [800/1304] | Train Loss: 0.0154
-   [Epoch 18/100] Batch [850/1304] | Train Loss: 0.0077
-   [Epoch 18/100] Batch [900/1304] | Train Loss: 0.0013
-   [Epoch 18/100] Batch [950/1304] | Train Loss: 0.0052
-   [Epoch 18/100] Batch [1000/1304] | Train Loss: 0.0231
-   [Epoch 18/100] Batch [1050/1304] | Train Loss: 0.0019
-   [Epoch 18/100] Batch [1100/1304] | Train Loss: 0.0249
-   [Epoch 18/100] Batch [1150/1304] | Train Loss: 0.0027
-   [Epoch 18/100] Batch [1200/1304] | Train Loss: 0.0086
-   [Epoch 18/100] Batch [1250/1304] | Train Loss: 0.0233
-   [Epoch 18/100] Batch [1300/1304] | Train Loss: 0.0024
-Epoch 18 结束，正在进行验证集全量体检...
+   [Epoch 14/100] Batch [50/1304] | Train Loss: 0.0075
+   [Epoch 14/100] Batch [100/1304] | Train Loss: 0.0054
+   [Epoch 14/100] Batch [150/1304] | Train Loss: 0.0136
+   [Epoch 14/100] Batch [200/1304] | Train Loss: 0.0081
+   [Epoch 14/100] Batch [250/1304] | Train Loss: 0.0105
+   [Epoch 14/100] Batch [300/1304] | Train Loss: 0.0027
+   [Epoch 14/100] Batch [350/1304] | Train Loss: 0.0121
+   [Epoch 14/100] Batch [400/1304] | Train Loss: 0.0009
+   [Epoch 14/100] Batch [450/1304] | Train Loss: 0.0015
+   [Epoch 14/100] Batch [500/1304] | Train Loss: 0.0097
+   [Epoch 14/100] Batch [550/1304] | Train Loss: 0.0191
+   [Epoch 14/100] Batch [600/1304] | Train Loss: 0.0030
+   [Epoch 14/100] Batch [650/1304] | Train Loss: 0.0228
+   [Epoch 14/100] Batch [700/1304] | Train Loss: 0.0035
+   [Epoch 14/100] Batch [750/1304] | Train Loss: 0.0043
+   [Epoch 14/100] Batch [800/1304] | Train Loss: 0.0061
+   [Epoch 14/100] Batch [850/1304] | Train Loss: 0.0202
+   [Epoch 14/100] Batch [900/1304] | Train Loss: 0.0113
+   [Epoch 14/100] Batch [950/1304] | Train Loss: 0.0028
+   [Epoch 14/100] Batch [1000/1304] | Train Loss: 0.0145
+   [Epoch 14/100] Batch [1050/1304] | Train Loss: 0.0069
+   [Epoch 14/100] Batch [1100/1304] | Train Loss: 0.0295
+   [Epoch 14/100] Batch [1150/1304] | Train Loss: 0.0075
+   [Epoch 14/100] Batch [1200/1304] | Train Loss: 0.0010
+   [Epoch 14/100] Batch [1250/1304] | Train Loss: 0.0056
+   [Epoch 14/100] Batch [1300/1304] | Train Loss: 0.0013
+Epoch 14 结束，正在进行验证集全量体检...
 --------------------------------------------------
-   Epoch [18/100] 战报:
-   Train Loss: 0.0084 | Val Loss: 0.0263
-   Val F1-Score: 0.4279
+   Epoch [14/100] 战报:
+   Train Loss: 0.0086 | Val Loss: 0.0273
+   Val F1-Score: 0.5269
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
 早停警告: 连续 8/16 轮未打破记录。
 --------------------------------------------------
 
-   [Epoch 19/100] Batch [50/1304] | Train Loss: 0.0092
-   [Epoch 19/100] Batch [100/1304] | Train Loss: 0.0083
-   [Epoch 19/100] Batch [150/1304] | Train Loss: 0.0011
-   [Epoch 19/100] Batch [200/1304] | Train Loss: 0.0220
-   [Epoch 19/100] Batch [250/1304] | Train Loss: 0.0057
-   [Epoch 19/100] Batch [300/1304] | Train Loss: 0.0022
-   [Epoch 19/100] Batch [350/1304] | Train Loss: 0.0015
-   [Epoch 19/100] Batch [400/1304] | Train Loss: 0.0159
-   [Epoch 19/100] Batch [450/1304] | Train Loss: 0.0079
-   [Epoch 19/100] Batch [500/1304] | Train Loss: 0.0149
-   [Epoch 19/100] Batch [550/1304] | Train Loss: 0.0086
-   [Epoch 19/100] Batch [600/1304] | Train Loss: 0.0033
-   [Epoch 19/100] Batch [650/1304] | Train Loss: 0.0015
-   [Epoch 19/100] Batch [700/1304] | Train Loss: 0.0013
-   [Epoch 19/100] Batch [750/1304] | Train Loss: 0.0090
-   [Epoch 19/100] Batch [800/1304] | Train Loss: 0.0127
-   [Epoch 19/100] Batch [850/1304] | Train Loss: 0.0016
-   [Epoch 19/100] Batch [900/1304] | Train Loss: 0.0153
-   [Epoch 19/100] Batch [950/1304] | Train Loss: 0.0138
-   [Epoch 19/100] Batch [1000/1304] | Train Loss: 0.0305
-   [Epoch 19/100] Batch [1050/1304] | Train Loss: 0.0010
-   [Epoch 19/100] Batch [1100/1304] | Train Loss: 0.0067
-   [Epoch 19/100] Batch [1150/1304] | Train Loss: 0.0030
-   [Epoch 19/100] Batch [1200/1304] | Train Loss: 0.0049
-   [Epoch 19/100] Batch [1250/1304] | Train Loss: 0.0147
-   [Epoch 19/100] Batch [1300/1304] | Train Loss: 0.0087
-Epoch 19 结束，正在进行验证集全量体检...
+   [Epoch 15/100] Batch [50/1304] | Train Loss: 0.0109
+   [Epoch 15/100] Batch [100/1304] | Train Loss: 0.0029
+   [Epoch 15/100] Batch [150/1304] | Train Loss: 0.0067
+   [Epoch 15/100] Batch [200/1304] | Train Loss: 0.0022
+   [Epoch 15/100] Batch [250/1304] | Train Loss: 0.0216
+   [Epoch 15/100] Batch [300/1304] | Train Loss: 0.0114
+   [Epoch 15/100] Batch [350/1304] | Train Loss: 0.0014
+   [Epoch 15/100] Batch [400/1304] | Train Loss: 0.0122
+   [Epoch 15/100] Batch [450/1304] | Train Loss: 0.0022
+   [Epoch 15/100] Batch [500/1304] | Train Loss: 0.0009
+   [Epoch 15/100] Batch [550/1304] | Train Loss: 0.0034
+   [Epoch 15/100] Batch [600/1304] | Train Loss: 0.0014
+   [Epoch 15/100] Batch [650/1304] | Train Loss: 0.0212
+   [Epoch 15/100] Batch [700/1304] | Train Loss: 0.0037
+   [Epoch 15/100] Batch [750/1304] | Train Loss: 0.0027
+   [Epoch 15/100] Batch [800/1304] | Train Loss: 0.0222
+   [Epoch 15/100] Batch [850/1304] | Train Loss: 0.0089
+   [Epoch 15/100] Batch [900/1304] | Train Loss: 0.0051
+   [Epoch 15/100] Batch [950/1304] | Train Loss: 0.0024
+   [Epoch 15/100] Batch [1000/1304] | Train Loss: 0.0251
+   [Epoch 15/100] Batch [1050/1304] | Train Loss: 0.0040
+   [Epoch 15/100] Batch [1100/1304] | Train Loss: 0.0131
+   [Epoch 15/100] Batch [1150/1304] | Train Loss: 0.0050
+   [Epoch 15/100] Batch [1200/1304] | Train Loss: 0.0192
+   [Epoch 15/100] Batch [1250/1304] | Train Loss: 0.0037
+   [Epoch 15/100] Batch [1300/1304] | Train Loss: 0.0023
+Epoch 15 结束，正在进行验证集全量体检...
 --------------------------------------------------
-   Epoch [19/100] 战报:
-   Train Loss: 0.0083 | Val Loss: 0.0287
-   Val F1-Score: 0.5414
+   Epoch [15/100] 战报:
+   Train Loss: 0.0086 | Val Loss: 0.0276
+   Val F1-Score: 0.5206
 触发自动降挡！模型陷入瓶颈，学习率由 0.000500 下调至 0.000250！
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
 早停警告: 连续 9/16 轮未打破记录。
 --------------------------------------------------
 
-   [Epoch 20/100] Batch [50/1304] | Train Loss: 0.0175
-   [Epoch 20/100] Batch [100/1304] | Train Loss: 0.0017
-   [Epoch 20/100] Batch [150/1304] | Train Loss: 0.0011
-   [Epoch 20/100] Batch [200/1304] | Train Loss: 0.0026
-   [Epoch 20/100] Batch [250/1304] | Train Loss: 0.0153
-   [Epoch 20/100] Batch [300/1304] | Train Loss: 0.0006
-   [Epoch 20/100] Batch [350/1304] | Train Loss: 0.0056
-   [Epoch 20/100] Batch [400/1304] | Train Loss: 0.0013
-   [Epoch 20/100] Batch [450/1304] | Train Loss: 0.0113
-   [Epoch 20/100] Batch [500/1304] | Train Loss: 0.0025
+   [Epoch 16/100] Batch [50/1304] | Train Loss: 0.0130
+   [Epoch 16/100] Batch [100/1304] | Train Loss: 0.0062
+   [Epoch 16/100] Batch [150/1304] | Train Loss: 0.0166
+   [Epoch 16/100] Batch [200/1304] | Train Loss: 0.0170
+   [Epoch 16/100] Batch [250/1304] | Train Loss: 0.0017
+   [Epoch 16/100] Batch [300/1304] | Train Loss: 0.0143
+   [Epoch 16/100] Batch [350/1304] | Train Loss: 0.0025
+   [Epoch 16/100] Batch [400/1304] | Train Loss: 0.0032
+   [Epoch 16/100] Batch [450/1304] | Train Loss: 0.0011
+   [Epoch 16/100] Batch [500/1304] | Train Loss: 0.0015
+   [Epoch 16/100] Batch [550/1304] | Train Loss: 0.0179
+   [Epoch 16/100] Batch [600/1304] | Train Loss: 0.0010
+   [Epoch 16/100] Batch [650/1304] | Train Loss: 0.0051
+   [Epoch 16/100] Batch [700/1304] | Train Loss: 0.0174
+   [Epoch 16/100] Batch [750/1304] | Train Loss: 0.0013
+   [Epoch 16/100] Batch [800/1304] | Train Loss: 0.0155
+   [Epoch 16/100] Batch [850/1304] | Train Loss: 0.0067
+   [Epoch 16/100] Batch [900/1304] | Train Loss: 0.0007
+   [Epoch 16/100] Batch [950/1304] | Train Loss: 0.0023
+   [Epoch 16/100] Batch [1000/1304] | Train Loss: 0.0020
+   [Epoch 16/100] Batch [1050/1304] | Train Loss: 0.0009
+   [Epoch 16/100] Batch [1100/1304] | Train Loss: 0.0008
+   [Epoch 16/100] Batch [1150/1304] | Train Loss: 0.0111
+   [Epoch 16/100] Batch [1200/1304] | Train Loss: 0.0123
+   [Epoch 16/100] Batch [1250/1304] | Train Loss: 0.0266
+   [Epoch 16/100] Batch [1300/1304] | Train Loss: 0.0090
+Epoch 16 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [16/100] 战报:
+   Train Loss: 0.0075 | Val Loss: 0.0300
+   Val F1-Score: 0.5570
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+破纪录了！Val F1 从 0.5499 提升至 0.5570，正在保存神级权重...
+--------------------------------------------------
+
+   [Epoch 17/100] Batch [50/1304] | Train Loss: 0.0015
+   [Epoch 17/100] Batch [100/1304] | Train Loss: 0.0077
+   [Epoch 17/100] Batch [150/1304] | Train Loss: 0.0119
+   [Epoch 17/100] Batch [200/1304] | Train Loss: 0.0037
+   [Epoch 17/100] Batch [250/1304] | Train Loss: 0.0010
+   [Epoch 17/100] Batch [300/1304] | Train Loss: 0.0040
+   [Epoch 17/100] Batch [350/1304] | Train Loss: 0.0329
+   [Epoch 17/100] Batch [400/1304] | Train Loss: 0.0229
+   [Epoch 17/100] Batch [450/1304] | Train Loss: 0.0125
+   [Epoch 17/100] Batch [500/1304] | Train Loss: 0.0037
+   [Epoch 17/100] Batch [550/1304] | Train Loss: 0.0009
+   [Epoch 17/100] Batch [600/1304] | Train Loss: 0.0016
+   [Epoch 17/100] Batch [650/1304] | Train Loss: 0.0290
+   [Epoch 17/100] Batch [700/1304] | Train Loss: 0.0091
+   [Epoch 17/100] Batch [750/1304] | Train Loss: 0.0014
+   [Epoch 17/100] Batch [800/1304] | Train Loss: 0.0291
+   [Epoch 17/100] Batch [850/1304] | Train Loss: 0.0063
+   [Epoch 17/100] Batch [900/1304] | Train Loss: 0.0028
+   [Epoch 17/100] Batch [950/1304] | Train Loss: 0.0250
+   [Epoch 17/100] Batch [1000/1304] | Train Loss: 0.0161
+   [Epoch 17/100] Batch [1050/1304] | Train Loss: 0.0055
+   [Epoch 17/100] Batch [1100/1304] | Train Loss: 0.0046
+   [Epoch 17/100] Batch [1150/1304] | Train Loss: 0.0018
+   [Epoch 17/100] Batch [1200/1304] | Train Loss: 0.0142
+   [Epoch 17/100] Batch [1250/1304] | Train Loss: 0.0118
+   [Epoch 17/100] Batch [1300/1304] | Train Loss: 0.0012
+Epoch 17 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [17/100] 战报:
+   Train Loss: 0.0072 | Val Loss: 0.0314
+   Val F1-Score: 0.5563
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 1/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 18/100] Batch [50/1304] | Train Loss: 0.0050
+   [Epoch 18/100] Batch [100/1304] | Train Loss: 0.0018
+   [Epoch 18/100] Batch [150/1304] | Train Loss: 0.0017
+   [Epoch 18/100] Batch [200/1304] | Train Loss: 0.0198
+   [Epoch 18/100] Batch [250/1304] | Train Loss: 0.0014
+   [Epoch 18/100] Batch [300/1304] | Train Loss: 0.0160
+   [Epoch 18/100] Batch [350/1304] | Train Loss: 0.0012
+   [Epoch 18/100] Batch [400/1304] | Train Loss: 0.0059
+   [Epoch 18/100] Batch [450/1304] | Train Loss: 0.0049
+   [Epoch 18/100] Batch [500/1304] | Train Loss: 0.0131
+   [Epoch 18/100] Batch [550/1304] | Train Loss: 0.0094
+   [Epoch 18/100] Batch [600/1304] | Train Loss: 0.0016
+   [Epoch 18/100] Batch [650/1304] | Train Loss: 0.0013
+   [Epoch 18/100] Batch [700/1304] | Train Loss: 0.0009
+   [Epoch 18/100] Batch [750/1304] | Train Loss: 0.0015
+   [Epoch 18/100] Batch [800/1304] | Train Loss: 0.0018
+   [Epoch 18/100] Batch [850/1304] | Train Loss: 0.0026
+   [Epoch 18/100] Batch [900/1304] | Train Loss: 0.0029
+   [Epoch 18/100] Batch [950/1304] | Train Loss: 0.0009
+   [Epoch 18/100] Batch [1000/1304] | Train Loss: 0.0007
+   [Epoch 18/100] Batch [1050/1304] | Train Loss: 0.0012
+   [Epoch 18/100] Batch [1100/1304] | Train Loss: 0.0010
+   [Epoch 18/100] Batch [1150/1304] | Train Loss: 0.0026
+   [Epoch 18/100] Batch [1200/1304] | Train Loss: 0.0136
+   [Epoch 18/100] Batch [1250/1304] | Train Loss: 0.0022
+   [Epoch 18/100] Batch [1300/1304] | Train Loss: 0.0118
+Epoch 18 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [18/100] 战报:
+   Train Loss: 0.0071 | Val Loss: 0.0247
+   Val F1-Score: 0.4501
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 2/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 19/100] Batch [50/1304] | Train Loss: 0.0017
+   [Epoch 19/100] Batch [100/1304] | Train Loss: 0.0045
+   [Epoch 19/100] Batch [150/1304] | Train Loss: 0.0097
+   [Epoch 19/100] Batch [200/1304] | Train Loss: 0.0047
+   [Epoch 19/100] Batch [250/1304] | Train Loss: 0.0013
+   [Epoch 19/100] Batch [300/1304] | Train Loss: 0.0027
+   [Epoch 19/100] Batch [350/1304] | Train Loss: 0.0026
+   [Epoch 19/100] Batch [400/1304] | Train Loss: 0.0011
+   [Epoch 19/100] Batch [450/1304] | Train Loss: 0.0013
+   [Epoch 19/100] Batch [500/1304] | Train Loss: 0.0059
+   [Epoch 19/100] Batch [550/1304] | Train Loss: 0.0009
+   [Epoch 19/100] Batch [600/1304] | Train Loss: 0.0004
+   [Epoch 19/100] Batch [650/1304] | Train Loss: 0.0175
+   [Epoch 19/100] Batch [700/1304] | Train Loss: 0.0013
+   [Epoch 19/100] Batch [750/1304] | Train Loss: 0.0020
+   [Epoch 19/100] Batch [800/1304] | Train Loss: 0.0019
+   [Epoch 19/100] Batch [850/1304] | Train Loss: 0.0019
+   [Epoch 19/100] Batch [900/1304] | Train Loss: 0.0030
+   [Epoch 19/100] Batch [950/1304] | Train Loss: 0.0025
+   [Epoch 19/100] Batch [1000/1304] | Train Loss: 0.0256
+   [Epoch 19/100] Batch [1050/1304] | Train Loss: 0.0032
+   [Epoch 19/100] Batch [1100/1304] | Train Loss: 0.0062
+   [Epoch 19/100] Batch [1150/1304] | Train Loss: 0.0028
+   [Epoch 19/100] Batch [1200/1304] | Train Loss: 0.0027
+   [Epoch 19/100] Batch [1250/1304] | Train Loss: 0.0163
+   [Epoch 19/100] Batch [1300/1304] | Train Loss: 0.0091
+Epoch 19 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [19/100] 战报:
+   Train Loss: 0.0069 | Val Loss: 0.0253
+   Val F1-Score: 0.5104
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 3/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 20/100] Batch [50/1304] | Train Loss: 0.0081
+   [Epoch 20/100] Batch [100/1304] | Train Loss: 0.0078
+   [Epoch 20/100] Batch [150/1304] | Train Loss: 0.0107
+   [Epoch 20/100] Batch [200/1304] | Train Loss: 0.0082
+   [Epoch 20/100] Batch [250/1304] | Train Loss: 0.0019
+   [Epoch 20/100] Batch [300/1304] | Train Loss: 0.0018
+   [Epoch 20/100] Batch [350/1304] | Train Loss: 0.0085
+   [Epoch 20/100] Batch [400/1304] | Train Loss: 0.0011
+   [Epoch 20/100] Batch [450/1304] | Train Loss: 0.0049
+   [Epoch 20/100] Batch [500/1304] | Train Loss: 0.0128
    [Epoch 20/100] Batch [550/1304] | Train Loss: 0.0027
-   [Epoch 20/100] Batch [600/1304] | Train Loss: 0.0121
-   [Epoch 20/100] Batch [650/1304] | Train Loss: 0.0047
-   [Epoch 20/100] Batch [700/1304] | Train Loss: 0.0063
-   [Epoch 20/100] Batch [750/1304] | Train Loss: 0.0038
-   [Epoch 20/100] Batch [800/1304] | Train Loss: 0.0025
-   [Epoch 20/100] Batch [850/1304] | Train Loss: 0.0043
-   [Epoch 20/100] Batch [900/1304] | Train Loss: 0.0070
-   [Epoch 20/100] Batch [950/1304] | Train Loss: 0.0186
-   [Epoch 20/100] Batch [1000/1304] | Train Loss: 0.0018
-   [Epoch 20/100] Batch [1050/1304] | Train Loss: 0.0148
-   [Epoch 20/100] Batch [1100/1304] | Train Loss: 0.0066
+   [Epoch 20/100] Batch [600/1304] | Train Loss: 0.0009
+   [Epoch 20/100] Batch [650/1304] | Train Loss: 0.0008
+   [Epoch 20/100] Batch [700/1304] | Train Loss: 0.0019
+   [Epoch 20/100] Batch [750/1304] | Train Loss: 0.0150
+   [Epoch 20/100] Batch [800/1304] | Train Loss: 0.0031
+   [Epoch 20/100] Batch [850/1304] | Train Loss: 0.0036
+   [Epoch 20/100] Batch [900/1304] | Train Loss: 0.0026
+   [Epoch 20/100] Batch [950/1304] | Train Loss: 0.0009
+   [Epoch 20/100] Batch [1000/1304] | Train Loss: 0.0022
+   [Epoch 20/100] Batch [1050/1304] | Train Loss: 0.0200
+   [Epoch 20/100] Batch [1100/1304] | Train Loss: 0.0021
    [Epoch 20/100] Batch [1150/1304] | Train Loss: 0.0014
-   [Epoch 20/100] Batch [1200/1304] | Train Loss: 0.0046
-   [Epoch 20/100] Batch [1250/1304] | Train Loss: 0.0073
+   [Epoch 20/100] Batch [1200/1304] | Train Loss: 0.0027
+   [Epoch 20/100] Batch [1250/1304] | Train Loss: 0.0025
    [Epoch 20/100] Batch [1300/1304] | Train Loss: 0.0020
 Epoch 20 结束，正在进行验证集全量体检...
 --------------------------------------------------
    Epoch [20/100] 战报:
-   Train Loss: 0.0072 | Val Loss: 0.0311
-   Val F1-Score: 0.5366
+   Train Loss: 0.0069 | Val Loss: 0.0292
+   Val F1-Score: 0.5358
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 4/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 21/100] Batch [50/1304] | Train Loss: 0.0176
+   [Epoch 21/100] Batch [100/1304] | Train Loss: 0.0015
+   [Epoch 21/100] Batch [150/1304] | Train Loss: 0.0014
+   [Epoch 21/100] Batch [200/1304] | Train Loss: 0.0048
+   [Epoch 21/100] Batch [250/1304] | Train Loss: 0.0017
+   [Epoch 21/100] Batch [300/1304] | Train Loss: 0.0055
+   [Epoch 21/100] Batch [350/1304] | Train Loss: 0.0030
+   [Epoch 21/100] Batch [400/1304] | Train Loss: 0.0051
+   [Epoch 21/100] Batch [450/1304] | Train Loss: 0.0011
+   [Epoch 21/100] Batch [500/1304] | Train Loss: 0.0145
+   [Epoch 21/100] Batch [550/1304] | Train Loss: 0.0010
+   [Epoch 21/100] Batch [600/1304] | Train Loss: 0.0010
+   [Epoch 21/100] Batch [650/1304] | Train Loss: 0.0144
+   [Epoch 21/100] Batch [700/1304] | Train Loss: 0.0018
+   [Epoch 21/100] Batch [750/1304] | Train Loss: 0.0028
+   [Epoch 21/100] Batch [800/1304] | Train Loss: 0.0014
+   [Epoch 21/100] Batch [850/1304] | Train Loss: 0.0049
+   [Epoch 21/100] Batch [900/1304] | Train Loss: 0.0140
+   [Epoch 21/100] Batch [950/1304] | Train Loss: 0.0101
+   [Epoch 21/100] Batch [1000/1304] | Train Loss: 0.0087
+   [Epoch 21/100] Batch [1050/1304] | Train Loss: 0.0062
+   [Epoch 21/100] Batch [1100/1304] | Train Loss: 0.0008
+   [Epoch 21/100] Batch [1150/1304] | Train Loss: 0.0103
+   [Epoch 21/100] Batch [1200/1304] | Train Loss: 0.0144
+   [Epoch 21/100] Batch [1250/1304] | Train Loss: 0.0158
+   [Epoch 21/100] Batch [1300/1304] | Train Loss: 0.0012
+Epoch 21 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [21/100] 战报:
+   Train Loss: 0.0068 | Val Loss: 0.0324
+   Val F1-Score: 0.5227
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 5/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 22/100] Batch [50/1304] | Train Loss: 0.0034
+   [Epoch 22/100] Batch [100/1304] | Train Loss: 0.0177
+   [Epoch 22/100] Batch [150/1304] | Train Loss: 0.0014
+   [Epoch 22/100] Batch [200/1304] | Train Loss: 0.0038
+   [Epoch 22/100] Batch [250/1304] | Train Loss: 0.0094
+   [Epoch 22/100] Batch [300/1304] | Train Loss: 0.0007
+   [Epoch 22/100] Batch [350/1304] | Train Loss: 0.0012
+   [Epoch 22/100] Batch [400/1304] | Train Loss: 0.0012
+   [Epoch 22/100] Batch [450/1304] | Train Loss: 0.0006
+   [Epoch 22/100] Batch [500/1304] | Train Loss: 0.0019
+   [Epoch 22/100] Batch [550/1304] | Train Loss: 0.0018
+   [Epoch 22/100] Batch [600/1304] | Train Loss: 0.0040
+   [Epoch 22/100] Batch [650/1304] | Train Loss: 0.0270
+   [Epoch 22/100] Batch [700/1304] | Train Loss: 0.0093
+   [Epoch 22/100] Batch [750/1304] | Train Loss: 0.0120
+   [Epoch 22/100] Batch [800/1304] | Train Loss: 0.0117
+   [Epoch 22/100] Batch [850/1304] | Train Loss: 0.0215
+   [Epoch 22/100] Batch [900/1304] | Train Loss: 0.0068
+   [Epoch 22/100] Batch [950/1304] | Train Loss: 0.0019
+   [Epoch 22/100] Batch [1000/1304] | Train Loss: 0.0144
+   [Epoch 22/100] Batch [1050/1304] | Train Loss: 0.0053
+   [Epoch 22/100] Batch [1100/1304] | Train Loss: 0.0017
+   [Epoch 22/100] Batch [1150/1304] | Train Loss: 0.0063
+   [Epoch 22/100] Batch [1200/1304] | Train Loss: 0.0024
+   [Epoch 22/100] Batch [1250/1304] | Train Loss: 0.0034
+   [Epoch 22/100] Batch [1300/1304] | Train Loss: 0.0119
+Epoch 22 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [22/100] 战报:
+   Train Loss: 0.0067 | Val Loss: 0.0313
+   Val F1-Score: 0.5588
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+破纪录了！Val F1 从 0.5570 提升至 0.5588，正在保存神级权重...
+--------------------------------------------------
+
+   [Epoch 23/100] Batch [50/1304] | Train Loss: 0.0051
+   [Epoch 23/100] Batch [100/1304] | Train Loss: 0.0026
+   [Epoch 23/100] Batch [150/1304] | Train Loss: 0.0009
+   [Epoch 23/100] Batch [200/1304] | Train Loss: 0.0150
+   [Epoch 23/100] Batch [250/1304] | Train Loss: 0.0018
+   [Epoch 23/100] Batch [300/1304] | Train Loss: 0.0035
+   [Epoch 23/100] Batch [350/1304] | Train Loss: 0.0047
+   [Epoch 23/100] Batch [400/1304] | Train Loss: 0.0057
+   [Epoch 23/100] Batch [450/1304] | Train Loss: 0.0004
+   [Epoch 23/100] Batch [500/1304] | Train Loss: 0.0102
+   [Epoch 23/100] Batch [550/1304] | Train Loss: 0.0073
+   [Epoch 23/100] Batch [600/1304] | Train Loss: 0.0042
+   [Epoch 23/100] Batch [650/1304] | Train Loss: 0.0004
+   [Epoch 23/100] Batch [700/1304] | Train Loss: 0.0013
+   [Epoch 23/100] Batch [750/1304] | Train Loss: 0.0019
+   [Epoch 23/100] Batch [800/1304] | Train Loss: 0.0037
+   [Epoch 23/100] Batch [850/1304] | Train Loss: 0.0013
+   [Epoch 23/100] Batch [900/1304] | Train Loss: 0.0054
+   [Epoch 23/100] Batch [950/1304] | Train Loss: 0.0034
+   [Epoch 23/100] Batch [1000/1304] | Train Loss: 0.0152
+   [Epoch 23/100] Batch [1050/1304] | Train Loss: 0.0004
+   [Epoch 23/100] Batch [1100/1304] | Train Loss: 0.0011
+   [Epoch 23/100] Batch [1150/1304] | Train Loss: 0.0078
+   [Epoch 23/100] Batch [1200/1304] | Train Loss: 0.0144
+   [Epoch 23/100] Batch [1250/1304] | Train Loss: 0.0015
+   [Epoch 23/100] Batch [1300/1304] | Train Loss: 0.0141
+Epoch 23 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [23/100] 战报:
+   Train Loss: 0.0066 | Val Loss: 0.0299
+   Val F1-Score: 0.5418
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 1/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 24/100] Batch [50/1304] | Train Loss: 0.0071
+   [Epoch 24/100] Batch [100/1304] | Train Loss: 0.0056
+   [Epoch 24/100] Batch [150/1304] | Train Loss: 0.0167
+   [Epoch 24/100] Batch [200/1304] | Train Loss: 0.0033
+   [Epoch 24/100] Batch [250/1304] | Train Loss: 0.0011
+   [Epoch 24/100] Batch [300/1304] | Train Loss: 0.0100
+   [Epoch 24/100] Batch [350/1304] | Train Loss: 0.0278
+   [Epoch 24/100] Batch [400/1304] | Train Loss: 0.0097
+   [Epoch 24/100] Batch [450/1304] | Train Loss: 0.0059
+   [Epoch 24/100] Batch [500/1304] | Train Loss: 0.0026
+   [Epoch 24/100] Batch [550/1304] | Train Loss: 0.0036
+   [Epoch 24/100] Batch [600/1304] | Train Loss: 0.0099
+   [Epoch 24/100] Batch [650/1304] | Train Loss: 0.0017
+   [Epoch 24/100] Batch [700/1304] | Train Loss: 0.0023
+   [Epoch 24/100] Batch [750/1304] | Train Loss: 0.0087
+   [Epoch 24/100] Batch [800/1304] | Train Loss: 0.0019
+   [Epoch 24/100] Batch [850/1304] | Train Loss: 0.0026
+   [Epoch 24/100] Batch [900/1304] | Train Loss: 0.0116
+   [Epoch 24/100] Batch [950/1304] | Train Loss: 0.0087
+   [Epoch 24/100] Batch [1000/1304] | Train Loss: 0.0009
+   [Epoch 24/100] Batch [1050/1304] | Train Loss: 0.0013
+   [Epoch 24/100] Batch [1100/1304] | Train Loss: 0.0044
+   [Epoch 24/100] Batch [1150/1304] | Train Loss: 0.0020
+   [Epoch 24/100] Batch [1200/1304] | Train Loss: 0.0027
+   [Epoch 24/100] Batch [1250/1304] | Train Loss: 0.0152
+   [Epoch 24/100] Batch [1300/1304] | Train Loss: 0.0035
+Epoch 24 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [24/100] 战报:
+   Train Loss: 0.0066 | Val Loss: 0.0294
+   Val F1-Score: 0.4180
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 2/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 25/100] Batch [50/1304] | Train Loss: 0.0180
+   [Epoch 25/100] Batch [100/1304] | Train Loss: 0.0155
+   [Epoch 25/100] Batch [150/1304] | Train Loss: 0.0061
+   [Epoch 25/100] Batch [200/1304] | Train Loss: 0.0009
+   [Epoch 25/100] Batch [250/1304] | Train Loss: 0.0111
+   [Epoch 25/100] Batch [300/1304] | Train Loss: 0.0031
+   [Epoch 25/100] Batch [350/1304] | Train Loss: 0.0122
+   [Epoch 25/100] Batch [400/1304] | Train Loss: 0.0009
+   [Epoch 25/100] Batch [450/1304] | Train Loss: 0.0132
+   [Epoch 25/100] Batch [500/1304] | Train Loss: 0.0004
+   [Epoch 25/100] Batch [550/1304] | Train Loss: 0.0069
+   [Epoch 25/100] Batch [600/1304] | Train Loss: 0.0010
+   [Epoch 25/100] Batch [650/1304] | Train Loss: 0.0038
+   [Epoch 25/100] Batch [700/1304] | Train Loss: 0.0101
+   [Epoch 25/100] Batch [750/1304] | Train Loss: 0.0010
+   [Epoch 25/100] Batch [800/1304] | Train Loss: 0.0180
+   [Epoch 25/100] Batch [850/1304] | Train Loss: 0.0018
+   [Epoch 25/100] Batch [900/1304] | Train Loss: 0.0011
+   [Epoch 25/100] Batch [950/1304] | Train Loss: 0.0124
+   [Epoch 25/100] Batch [1000/1304] | Train Loss: 0.0269
+   [Epoch 25/100] Batch [1050/1304] | Train Loss: 0.0033
+   [Epoch 25/100] Batch [1100/1304] | Train Loss: 0.0083
+   [Epoch 25/100] Batch [1150/1304] | Train Loss: 0.0028
+   [Epoch 25/100] Batch [1200/1304] | Train Loss: 0.0085
+   [Epoch 25/100] Batch [1250/1304] | Train Loss: 0.0059
+   [Epoch 25/100] Batch [1300/1304] | Train Loss: 0.0049
+Epoch 25 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [25/100] 战报:
+   Train Loss: 0.0065 | Val Loss: 0.0300
+   Val F1-Score: 0.5520
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 3/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 26/100] Batch [50/1304] | Train Loss: 0.0024
+   [Epoch 26/100] Batch [100/1304] | Train Loss: 0.0008
+   [Epoch 26/100] Batch [150/1304] | Train Loss: 0.0025
+   [Epoch 26/100] Batch [200/1304] | Train Loss: 0.0149
+   [Epoch 26/100] Batch [250/1304] | Train Loss: 0.0019
+   [Epoch 26/100] Batch [300/1304] | Train Loss: 0.0022
+   [Epoch 26/100] Batch [350/1304] | Train Loss: 0.0018
+   [Epoch 26/100] Batch [400/1304] | Train Loss: 0.0141
+   [Epoch 26/100] Batch [450/1304] | Train Loss: 0.0013
+   [Epoch 26/100] Batch [500/1304] | Train Loss: 0.0015
+   [Epoch 26/100] Batch [550/1304] | Train Loss: 0.0168
+   [Epoch 26/100] Batch [600/1304] | Train Loss: 0.0072
+   [Epoch 26/100] Batch [650/1304] | Train Loss: 0.0073
+   [Epoch 26/100] Batch [700/1304] | Train Loss: 0.0040
+   [Epoch 26/100] Batch [750/1304] | Train Loss: 0.0012
+   [Epoch 26/100] Batch [800/1304] | Train Loss: 0.0122
+   [Epoch 26/100] Batch [850/1304] | Train Loss: 0.0052
+   [Epoch 26/100] Batch [900/1304] | Train Loss: 0.0027
+   [Epoch 26/100] Batch [950/1304] | Train Loss: 0.0055
+   [Epoch 26/100] Batch [1000/1304] | Train Loss: 0.0022
+   [Epoch 26/100] Batch [1050/1304] | Train Loss: 0.0039
+   [Epoch 26/100] Batch [1100/1304] | Train Loss: 0.0044
+   [Epoch 26/100] Batch [1150/1304] | Train Loss: 0.0028
+   [Epoch 26/100] Batch [1200/1304] | Train Loss: 0.0108
+   [Epoch 26/100] Batch [1250/1304] | Train Loss: 0.0027
+   [Epoch 26/100] Batch [1300/1304] | Train Loss: 0.0029
+Epoch 26 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [26/100] 战报:
+   Train Loss: 0.0065 | Val Loss: 0.0274
+   Val F1-Score: 0.5599
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+破纪录了！Val F1 从 0.5588 提升至 0.5599，正在保存神级权重...
+--------------------------------------------------
+
+   [Epoch 27/100] Batch [50/1304] | Train Loss: 0.0049
+   [Epoch 27/100] Batch [100/1304] | Train Loss: 0.0009
+   [Epoch 27/100] Batch [150/1304] | Train Loss: 0.0019
+   [Epoch 27/100] Batch [200/1304] | Train Loss: 0.0040
+   [Epoch 27/100] Batch [250/1304] | Train Loss: 0.0028
+   [Epoch 27/100] Batch [300/1304] | Train Loss: 0.0007
+   [Epoch 27/100] Batch [350/1304] | Train Loss: 0.0107
+   [Epoch 27/100] Batch [400/1304] | Train Loss: 0.0018
+   [Epoch 27/100] Batch [450/1304] | Train Loss: 0.0015
+   [Epoch 27/100] Batch [500/1304] | Train Loss: 0.0169
+   [Epoch 27/100] Batch [550/1304] | Train Loss: 0.0013
+   [Epoch 27/100] Batch [600/1304] | Train Loss: 0.0059
+   [Epoch 27/100] Batch [650/1304] | Train Loss: 0.0163
+   [Epoch 27/100] Batch [700/1304] | Train Loss: 0.0065
+   [Epoch 27/100] Batch [750/1304] | Train Loss: 0.0213
+   [Epoch 27/100] Batch [800/1304] | Train Loss: 0.0083
+   [Epoch 27/100] Batch [850/1304] | Train Loss: 0.0036
+   [Epoch 27/100] Batch [900/1304] | Train Loss: 0.0016
+   [Epoch 27/100] Batch [950/1304] | Train Loss: 0.0044
+   [Epoch 27/100] Batch [1000/1304] | Train Loss: 0.0020
+   [Epoch 27/100] Batch [1050/1304] | Train Loss: 0.0085
+   [Epoch 27/100] Batch [1100/1304] | Train Loss: 0.0092
+   [Epoch 27/100] Batch [1150/1304] | Train Loss: 0.0045
+   [Epoch 27/100] Batch [1200/1304] | Train Loss: 0.0038
+   [Epoch 27/100] Batch [1250/1304] | Train Loss: 0.0011
+   [Epoch 27/100] Batch [1300/1304] | Train Loss: 0.0199
+Epoch 27 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [27/100] 战报:
+   Train Loss: 0.0064 | Val Loss: 0.0287
+   Val F1-Score: 0.5172
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 1/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 28/100] Batch [50/1304] | Train Loss: 0.0028
+   [Epoch 28/100] Batch [100/1304] | Train Loss: 0.0210
+   [Epoch 28/100] Batch [150/1304] | Train Loss: 0.0017
+   [Epoch 28/100] Batch [200/1304] | Train Loss: 0.0017
+   [Epoch 28/100] Batch [250/1304] | Train Loss: 0.0023
+   [Epoch 28/100] Batch [300/1304] | Train Loss: 0.0007
+   [Epoch 28/100] Batch [350/1304] | Train Loss: 0.0054
+   [Epoch 28/100] Batch [400/1304] | Train Loss: 0.0100
+   [Epoch 28/100] Batch [450/1304] | Train Loss: 0.0014
+   [Epoch 28/100] Batch [500/1304] | Train Loss: 0.0094
+   [Epoch 28/100] Batch [550/1304] | Train Loss: 0.0029
+   [Epoch 28/100] Batch [600/1304] | Train Loss: 0.0010
+   [Epoch 28/100] Batch [650/1304] | Train Loss: 0.0018
+   [Epoch 28/100] Batch [700/1304] | Train Loss: 0.0102
+   [Epoch 28/100] Batch [750/1304] | Train Loss: 0.0013
+   [Epoch 28/100] Batch [800/1304] | Train Loss: 0.0021
+   [Epoch 28/100] Batch [850/1304] | Train Loss: 0.0007
+   [Epoch 28/100] Batch [900/1304] | Train Loss: 0.0019
+   [Epoch 28/100] Batch [950/1304] | Train Loss: 0.0097
+   [Epoch 28/100] Batch [1000/1304] | Train Loss: 0.0034
+   [Epoch 28/100] Batch [1050/1304] | Train Loss: 0.0159
+   [Epoch 28/100] Batch [1100/1304] | Train Loss: 0.0013
+   [Epoch 28/100] Batch [1150/1304] | Train Loss: 0.0039
+   [Epoch 28/100] Batch [1200/1304] | Train Loss: 0.0019
+   [Epoch 28/100] Batch [1250/1304] | Train Loss: 0.0018
+   [Epoch 28/100] Batch [1300/1304] | Train Loss: 0.0076
+Epoch 28 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [28/100] 战报:
+   Train Loss: 0.0062 | Val Loss: 0.0290
+   Val F1-Score: 0.4984
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 2/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 29/100] Batch [50/1304] | Train Loss: 0.0024
+   [Epoch 29/100] Batch [100/1304] | Train Loss: 0.0070
+   [Epoch 29/100] Batch [150/1304] | Train Loss: 0.0052
+   [Epoch 29/100] Batch [200/1304] | Train Loss: 0.0025
+   [Epoch 29/100] Batch [250/1304] | Train Loss: 0.0032
+   [Epoch 29/100] Batch [300/1304] | Train Loss: 0.0008
+   [Epoch 29/100] Batch [350/1304] | Train Loss: 0.0009
+   [Epoch 29/100] Batch [400/1304] | Train Loss: 0.0025
+   [Epoch 29/100] Batch [450/1304] | Train Loss: 0.0063
+   [Epoch 29/100] Batch [500/1304] | Train Loss: 0.0030
+   [Epoch 29/100] Batch [550/1304] | Train Loss: 0.0011
+   [Epoch 29/100] Batch [600/1304] | Train Loss: 0.0058
+   [Epoch 29/100] Batch [650/1304] | Train Loss: 0.0006
+   [Epoch 29/100] Batch [700/1304] | Train Loss: 0.0101
+   [Epoch 29/100] Batch [750/1304] | Train Loss: 0.0044
+   [Epoch 29/100] Batch [800/1304] | Train Loss: 0.0210
+   [Epoch 29/100] Batch [850/1304] | Train Loss: 0.0058
+   [Epoch 29/100] Batch [900/1304] | Train Loss: 0.0018
+   [Epoch 29/100] Batch [950/1304] | Train Loss: 0.0058
+   [Epoch 29/100] Batch [1000/1304] | Train Loss: 0.0043
+   [Epoch 29/100] Batch [1050/1304] | Train Loss: 0.0158
+   [Epoch 29/100] Batch [1100/1304] | Train Loss: 0.0013
+   [Epoch 29/100] Batch [1150/1304] | Train Loss: 0.0024
+   [Epoch 29/100] Batch [1200/1304] | Train Loss: 0.0113
+   [Epoch 29/100] Batch [1250/1304] | Train Loss: 0.0154
+   [Epoch 29/100] Batch [1300/1304] | Train Loss: 0.0144
+Epoch 29 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [29/100] 战报:
+   Train Loss: 0.0063 | Val Loss: 0.0270
+   Val F1-Score: 0.5125
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 3/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 30/100] Batch [50/1304] | Train Loss: 0.0020
+   [Epoch 30/100] Batch [100/1304] | Train Loss: 0.0067
+   [Epoch 30/100] Batch [150/1304] | Train Loss: 0.0009
+   [Epoch 30/100] Batch [200/1304] | Train Loss: 0.0121
+   [Epoch 30/100] Batch [250/1304] | Train Loss: 0.0008
+   [Epoch 30/100] Batch [300/1304] | Train Loss: 0.0008
+   [Epoch 30/100] Batch [350/1304] | Train Loss: 0.0079
+   [Epoch 30/100] Batch [400/1304] | Train Loss: 0.0151
+   [Epoch 30/100] Batch [450/1304] | Train Loss: 0.0283
+   [Epoch 30/100] Batch [500/1304] | Train Loss: 0.0028
+   [Epoch 30/100] Batch [550/1304] | Train Loss: 0.0009
+   [Epoch 30/100] Batch [600/1304] | Train Loss: 0.0042
+   [Epoch 30/100] Batch [650/1304] | Train Loss: 0.0029
+   [Epoch 30/100] Batch [700/1304] | Train Loss: 0.0032
+   [Epoch 30/100] Batch [750/1304] | Train Loss: 0.0070
+   [Epoch 30/100] Batch [800/1304] | Train Loss: 0.0018
+   [Epoch 30/100] Batch [850/1304] | Train Loss: 0.0019
+   [Epoch 30/100] Batch [900/1304] | Train Loss: 0.0027
+   [Epoch 30/100] Batch [950/1304] | Train Loss: 0.0246
+   [Epoch 30/100] Batch [1000/1304] | Train Loss: 0.0028
+   [Epoch 30/100] Batch [1050/1304] | Train Loss: 0.0095
+   [Epoch 30/100] Batch [1100/1304] | Train Loss: 0.0364
+   [Epoch 30/100] Batch [1150/1304] | Train Loss: 0.0018
+   [Epoch 30/100] Batch [1200/1304] | Train Loss: 0.0045
+   [Epoch 30/100] Batch [1250/1304] | Train Loss: 0.0006
+   [Epoch 30/100] Batch [1300/1304] | Train Loss: 0.0050
+Epoch 30 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [30/100] 战报:
+   Train Loss: 0.0061 | Val Loss: 0.0269
+   Val F1-Score: 0.5339
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 4/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 31/100] Batch [50/1304] | Train Loss: 0.0040
+   [Epoch 31/100] Batch [100/1304] | Train Loss: 0.0077
+   [Epoch 31/100] Batch [150/1304] | Train Loss: 0.0110
+   [Epoch 31/100] Batch [200/1304] | Train Loss: 0.0010
+   [Epoch 31/100] Batch [250/1304] | Train Loss: 0.0191
+   [Epoch 31/100] Batch [300/1304] | Train Loss: 0.0031
+   [Epoch 31/100] Batch [350/1304] | Train Loss: 0.0184
+   [Epoch 31/100] Batch [400/1304] | Train Loss: 0.0008
+   [Epoch 31/100] Batch [450/1304] | Train Loss: 0.0049
+   [Epoch 31/100] Batch [500/1304] | Train Loss: 0.0026
+   [Epoch 31/100] Batch [550/1304] | Train Loss: 0.0010
+   [Epoch 31/100] Batch [600/1304] | Train Loss: 0.0030
+   [Epoch 31/100] Batch [650/1304] | Train Loss: 0.0010
+   [Epoch 31/100] Batch [700/1304] | Train Loss: 0.0086
+   [Epoch 31/100] Batch [750/1304] | Train Loss: 0.0022
+   [Epoch 31/100] Batch [800/1304] | Train Loss: 0.0035
+   [Epoch 31/100] Batch [850/1304] | Train Loss: 0.0018
+   [Epoch 31/100] Batch [900/1304] | Train Loss: 0.0075
+   [Epoch 31/100] Batch [950/1304] | Train Loss: 0.0013
+   [Epoch 31/100] Batch [1000/1304] | Train Loss: 0.0018
+   [Epoch 31/100] Batch [1050/1304] | Train Loss: 0.0003
+   [Epoch 31/100] Batch [1100/1304] | Train Loss: 0.0057
+   [Epoch 31/100] Batch [1150/1304] | Train Loss: 0.0021
+   [Epoch 31/100] Batch [1200/1304] | Train Loss: 0.0047
+   [Epoch 31/100] Batch [1250/1304] | Train Loss: 0.0032
+   [Epoch 31/100] Batch [1300/1304] | Train Loss: 0.0133
+Epoch 31 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [31/100] 战报:
+   Train Loss: 0.0062 | Val Loss: 0.0332
+   Val F1-Score: 0.5567
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 5/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 32/100] Batch [50/1304] | Train Loss: 0.0006
+   [Epoch 32/100] Batch [100/1304] | Train Loss: 0.0006
+   [Epoch 32/100] Batch [150/1304] | Train Loss: 0.0015
+   [Epoch 32/100] Batch [200/1304] | Train Loss: 0.0080
+   [Epoch 32/100] Batch [250/1304] | Train Loss: 0.0033
+   [Epoch 32/100] Batch [300/1304] | Train Loss: 0.0172
+   [Epoch 32/100] Batch [350/1304] | Train Loss: 0.0154
+   [Epoch 32/100] Batch [400/1304] | Train Loss: 0.0032
+   [Epoch 32/100] Batch [450/1304] | Train Loss: 0.0020
+   [Epoch 32/100] Batch [500/1304] | Train Loss: 0.0045
+   [Epoch 32/100] Batch [550/1304] | Train Loss: 0.0016
+   [Epoch 32/100] Batch [600/1304] | Train Loss: 0.0073
+   [Epoch 32/100] Batch [650/1304] | Train Loss: 0.0200
+   [Epoch 32/100] Batch [700/1304] | Train Loss: 0.0019
+   [Epoch 32/100] Batch [750/1304] | Train Loss: 0.0009
+   [Epoch 32/100] Batch [800/1304] | Train Loss: 0.0131
+   [Epoch 32/100] Batch [850/1304] | Train Loss: 0.0060
+   [Epoch 32/100] Batch [900/1304] | Train Loss: 0.0060
+   [Epoch 32/100] Batch [950/1304] | Train Loss: 0.0143
+   [Epoch 32/100] Batch [1000/1304] | Train Loss: 0.0011
+   [Epoch 32/100] Batch [1050/1304] | Train Loss: 0.0024
+   [Epoch 32/100] Batch [1100/1304] | Train Loss: 0.0059
+   [Epoch 32/100] Batch [1150/1304] | Train Loss: 0.0137
+   [Epoch 32/100] Batch [1200/1304] | Train Loss: 0.0143
+   [Epoch 32/100] Batch [1250/1304] | Train Loss: 0.0152
+   [Epoch 32/100] Batch [1300/1304] | Train Loss: 0.0019
+Epoch 32 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [32/100] 战报:
+   Train Loss: 0.0061 | Val Loss: 0.0270
+   Val F1-Score: 0.4735
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 6/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 33/100] Batch [50/1304] | Train Loss: 0.0081
+   [Epoch 33/100] Batch [100/1304] | Train Loss: 0.0046
+   [Epoch 33/100] Batch [150/1304] | Train Loss: 0.0076
+   [Epoch 33/100] Batch [200/1304] | Train Loss: 0.0040
+   [Epoch 33/100] Batch [250/1304] | Train Loss: 0.0007
+   [Epoch 33/100] Batch [300/1304] | Train Loss: 0.0167
+   [Epoch 33/100] Batch [350/1304] | Train Loss: 0.0006
+   [Epoch 33/100] Batch [400/1304] | Train Loss: 0.0110
+   [Epoch 33/100] Batch [450/1304] | Train Loss: 0.0187
+   [Epoch 33/100] Batch [500/1304] | Train Loss: 0.0060
+   [Epoch 33/100] Batch [550/1304] | Train Loss: 0.0127
+   [Epoch 33/100] Batch [600/1304] | Train Loss: 0.0024
+   [Epoch 33/100] Batch [650/1304] | Train Loss: 0.0041
+   [Epoch 33/100] Batch [700/1304] | Train Loss: 0.0080
+   [Epoch 33/100] Batch [750/1304] | Train Loss: 0.0017
+   [Epoch 33/100] Batch [800/1304] | Train Loss: 0.0023
+   [Epoch 33/100] Batch [850/1304] | Train Loss: 0.0063
+   [Epoch 33/100] Batch [900/1304] | Train Loss: 0.0165
+   [Epoch 33/100] Batch [950/1304] | Train Loss: 0.0016
+   [Epoch 33/100] Batch [1000/1304] | Train Loss: 0.0009
+   [Epoch 33/100] Batch [1050/1304] | Train Loss: 0.0045
+   [Epoch 33/100] Batch [1100/1304] | Train Loss: 0.0017
+   [Epoch 33/100] Batch [1150/1304] | Train Loss: 0.0031
+   [Epoch 33/100] Batch [1200/1304] | Train Loss: 0.0022
+   [Epoch 33/100] Batch [1250/1304] | Train Loss: 0.0011
+   [Epoch 33/100] Batch [1300/1304] | Train Loss: 0.0010
+Epoch 33 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [33/100] 战报:
+   Train Loss: 0.0061 | Val Loss: 0.0275
+   Val F1-Score: 0.4743
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 7/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 34/100] Batch [50/1304] | Train Loss: 0.0024
+   [Epoch 34/100] Batch [100/1304] | Train Loss: 0.0033
+   [Epoch 34/100] Batch [150/1304] | Train Loss: 0.0017
+   [Epoch 34/100] Batch [200/1304] | Train Loss: 0.0010
+   [Epoch 34/100] Batch [250/1304] | Train Loss: 0.0023
+   [Epoch 34/100] Batch [300/1304] | Train Loss: 0.0007
+   [Epoch 34/100] Batch [350/1304] | Train Loss: 0.0009
+   [Epoch 34/100] Batch [400/1304] | Train Loss: 0.0030
+   [Epoch 34/100] Batch [450/1304] | Train Loss: 0.0031
+   [Epoch 34/100] Batch [500/1304] | Train Loss: 0.0155
+   [Epoch 34/100] Batch [550/1304] | Train Loss: 0.0054
+   [Epoch 34/100] Batch [600/1304] | Train Loss: 0.0029
+   [Epoch 34/100] Batch [650/1304] | Train Loss: 0.0099
+   [Epoch 34/100] Batch [700/1304] | Train Loss: 0.0086
+   [Epoch 34/100] Batch [750/1304] | Train Loss: 0.0043
+   [Epoch 34/100] Batch [800/1304] | Train Loss: 0.0131
+   [Epoch 34/100] Batch [850/1304] | Train Loss: 0.0069
+   [Epoch 34/100] Batch [900/1304] | Train Loss: 0.0139
+   [Epoch 34/100] Batch [950/1304] | Train Loss: 0.0004
+   [Epoch 34/100] Batch [1000/1304] | Train Loss: 0.0080
+   [Epoch 34/100] Batch [1050/1304] | Train Loss: 0.0010
+   [Epoch 34/100] Batch [1100/1304] | Train Loss: 0.0004
+   [Epoch 34/100] Batch [1150/1304] | Train Loss: 0.0028
+   [Epoch 34/100] Batch [1200/1304] | Train Loss: 0.0106
+   [Epoch 34/100] Batch [1250/1304] | Train Loss: 0.0098
+   [Epoch 34/100] Batch [1300/1304] | Train Loss: 0.0038
+Epoch 34 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [34/100] 战报:
+   Train Loss: 0.0061 | Val Loss: 0.0335
+   Val F1-Score: 0.5516
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 8/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 35/100] Batch [50/1304] | Train Loss: 0.0150
+   [Epoch 35/100] Batch [100/1304] | Train Loss: 0.0023
+   [Epoch 35/100] Batch [150/1304] | Train Loss: 0.0024
+   [Epoch 35/100] Batch [200/1304] | Train Loss: 0.0028
+   [Epoch 35/100] Batch [250/1304] | Train Loss: 0.0016
+   [Epoch 35/100] Batch [300/1304] | Train Loss: 0.0026
+   [Epoch 35/100] Batch [350/1304] | Train Loss: 0.0097
+   [Epoch 35/100] Batch [400/1304] | Train Loss: 0.0171
+   [Epoch 35/100] Batch [450/1304] | Train Loss: 0.0032
+   [Epoch 35/100] Batch [500/1304] | Train Loss: 0.0075
+   [Epoch 35/100] Batch [550/1304] | Train Loss: 0.0049
+   [Epoch 35/100] Batch [600/1304] | Train Loss: 0.0025
+   [Epoch 35/100] Batch [650/1304] | Train Loss: 0.0008
+   [Epoch 35/100] Batch [700/1304] | Train Loss: 0.0046
+   [Epoch 35/100] Batch [750/1304] | Train Loss: 0.0104
+   [Epoch 35/100] Batch [800/1304] | Train Loss: 0.0018
+   [Epoch 35/100] Batch [850/1304] | Train Loss: 0.0011
+   [Epoch 35/100] Batch [900/1304] | Train Loss: 0.0036
+   [Epoch 35/100] Batch [950/1304] | Train Loss: 0.0026
+   [Epoch 35/100] Batch [1000/1304] | Train Loss: 0.0076
+   [Epoch 35/100] Batch [1050/1304] | Train Loss: 0.0019
+   [Epoch 35/100] Batch [1100/1304] | Train Loss: 0.0064
+   [Epoch 35/100] Batch [1150/1304] | Train Loss: 0.0009
+   [Epoch 35/100] Batch [1200/1304] | Train Loss: 0.0030
+   [Epoch 35/100] Batch [1250/1304] | Train Loss: 0.0004
+   [Epoch 35/100] Batch [1300/1304] | Train Loss: 0.0056
+Epoch 35 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [35/100] 战报:
+   Train Loss: 0.0059 | Val Loss: 0.0307
+   Val F1-Score: 0.5522
+触发自动降挡！模型陷入瓶颈，学习率由 0.000250 下调至 0.000125！
+最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
+早停警告: 连续 9/16 轮未打破记录。
+--------------------------------------------------
+
+   [Epoch 36/100] Batch [50/1304] | Train Loss: 0.0096
+   [Epoch 36/100] Batch [100/1304] | Train Loss: 0.0012
+   [Epoch 36/100] Batch [150/1304] | Train Loss: 0.0158
+   [Epoch 36/100] Batch [200/1304] | Train Loss: 0.0164
+   [Epoch 36/100] Batch [250/1304] | Train Loss: 0.0031
+   [Epoch 36/100] Batch [300/1304] | Train Loss: 0.0010
+   [Epoch 36/100] Batch [350/1304] | Train Loss: 0.0005
+   [Epoch 36/100] Batch [400/1304] | Train Loss: 0.0061
+   [Epoch 36/100] Batch [450/1304] | Train Loss: 0.0034
+   [Epoch 36/100] Batch [500/1304] | Train Loss: 0.0055
+   [Epoch 36/100] Batch [550/1304] | Train Loss: 0.0009
+   [Epoch 36/100] Batch [600/1304] | Train Loss: 0.0154
+   [Epoch 36/100] Batch [650/1304] | Train Loss: 0.0011
+   [Epoch 36/100] Batch [700/1304] | Train Loss: 0.0009
+   [Epoch 36/100] Batch [750/1304] | Train Loss: 0.0087
+   [Epoch 36/100] Batch [800/1304] | Train Loss: 0.0020
+   [Epoch 36/100] Batch [850/1304] | Train Loss: 0.0023
+   [Epoch 36/100] Batch [900/1304] | Train Loss: 0.0145
+   [Epoch 36/100] Batch [950/1304] | Train Loss: 0.0109
+   [Epoch 36/100] Batch [1000/1304] | Train Loss: 0.0017
+   [Epoch 36/100] Batch [1050/1304] | Train Loss: 0.0151
+   [Epoch 36/100] Batch [1100/1304] | Train Loss: 0.0007
+   [Epoch 36/100] Batch [1150/1304] | Train Loss: 0.0118
+   [Epoch 36/100] Batch [1200/1304] | Train Loss: 0.0021
+   [Epoch 36/100] Batch [1250/1304] | Train Loss: 0.0008
+   [Epoch 36/100] Batch [1300/1304] | Train Loss: 0.0185
+Epoch 36 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [36/100] 战报:
+   Train Loss: 0.0053 | Val Loss: 0.0290
+   Val F1-Score: 0.5467
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
 早停警告: 连续 10/16 轮未打破记录。
 --------------------------------------------------
 
-   [Epoch 21/100] Batch [50/1304] | Train Loss: 0.0019
-   [Epoch 21/100] Batch [100/1304] | Train Loss: 0.0071
-   [Epoch 21/100] Batch [150/1304] | Train Loss: 0.0041
-   [Epoch 21/100] Batch [200/1304] | Train Loss: 0.0020
-   [Epoch 21/100] Batch [250/1304] | Train Loss: 0.0108
-   [Epoch 21/100] Batch [300/1304] | Train Loss: 0.0135
-   [Epoch 21/100] Batch [350/1304] | Train Loss: 0.0159
-   [Epoch 21/100] Batch [400/1304] | Train Loss: 0.0014
-   [Epoch 21/100] Batch [450/1304] | Train Loss: 0.0013
-   [Epoch 21/100] Batch [500/1304] | Train Loss: 0.0211
-   [Epoch 21/100] Batch [550/1304] | Train Loss: 0.0153
-   [Epoch 21/100] Batch [600/1304] | Train Loss: 0.0145
-   [Epoch 21/100] Batch [650/1304] | Train Loss: 0.0053
-   [Epoch 21/100] Batch [700/1304] | Train Loss: 0.0026
-   [Epoch 21/100] Batch [750/1304] | Train Loss: 0.0043
-   [Epoch 21/100] Batch [800/1304] | Train Loss: 0.0104
-   [Epoch 21/100] Batch [850/1304] | Train Loss: 0.0060
-   [Epoch 21/100] Batch [900/1304] | Train Loss: 0.0012
-   [Epoch 21/100] Batch [950/1304] | Train Loss: 0.0010
-   [Epoch 21/100] Batch [1000/1304] | Train Loss: 0.0110
-   [Epoch 21/100] Batch [1050/1304] | Train Loss: 0.0104
-   [Epoch 21/100] Batch [1100/1304] | Train Loss: 0.0025
-   [Epoch 21/100] Batch [1150/1304] | Train Loss: 0.0013
-   [Epoch 21/100] Batch [1200/1304] | Train Loss: 0.0040
-   [Epoch 21/100] Batch [1250/1304] | Train Loss: 0.0039
-   [Epoch 21/100] Batch [1300/1304] | Train Loss: 0.0193
-Epoch 21 结束，正在进行验证集全量体检...
+   [Epoch 37/100] Batch [50/1304] | Train Loss: 0.0051
+   [Epoch 37/100] Batch [100/1304] | Train Loss: 0.0011
+   [Epoch 37/100] Batch [150/1304] | Train Loss: 0.0005
+   [Epoch 37/100] Batch [200/1304] | Train Loss: 0.0014
+   [Epoch 37/100] Batch [250/1304] | Train Loss: 0.0010
+   [Epoch 37/100] Batch [300/1304] | Train Loss: 0.0035
+   [Epoch 37/100] Batch [350/1304] | Train Loss: 0.0021
+   [Epoch 37/100] Batch [400/1304] | Train Loss: 0.0101
+   [Epoch 37/100] Batch [450/1304] | Train Loss: 0.0018
+   [Epoch 37/100] Batch [500/1304] | Train Loss: 0.0156
+   [Epoch 37/100] Batch [550/1304] | Train Loss: 0.0030
+   [Epoch 37/100] Batch [600/1304] | Train Loss: 0.0064
+   [Epoch 37/100] Batch [650/1304] | Train Loss: 0.0035
+   [Epoch 37/100] Batch [700/1304] | Train Loss: 0.0009
+   [Epoch 37/100] Batch [750/1304] | Train Loss: 0.0094
+   [Epoch 37/100] Batch [800/1304] | Train Loss: 0.0024
+   [Epoch 37/100] Batch [850/1304] | Train Loss: 0.0062
+   [Epoch 37/100] Batch [900/1304] | Train Loss: 0.0020
+   [Epoch 37/100] Batch [950/1304] | Train Loss: 0.0052
+   [Epoch 37/100] Batch [1000/1304] | Train Loss: 0.0101
+   [Epoch 37/100] Batch [1050/1304] | Train Loss: 0.0044
+   [Epoch 37/100] Batch [1100/1304] | Train Loss: 0.0009
+   [Epoch 37/100] Batch [1150/1304] | Train Loss: 0.0023
+   [Epoch 37/100] Batch [1200/1304] | Train Loss: 0.0040
+   [Epoch 37/100] Batch [1250/1304] | Train Loss: 0.0041
+   [Epoch 37/100] Batch [1300/1304] | Train Loss: 0.0133
+Epoch 37 结束，正在进行验证集全量体检...
 --------------------------------------------------
-   Epoch [21/100] 战报:
-   Train Loss: 0.0070 | Val Loss: 0.0297
-   Val F1-Score: 0.5394
+   Epoch [37/100] 战报:
+   Train Loss: 0.0051 | Val Loss: 0.0293
+   Val F1-Score: 0.4837
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
 早停警告: 连续 11/16 轮未打破记录。
 --------------------------------------------------
 
-   [Epoch 22/100] Batch [50/1304] | Train Loss: 0.0007
-   [Epoch 22/100] Batch [100/1304] | Train Loss: 0.0005
-   [Epoch 22/100] Batch [150/1304] | Train Loss: 0.0069
-   [Epoch 22/100] Batch [200/1304] | Train Loss: 0.0052
-   [Epoch 22/100] Batch [250/1304] | Train Loss: 0.0021
-   [Epoch 22/100] Batch [300/1304] | Train Loss: 0.0015
-   [Epoch 22/100] Batch [350/1304] | Train Loss: 0.0069
-   [Epoch 22/100] Batch [400/1304] | Train Loss: 0.0031
-   [Epoch 22/100] Batch [450/1304] | Train Loss: 0.0056
-   [Epoch 22/100] Batch [500/1304] | Train Loss: 0.0004
-   [Epoch 22/100] Batch [550/1304] | Train Loss: 0.0029
-   [Epoch 22/100] Batch [600/1304] | Train Loss: 0.0009
-   [Epoch 22/100] Batch [650/1304] | Train Loss: 0.0025
-   [Epoch 22/100] Batch [700/1304] | Train Loss: 0.0035
-   [Epoch 22/100] Batch [750/1304] | Train Loss: 0.0224
-   [Epoch 22/100] Batch [800/1304] | Train Loss: 0.0008
-   [Epoch 22/100] Batch [850/1304] | Train Loss: 0.0030
-   [Epoch 22/100] Batch [900/1304] | Train Loss: 0.0119
-   [Epoch 22/100] Batch [950/1304] | Train Loss: 0.0014
-   [Epoch 22/100] Batch [1000/1304] | Train Loss: 0.0024
-   [Epoch 22/100] Batch [1050/1304] | Train Loss: 0.0122
-   [Epoch 22/100] Batch [1100/1304] | Train Loss: 0.0012
-   [Epoch 22/100] Batch [1150/1304] | Train Loss: 0.0039
-   [Epoch 22/100] Batch [1200/1304] | Train Loss: 0.0008
-   [Epoch 22/100] Batch [1250/1304] | Train Loss: 0.0016
-   [Epoch 22/100] Batch [1300/1304] | Train Loss: 0.0034
-Epoch 22 结束，正在进行验证集全量体检...
+   [Epoch 38/100] Batch [50/1304] | Train Loss: 0.0197
+   [Epoch 38/100] Batch [100/1304] | Train Loss: 0.0047
+   [Epoch 38/100] Batch [150/1304] | Train Loss: 0.0085
+   [Epoch 38/100] Batch [200/1304] | Train Loss: 0.0013
+   [Epoch 38/100] Batch [250/1304] | Train Loss: 0.0078
+   [Epoch 38/100] Batch [300/1304] | Train Loss: 0.0036
+   [Epoch 38/100] Batch [350/1304] | Train Loss: 0.0005
+   [Epoch 38/100] Batch [400/1304] | Train Loss: 0.0159
+   [Epoch 38/100] Batch [450/1304] | Train Loss: 0.0010
+   [Epoch 38/100] Batch [500/1304] | Train Loss: 0.0074
+   [Epoch 38/100] Batch [550/1304] | Train Loss: 0.0060
+   [Epoch 38/100] Batch [600/1304] | Train Loss: 0.0043
+   [Epoch 38/100] Batch [650/1304] | Train Loss: 0.0014
+   [Epoch 38/100] Batch [700/1304] | Train Loss: 0.0018
+   [Epoch 38/100] Batch [750/1304] | Train Loss: 0.0016
+   [Epoch 38/100] Batch [800/1304] | Train Loss: 0.0035
+   [Epoch 38/100] Batch [850/1304] | Train Loss: 0.0035
+   [Epoch 38/100] Batch [900/1304] | Train Loss: 0.0036
+   [Epoch 38/100] Batch [950/1304] | Train Loss: 0.0016
+   [Epoch 38/100] Batch [1000/1304] | Train Loss: 0.0104
+   [Epoch 38/100] Batch [1050/1304] | Train Loss: 0.0080
+   [Epoch 38/100] Batch [1100/1304] | Train Loss: 0.0010
+   [Epoch 38/100] Batch [1150/1304] | Train Loss: 0.0013
+   [Epoch 38/100] Batch [1200/1304] | Train Loss: 0.0116
+   [Epoch 38/100] Batch [1250/1304] | Train Loss: 0.0032
+   [Epoch 38/100] Batch [1300/1304] | Train Loss: 0.0009
+Epoch 38 结束，正在进行验证集全量体检...
 --------------------------------------------------
-   Epoch [22/100] 战报:
-   Train Loss: 0.0069 | Val Loss: 0.0284
-   Val F1-Score: 0.3857
+   Epoch [38/100] 战报:
+   Train Loss: 0.0051 | Val Loss: 0.0301
+   Val F1-Score: 0.5272
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
 早停警告: 连续 12/16 轮未打破记录。
 --------------------------------------------------
 
-   [Epoch 23/100] Batch [50/1304] | Train Loss: 0.0066
-   [Epoch 23/100] Batch [100/1304] | Train Loss: 0.0050
-   [Epoch 23/100] Batch [150/1304] | Train Loss: 0.0051
-   [Epoch 23/100] Batch [200/1304] | Train Loss: 0.0031
-   [Epoch 23/100] Batch [250/1304] | Train Loss: 0.0022
-   [Epoch 23/100] Batch [300/1304] | Train Loss: 0.0040
-   [Epoch 23/100] Batch [350/1304] | Train Loss: 0.0026
-   [Epoch 23/100] Batch [400/1304] | Train Loss: 0.0020
-   [Epoch 23/100] Batch [450/1304] | Train Loss: 0.0139
-   [Epoch 23/100] Batch [500/1304] | Train Loss: 0.0107
-   [Epoch 23/100] Batch [550/1304] | Train Loss: 0.0054
-   [Epoch 23/100] Batch [600/1304] | Train Loss: 0.0062
-   [Epoch 23/100] Batch [650/1304] | Train Loss: 0.0005
-   [Epoch 23/100] Batch [700/1304] | Train Loss: 0.0038
-   [Epoch 23/100] Batch [750/1304] | Train Loss: 0.0015
-   [Epoch 23/100] Batch [800/1304] | Train Loss: 0.0009
-   [Epoch 23/100] Batch [850/1304] | Train Loss: 0.0006
-   [Epoch 23/100] Batch [900/1304] | Train Loss: 0.0042
-   [Epoch 23/100] Batch [950/1304] | Train Loss: 0.0046
-   [Epoch 23/100] Batch [1000/1304] | Train Loss: 0.0067
-   [Epoch 23/100] Batch [1050/1304] | Train Loss: 0.0169
-   [Epoch 23/100] Batch [1100/1304] | Train Loss: 0.0033
-   [Epoch 23/100] Batch [1150/1304] | Train Loss: 0.0043
-   [Epoch 23/100] Batch [1200/1304] | Train Loss: 0.0025
-   [Epoch 23/100] Batch [1250/1304] | Train Loss: 0.0385
-   [Epoch 23/100] Batch [1300/1304] | Train Loss: 0.0101
-Epoch 23 结束，正在进行验证集全量体检...
+   [Epoch 39/100] Batch [50/1304] | Train Loss: 0.0102
+   [Epoch 39/100] Batch [100/1304] | Train Loss: 0.0010
+   [Epoch 39/100] Batch [150/1304] | Train Loss: 0.0011
+   [Epoch 39/100] Batch [200/1304] | Train Loss: 0.0060
+   [Epoch 39/100] Batch [250/1304] | Train Loss: 0.0012
+   [Epoch 39/100] Batch [300/1304] | Train Loss: 0.0150
+   [Epoch 39/100] Batch [350/1304] | Train Loss: 0.0031
+   [Epoch 39/100] Batch [400/1304] | Train Loss: 0.0134
+   [Epoch 39/100] Batch [450/1304] | Train Loss: 0.0016
+   [Epoch 39/100] Batch [500/1304] | Train Loss: 0.0015
+   [Epoch 39/100] Batch [550/1304] | Train Loss: 0.0016
+   [Epoch 39/100] Batch [600/1304] | Train Loss: 0.0017
+   [Epoch 39/100] Batch [650/1304] | Train Loss: 0.0006
+   [Epoch 39/100] Batch [700/1304] | Train Loss: 0.0018
+   [Epoch 39/100] Batch [750/1304] | Train Loss: 0.0024
+   [Epoch 39/100] Batch [800/1304] | Train Loss: 0.0010
+   [Epoch 39/100] Batch [850/1304] | Train Loss: 0.0026
+   [Epoch 39/100] Batch [900/1304] | Train Loss: 0.0131
+   [Epoch 39/100] Batch [950/1304] | Train Loss: 0.0012
+   [Epoch 39/100] Batch [1000/1304] | Train Loss: 0.0206
+   [Epoch 39/100] Batch [1050/1304] | Train Loss: 0.0104
+   [Epoch 39/100] Batch [1100/1304] | Train Loss: 0.0152
+   [Epoch 39/100] Batch [1150/1304] | Train Loss: 0.0166
+   [Epoch 39/100] Batch [1200/1304] | Train Loss: 0.0154
+   [Epoch 39/100] Batch [1250/1304] | Train Loss: 0.0010
+   [Epoch 39/100] Batch [1300/1304] | Train Loss: 0.0023
+Epoch 39 结束，正在进行验证集全量体检...
 --------------------------------------------------
-   Epoch [23/100] 战报:
-   Train Loss: 0.0068 | Val Loss: 0.0324
+   Epoch [39/100] 战报:
+   Train Loss: 0.0050 | Val Loss: 0.0326
    Val F1-Score: 0.5451
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
 早停警告: 连续 13/16 轮未打破记录。
 --------------------------------------------------
 
-   [Epoch 24/100] Batch [50/1304] | Train Loss: 0.0138
-   [Epoch 24/100] Batch [100/1304] | Train Loss: 0.0013
-   [Epoch 24/100] Batch [150/1304] | Train Loss: 0.0029
-   [Epoch 24/100] Batch [200/1304] | Train Loss: 0.0020
-   [Epoch 24/100] Batch [250/1304] | Train Loss: 0.0007
-   [Epoch 24/100] Batch [300/1304] | Train Loss: 0.0038
-   [Epoch 24/100] Batch [350/1304] | Train Loss: 0.0180
-   [Epoch 24/100] Batch [400/1304] | Train Loss: 0.0138
-   [Epoch 24/100] Batch [450/1304] | Train Loss: 0.0066
-   [Epoch 24/100] Batch [500/1304] | Train Loss: 0.0012
-   [Epoch 24/100] Batch [550/1304] | Train Loss: 0.0065
-   [Epoch 24/100] Batch [600/1304] | Train Loss: 0.0092
-   [Epoch 24/100] Batch [650/1304] | Train Loss: 0.0045
-   [Epoch 24/100] Batch [700/1304] | Train Loss: 0.0007
-   [Epoch 24/100] Batch [750/1304] | Train Loss: 0.0026
-   [Epoch 24/100] Batch [800/1304] | Train Loss: 0.0022
-   [Epoch 24/100] Batch [850/1304] | Train Loss: 0.0179
-   [Epoch 24/100] Batch [900/1304] | Train Loss: 0.0056
-   [Epoch 24/100] Batch [950/1304] | Train Loss: 0.0153
-   [Epoch 24/100] Batch [1000/1304] | Train Loss: 0.0081
-   [Epoch 24/100] Batch [1050/1304] | Train Loss: 0.0018
-   [Epoch 24/100] Batch [1100/1304] | Train Loss: 0.0098
-   [Epoch 24/100] Batch [1150/1304] | Train Loss: 0.0145
-   [Epoch 24/100] Batch [1200/1304] | Train Loss: 0.0064
-   [Epoch 24/100] Batch [1250/1304] | Train Loss: 0.0029
-   [Epoch 24/100] Batch [1300/1304] | Train Loss: 0.0057
-Epoch 24 结束，正在进行验证集全量体检...
+   [Epoch 40/100] Batch [50/1304] | Train Loss: 0.0009
+   [Epoch 40/100] Batch [100/1304] | Train Loss: 0.0123
+   [Epoch 40/100] Batch [150/1304] | Train Loss: 0.0182
+   [Epoch 40/100] Batch [200/1304] | Train Loss: 0.0026
+   [Epoch 40/100] Batch [250/1304] | Train Loss: 0.0057
+   [Epoch 40/100] Batch [300/1304] | Train Loss: 0.0022
+   [Epoch 40/100] Batch [350/1304] | Train Loss: 0.0030
+   [Epoch 40/100] Batch [400/1304] | Train Loss: 0.0008
+   [Epoch 40/100] Batch [450/1304] | Train Loss: 0.0170
+   [Epoch 40/100] Batch [500/1304] | Train Loss: 0.0006
+   [Epoch 40/100] Batch [550/1304] | Train Loss: 0.0182
+   [Epoch 40/100] Batch [600/1304] | Train Loss: 0.0030
+   [Epoch 40/100] Batch [650/1304] | Train Loss: 0.0145
+   [Epoch 40/100] Batch [700/1304] | Train Loss: 0.0008
+   [Epoch 40/100] Batch [750/1304] | Train Loss: 0.0010
+   [Epoch 40/100] Batch [800/1304] | Train Loss: 0.0123
+   [Epoch 40/100] Batch [850/1304] | Train Loss: 0.0132
+   [Epoch 40/100] Batch [900/1304] | Train Loss: 0.0023
+   [Epoch 40/100] Batch [950/1304] | Train Loss: 0.0002
+   [Epoch 40/100] Batch [1000/1304] | Train Loss: 0.0009
+   [Epoch 40/100] Batch [1050/1304] | Train Loss: 0.0013
+   [Epoch 40/100] Batch [1100/1304] | Train Loss: 0.0008
+   [Epoch 40/100] Batch [1150/1304] | Train Loss: 0.0127
+   [Epoch 40/100] Batch [1200/1304] | Train Loss: 0.0029
+   [Epoch 40/100] Batch [1250/1304] | Train Loss: 0.0017
+   [Epoch 40/100] Batch [1300/1304] | Train Loss: 0.0006
+Epoch 40 结束，正在进行验证集全量体检...
 --------------------------------------------------
-   Epoch [24/100] 战报:
-   Train Loss: 0.0068 | Val Loss: 0.0316
-   Val F1-Score: 0.5522
+   Epoch [40/100] 战报:
+   Train Loss: 0.0050 | Val Loss: 0.0412
+   Val F1-Score: 0.5142
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
 早停警告: 连续 14/16 轮未打破记录。
 --------------------------------------------------
 
-   [Epoch 25/100] Batch [50/1304] | Train Loss: 0.0096
-   [Epoch 25/100] Batch [100/1304] | Train Loss: 0.0009
-   [Epoch 25/100] Batch [150/1304] | Train Loss: 0.0083
-   [Epoch 25/100] Batch [200/1304] | Train Loss: 0.0010
-   [Epoch 25/100] Batch [250/1304] | Train Loss: 0.0045
-   [Epoch 25/100] Batch [300/1304] | Train Loss: 0.0078
-   [Epoch 25/100] Batch [350/1304] | Train Loss: 0.0049
-   [Epoch 25/100] Batch [400/1304] | Train Loss: 0.0079
-   [Epoch 25/100] Batch [450/1304] | Train Loss: 0.0080
-   [Epoch 25/100] Batch [500/1304] | Train Loss: 0.0008
-   [Epoch 25/100] Batch [550/1304] | Train Loss: 0.0161
-   [Epoch 25/100] Batch [600/1304] | Train Loss: 0.0007
-   [Epoch 25/100] Batch [650/1304] | Train Loss: 0.0041
-   [Epoch 25/100] Batch [700/1304] | Train Loss: 0.0274
-   [Epoch 25/100] Batch [750/1304] | Train Loss: 0.0104
-   [Epoch 25/100] Batch [800/1304] | Train Loss: 0.0147
-   [Epoch 25/100] Batch [850/1304] | Train Loss: 0.0260
-   [Epoch 25/100] Batch [900/1304] | Train Loss: 0.0033
-   [Epoch 25/100] Batch [950/1304] | Train Loss: 0.0025
-   [Epoch 25/100] Batch [1000/1304] | Train Loss: 0.0074
-   [Epoch 25/100] Batch [1050/1304] | Train Loss: 0.0022
-   [Epoch 25/100] Batch [1100/1304] | Train Loss: 0.0217
-   [Epoch 25/100] Batch [1150/1304] | Train Loss: 0.0083
-   [Epoch 25/100] Batch [1200/1304] | Train Loss: 0.0105
-   [Epoch 25/100] Batch [1250/1304] | Train Loss: 0.0271
-   [Epoch 25/100] Batch [1300/1304] | Train Loss: 0.0028
-Epoch 25 结束，正在进行验证集全量体检...
+   [Epoch 41/100] Batch [50/1304] | Train Loss: 0.0016
+   [Epoch 41/100] Batch [100/1304] | Train Loss: 0.0121
+   [Epoch 41/100] Batch [150/1304] | Train Loss: 0.0022
+   [Epoch 41/100] Batch [200/1304] | Train Loss: 0.0026
+   [Epoch 41/100] Batch [250/1304] | Train Loss: 0.0029
+   [Epoch 41/100] Batch [300/1304] | Train Loss: 0.0016
+   [Epoch 41/100] Batch [350/1304] | Train Loss: 0.0073
+   [Epoch 41/100] Batch [400/1304] | Train Loss: 0.0035
+   [Epoch 41/100] Batch [450/1304] | Train Loss: 0.0146
+   [Epoch 41/100] Batch [500/1304] | Train Loss: 0.0027
+   [Epoch 41/100] Batch [550/1304] | Train Loss: 0.0101
+   [Epoch 41/100] Batch [600/1304] | Train Loss: 0.0076
+   [Epoch 41/100] Batch [650/1304] | Train Loss: 0.0016
+   [Epoch 41/100] Batch [700/1304] | Train Loss: 0.0032
+   [Epoch 41/100] Batch [750/1304] | Train Loss: 0.0117
+   [Epoch 41/100] Batch [800/1304] | Train Loss: 0.0056
+   [Epoch 41/100] Batch [850/1304] | Train Loss: 0.0008
+   [Epoch 41/100] Batch [900/1304] | Train Loss: 0.0054
+   [Epoch 41/100] Batch [950/1304] | Train Loss: 0.0013
+   [Epoch 41/100] Batch [1000/1304] | Train Loss: 0.0014
+   [Epoch 41/100] Batch [1050/1304] | Train Loss: 0.0199
+   [Epoch 41/100] Batch [1100/1304] | Train Loss: 0.0118
+   [Epoch 41/100] Batch [1150/1304] | Train Loss: 0.0007
+   [Epoch 41/100] Batch [1200/1304] | Train Loss: 0.0012
+   [Epoch 41/100] Batch [1250/1304] | Train Loss: 0.0123
+   [Epoch 41/100] Batch [1300/1304] | Train Loss: 0.0101
+Epoch 41 结束，正在进行验证集全量体检...
 --------------------------------------------------
-   Epoch [25/100] 战报:
-   Train Loss: 0.0067 | Val Loss: 0.0276
-   Val F1-Score: 0.4354
+   Epoch [41/100] 战报:
+   Train Loss: 0.0049 | Val Loss: 0.0337
+   Val F1-Score: 0.5172
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
 早停警告: 连续 15/16 轮未打破记录。
 --------------------------------------------------
 
-   [Epoch 26/100] Batch [50/1304] | Train Loss: 0.0007
-   [Epoch 26/100] Batch [100/1304] | Train Loss: 0.0123
-   [Epoch 26/100] Batch [150/1304] | Train Loss: 0.0046
-   [Epoch 26/100] Batch [200/1304] | Train Loss: 0.0108
-   [Epoch 26/100] Batch [250/1304] | Train Loss: 0.0070
-   [Epoch 26/100] Batch [300/1304] | Train Loss: 0.0206
-   [Epoch 26/100] Batch [350/1304] | Train Loss: 0.0062
-   [Epoch 26/100] Batch [400/1304] | Train Loss: 0.0043
-   [Epoch 26/100] Batch [450/1304] | Train Loss: 0.0025
-   [Epoch 26/100] Batch [500/1304] | Train Loss: 0.0024
-   [Epoch 26/100] Batch [550/1304] | Train Loss: 0.0024
-   [Epoch 26/100] Batch [600/1304] | Train Loss: 0.0067
-   [Epoch 26/100] Batch [650/1304] | Train Loss: 0.0019
-   [Epoch 26/100] Batch [700/1304] | Train Loss: 0.0007
-   [Epoch 26/100] Batch [750/1304] | Train Loss: 0.0037
-   [Epoch 26/100] Batch [800/1304] | Train Loss: 0.0014
-   [Epoch 26/100] Batch [850/1304] | Train Loss: 0.0189
-   [Epoch 26/100] Batch [900/1304] | Train Loss: 0.0113
-   [Epoch 26/100] Batch [950/1304] | Train Loss: 0.0006
-   [Epoch 26/100] Batch [1000/1304] | Train Loss: 0.0072
-   [Epoch 26/100] Batch [1050/1304] | Train Loss: 0.0120
-   [Epoch 26/100] Batch [1100/1304] | Train Loss: 0.0007
-   [Epoch 26/100] Batch [1150/1304] | Train Loss: 0.0012
-   [Epoch 26/100] Batch [1200/1304] | Train Loss: 0.0065
-   [Epoch 26/100] Batch [1250/1304] | Train Loss: 0.0220
-   [Epoch 26/100] Batch [1300/1304] | Train Loss: 0.0020
-Epoch 26 结束，正在进行验证集全量体检...
+   [Epoch 42/100] Batch [50/1304] | Train Loss: 0.0006
+   [Epoch 42/100] Batch [100/1304] | Train Loss: 0.0027
+   [Epoch 42/100] Batch [150/1304] | Train Loss: 0.0015
+   [Epoch 42/100] Batch [200/1304] | Train Loss: 0.0012
+   [Epoch 42/100] Batch [250/1304] | Train Loss: 0.0157
+   [Epoch 42/100] Batch [300/1304] | Train Loss: 0.0032
+   [Epoch 42/100] Batch [350/1304] | Train Loss: 0.0080
+   [Epoch 42/100] Batch [400/1304] | Train Loss: 0.0004
+   [Epoch 42/100] Batch [450/1304] | Train Loss: 0.0027
+   [Epoch 42/100] Batch [500/1304] | Train Loss: 0.0008
+   [Epoch 42/100] Batch [550/1304] | Train Loss: 0.0072
+   [Epoch 42/100] Batch [600/1304] | Train Loss: 0.0018
+   [Epoch 42/100] Batch [650/1304] | Train Loss: 0.0117
+   [Epoch 42/100] Batch [700/1304] | Train Loss: 0.0161
+   [Epoch 42/100] Batch [750/1304] | Train Loss: 0.0036
+   [Epoch 42/100] Batch [800/1304] | Train Loss: 0.0039
+   [Epoch 42/100] Batch [850/1304] | Train Loss: 0.0024
+   [Epoch 42/100] Batch [900/1304] | Train Loss: 0.0007
+   [Epoch 42/100] Batch [950/1304] | Train Loss: 0.0021
+   [Epoch 42/100] Batch [1000/1304] | Train Loss: 0.0043
+   [Epoch 42/100] Batch [1050/1304] | Train Loss: 0.0035
+   [Epoch 42/100] Batch [1100/1304] | Train Loss: 0.0038
+   [Epoch 42/100] Batch [1150/1304] | Train Loss: 0.0010
+   [Epoch 42/100] Batch [1200/1304] | Train Loss: 0.0084
+   [Epoch 42/100] Batch [1250/1304] | Train Loss: 0.0021
+   [Epoch 42/100] Batch [1300/1304] | Train Loss: 0.0075
+Epoch 42 结束，正在进行验证集全量体检...
 --------------------------------------------------
-   Epoch [26/100] 战报:
-   Train Loss: 0.0066 | Val Loss: 0.0338
-   Val F1-Score: 0.5482
+   Epoch [42/100] 战报:
+   Train Loss: 0.0049 | Val Loss: 0.0348
+   Val F1-Score: 0.5296
 最新训练进度已存档: /root/autodl-tmp/Graduation_Project/outputs/models/latest_checkpoint.pth
 早停警告: 连续 16/16 轮未打破记录。
 
 触发早停机制！连续 16 轮 F1 无提升。
 模型已进入严重过拟合状态，切断训练！
-训练全部结束！最高 Val F1 分数锁定在: 0.5578
+训练全部结束！最高 Val F1 分数锁定在: 0.5599
 最佳权重已安放在: /root/autodl-tmp/Graduation_Project/outputs/models/best_model.pth
 
 双联屏训练战报已高清保存至: /root/autodl-tmp/Graduation_Project/outputs/figures/training_dashboard.png

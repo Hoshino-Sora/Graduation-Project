@@ -46,8 +46,10 @@ class FocalLoss(nn.Module):
             return focal_loss
 
 
-def train_model():
-    print("正在启动 TCN-BiLSTM 炼丹炉...")
+def train_model(test_patient, train_patients):
+    print(f"\n" + "="*50)
+    print(f"正在启动 TCN-BiLSTM 炼丹炉 (当前测试靶标: {test_patient})")
+    print("="*50)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"核心算力引擎: {device}")
 
@@ -55,7 +57,6 @@ def train_model():
     # 1. 呼叫后勤部：挂载全量沙箱数据
     # ==========================================
     # 目标：跑全集 24 个病人
-    train_patients =[f"chb{i:02d}" for i in range(2, 25)]
     train_loader, val_loader = get_unified_dataloaders(
         patients_list=train_patients, 
         val_ratio=0.2, 
@@ -81,11 +82,13 @@ def train_model():
     # 3. 云端防断连断点续训机制 (带物理安全锁)
     # ==========================================
     os.makedirs(os.path.join(config.BASE_DIR, 'outputs', 'models'), exist_ok=True)
-    best_model_path = os.path.join(config.BASE_DIR, 'outputs', 'models', 'best_model.pth')
-    checkpoint_path = os.path.join(config.BASE_DIR, 'outputs', 'models', 'latest_checkpoint.pth')
+    
+    # 核心改动：把保存的文件名加上病人的 ID，防止互相覆盖！
+    best_model_path = os.path.join(config.BASE_DIR, 'outputs', 'models', f'best_model_{test_patient}.pth')
+    checkpoint_path = os.path.join(config.BASE_DIR, 'outputs', 'models', f'checkpoint_{test_patient}.pth')
     
     start_epoch = 0
-    best_val_f1 = 0.0
+    best_val_f1 = -1.0
     early_stop_counter = 0  # 新增：早停计数器
     train_loss_hist = []
     val_loss_hist = []
@@ -223,9 +226,19 @@ def train_model():
                 
         print("-" * 50 + "\n")
 
-    print(f"训练全部结束！最高 Val F1 分数锁定在: {best_val_f1:.4f}")
-    print(f"最佳权重已安放在: {best_model_path}")
-    plot_training_curves(train_loss_hist, val_loss_hist, val_f1_hist)
+    # ----------------------------------
+    # 循环结束后的终极保底逻辑
+    # ----------------------------------
+    # 万一真出了鬼，文件还是没保存，我们就强行把最后的 checkpoint 复制成 best_model，防止后续流水线断裂！
+    if not os.path.exists(best_model_path):
+        print("警告：整个训练过程模型 F1 都未见起色，触发强行保底机制！保存最终权重！")
+        torch.save(model.state_dict(), best_model_path)
+
+    print(f"\n训练全部结束！最高 Val F1 分数锁定在: {best_val_f1:.4f}")
+    print(f"物理检查通过：最佳权重确已安放在: {best_model_path}")
+    
+    # 防止画图函数卡住循环
+    # plot_training_curves(train_loss_hist, val_loss_hist, val_f1_hist)
 
 if __name__ == "__main__":
     train_model()

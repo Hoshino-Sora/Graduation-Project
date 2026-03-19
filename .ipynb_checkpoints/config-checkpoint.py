@@ -61,7 +61,7 @@ CHBMIT_TARGET_CHANNELS = [
 # ==========================================
 BATCH_SIZE = 1024
 LEARNING_RATE = 1e-3
-EPOCHS = 80
+EPOCHS = 20
 RANDOM_SEED = 42                 # 固定随机种子，保证实验可复现
 FORCE_POSITIVE_VAL=False
 

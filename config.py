@@ -86,8 +86,8 @@ PREDICT_THRESHOLD = 0.5
 PREDICT_THRESHOLD_TEST = 0.4
 # 早停机制 (Early Stopping) 耐心值：
 # 如果连续 16 轮 Val F1 都没有打破历史记录，说明模型已经开始死记硬背（严重过拟合），强行拔电源！
-EARLY_STOP_PATIENCE = 16
-
+EARLY_STOP_PATIENCE = 18
+PATIENCE = 6
 # ==========================================
 # 5. 临床后处理与评估参数 (Post-Processing)
 # ==========================================

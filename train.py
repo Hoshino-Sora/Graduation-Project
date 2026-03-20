@@ -75,8 +75,8 @@ def train_model(test_patient, train_patients):
     
     optimizer = optim.Adam(model.parameters(), lr=config.LEARNING_RATE, weight_decay=1e-4)
     
-    # 自动变速箱：盯着 Validation F1，连续 3 轮不涨，学习率砍半
-    scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='max', factor=0.5, patience=8, min_lr=1e-6)
+    # 自动变速箱：盯着 Validation F1，连续 6 轮不涨，学习率砍半
+    scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='max', factor=0.5, patience=config.PATIENCE, min_lr=1e-6)
 
     # ==========================================
     # 3. 云端防断连断点续训机制 (带物理安全锁)

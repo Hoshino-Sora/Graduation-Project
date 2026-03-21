@@ -1,16 +1,21 @@
 import os
 import gc
+import time  # 新增：时间记录模块
 import torch
 import numpy as np
 
-# 导入刚才改造好的模块
+# 导入你的核心模块
 from train import train_model
 from evaluate import evaluate_patient, get_patient_total_hours, calculate_clinical_metrics
 
 def run_loocv_pipeline():
     print("启动 [留一法交叉验证 (LOOCV)] 全自动化基线评估大流水线！")
     
-    all_patients = [f"chb{i:02d}" for i in range(1, 25)]
+    # 按下总秒表！
+    pipeline_start_time = time.time()
+    
+    FULL_PATIENTS_LIST = [f"chb{i:02d}" for i in range(1, 25)]
+    target_patients = [f"chb{i:02d}" for i in range(1, 25)]
     
     # 用来收集所有人的成绩表
     final_results = []
@@ -23,16 +28,15 @@ def run_loocv_pipeline():
     global_delay_sum = 0.0
     global_delay_count = 0
     
-    for test_patient in all_patients:
+    for test_patient in target_patients:
         print("\n" + "*"*25)
         print(f"正在攻坚靶标: {test_patient}")
         print("*"*25)
         
         # 1. 划定训练集团军 (除目标外的 23 个人)
-        train_patients = [p for p in all_patients if p != test_patient]
+        train_patients = [p for p in FULL_PATIENTS_LIST if p != test_patient]
         
         # 2. 启动该病人的专属炼丹炉
-        # 它会自动保存为 best_model_chbXX.pth
         train_model(test_patient, train_patients)
         
         # 3. 训练完毕，立刻启动该病人的临床体检！
@@ -62,7 +66,6 @@ def run_loocv_pipeline():
             print(f"{test_patient} 脑电时长异常，已跳过指标计算。")
             
         # 4. 极其重要：工业级显存大清洗
-        # 深度学习模型在循环里极容易内存泄漏，必须强制回收！
         torch.cuda.empty_cache()
         gc.collect()
         
@@ -82,11 +85,21 @@ def run_loocv_pipeline():
     print(f"全局微观延迟 (Micro Latency): {micro_lat:.2f} 秒")
     print("*"*15)
     
-    # 可选：把详细的 list 保存到 txt 里，方便明天睡醒直接贴到 Excel 里画图！
+    # 把详细的 list 保存到 txt 里，方便直接贴到 Excel 里画图！
     with open("LOOCV_Baseline_Results.txt", "w") as f:
         f.write("Patient\tSensitivity(%)\tFD/h\tLatency(s)\n")
         for res in final_results:
             f.write(f"{res['patient']}\t{res['Sensitivity']*100:.2f}\t{res['FD/h']:.3f}\t{res['Latency']:.2f}\n")
+
+    # 结算总耗时并华丽输出
+    pipeline_end_time = time.time()
+    total_seconds = pipeline_end_time - pipeline_start_time
+    hours, rem = divmod(total_seconds, 3600)
+    minutes, seconds = divmod(rem, 60)
+    
+    print("\n" + "*"*10)
+    print(f"本次 LOOCV 24 人全量流水线总运行时长: {int(hours)} 小时 {int(minutes)} 分钟 {seconds:.2f} 秒")
+    print("*"*10 + "\n")
 
 if __name__ == "__main__":
     run_loocv_pipeline()

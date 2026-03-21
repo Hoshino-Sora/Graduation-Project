@@ -8,7 +8,10 @@ from models import TCN_BiLSTM
 from load_data import get_unified_dataloaders
 from post_process import majority_voting_filter, extract_events, merge_close_events, filter_short_events
 
-def evaluate_patient(patient_id="chb01"):
+def evaluate_patient(patient_id="chb01", threshold=None):
+    if threshold is None:
+        threshold = config.PREDICT_THRESHOLD_TEST
+        
     print(f"=== 开启 AI 脑电临床评估流水线 ({patient_id} 专场) ===")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
@@ -40,20 +43,18 @@ def evaluate_patient(patient_id="chb01"):
     all_labels = []
     
     print("模型正在逐窗阅读几十个小时的脑电波，请稍候...")
-    with torch.no_grad(): # 不计算梯度，省显存提速
+    with torch.no_grad():
         for inputs, labels in dataloader:
             inputs = inputs.to(device)
             outputs = model(inputs)
             
-            # Argmax：赢家通吃
-            # --- 爆改后 (强行降阈值至0.4) ---
             probs = torch.softmax(outputs.data, dim=1)
-            # 只要有 40% 的怀疑是发作，直接亮红灯报警！
-            predicted = (probs[:, 1] > config.PREDICT_THRESHOLD_TEST).int()
+            # 爆改：使用外部传进来的动态阈值！不再用 config 里的死配置！
+            predicted = (probs[:, 1] > threshold).int()
             
             all_predictions.extend(predicted.cpu().numpy())
             all_labels.extend(labels.numpy())
-            
+
     raw_predictions = np.array(all_predictions)
     true_labels = np.array(all_labels)
 

@@ -59,7 +59,7 @@ CHBMIT_TARGET_CHANNELS = [
 # ==========================================
 # 4. 模型与训练配置
 # ==========================================
-BATCH_SIZE = 1024
+BATCH_SIZE = 512
 LEARNING_RATE = 5e-4
 EPOCHS = 100
 RANDOM_SEED = 42                 # 固定随机种子，保证实验可复现
@@ -67,7 +67,7 @@ FORCE_POSITIVE_VAL=False
 
 # 新增：网络架构超参数 (消融实验必备)
 LSTM_HIDDEN_SIZE = 32            # BiLSTM 隐藏层维度
-DROPOUT_RATE = 0.1               # 全连接层防过拟合概率
+DROPOUT_RATE = 0.3               # 全连接层防过拟合概率
 
 # 动态读取通道数，防止后续修改通道列表时漏改！
 NUM_CHANNELS = len(CHBMIT_TARGET_CHANNELS)  # 自动算出 18
@@ -86,7 +86,7 @@ PREDICT_THRESHOLD = 0.5
 PREDICT_THRESHOLD_TEST = 0.4
 # 早停机制 (Early Stopping) 耐心值：
 # 如果连续 16 轮 Val F1 都没有打破历史记录，说明模型已经开始死记硬背（严重过拟合），强行拔电源！
-EARLY_STOP_PATIENCE = 18
+EARLY_STOP_PATIENCE = 20
 PATIENCE = 6
 # ==========================================
 # 5. 临床后处理与评估参数 (Post-Processing)

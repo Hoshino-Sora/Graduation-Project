@@ -5,6 +5,11 @@ overview.txt
 .vscode/
 .idea/
 
+# 1. 忽略所有生成的报表和日志
+*.txt
+*.log
+*.csv
+
 # --- 核心保活逻辑 ---
 datasets/**
 outputs/**

@@ -129,10 +129,36 @@ def train_model(test_patient, train_patients):
         
         for batch_idx, (inputs, labels) in enumerate(train_loader):
             inputs, labels = inputs.to(device), labels.to(device)
+
+            # ==========================================
+            # Mixup 动态波形混合拦截器
+            # ==========================================
+            use_mixup = getattr(config, 'USE_MIXUP', False)
+            if use_mixup:
+                mixup_alpha = getattr(config, 'MIXUP_ALPHA', 0.2)
+                # 1. 从 Beta 分布中随机抽取混合比例 lam
+                lam = np.random.beta(mixup_alpha, mixup_alpha)
+                # 2. 随机打乱索引，找“拼车”对象
+                batch_size = inputs.size(0)
+                index = torch.randperm(batch_size).to(device)
+                # 3. 物理波形融合
+                inputs = lam * inputs + (1 - lam) * inputs[index]
+                # 4. 标签拆分备用
+                labels_a, labels_b = labels, labels[index]
+            # ==========================================
             
             optimizer.zero_grad()
-            outputs = model(inputs)
-            loss = criterion(outputs, labels)
+
+            # ==========================================
+            # 动态 Loss 计算分流
+            # ==========================================
+            if use_mixup:
+                # 强制模型学习平滑的软标签边界
+                loss = lam * criterion(outputs, labels_a) + (1 - lam) * criterion(outputs, labels_b)
+            else:
+                # 原汁原味的普通 Loss
+                loss = criterion(outputs, labels)
+
             loss.backward()
             
             # 梯度裁剪：防止 89 倍惩罚把梯度搞爆炸

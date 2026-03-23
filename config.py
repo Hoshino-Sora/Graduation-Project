@@ -103,7 +103,7 @@ COLLAR_TOLERANCE = 5.0
 # 6. 消融实验开关 (Ablation Study Switches)
 # ==========================================
 # Mixup 数据增强开关 (专治误报 FD/h 过高)
-USE_MIXUP = True
+USE_MIXUP = False
 # Mixup 的 Beta 分布参数。0.2 是医学时序信号的黄金甜点区
 # (这代表我们会做轻微的特征融合，而不是把波形糊成一团)
 MIXUP_ALPHA = 0.2

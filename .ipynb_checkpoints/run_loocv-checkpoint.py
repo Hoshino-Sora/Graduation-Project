@@ -15,7 +15,8 @@ def run_loocv_pipeline():
     pipeline_start_time = time.time()
     
     FULL_PATIENTS_LIST = [f"chb{i:02d}" for i in range(1, 25)]
-    target_patients = [f"chb{i:02d}" for i in range(1, 25)]
+    # target_patients = [f"chb{i:02d}" for i in range(1, 25)]
+    target_patients = ["chb15", "chb17"]
     
     # 用来收集所有人的成绩表
     final_results = []

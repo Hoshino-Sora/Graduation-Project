@@ -73,12 +73,21 @@ def run_global_inference(target_threshold=None, target_patients=None):
     # 核心改动：如果是狙击模式，生成的文件名加上 _Targeted 后缀，防止覆盖全量大表！
     suffix = "_Targeted" if target_patients else ""
     out_filename = f"Eval_Results_Thresh_{target_threshold}{suffix}.txt"
-    with open(out_filename, "w") as f:
+    
+    # 加上 encoding='utf-8'，防止 Windows 记事本打开时中文乱码！
+    with open(out_filename, "w", encoding='utf-8') as f:
         f.write("Patient\tSensitivity(%)\tFD/h\tLatency(s)\n")
         for res in final_results:
             f.write(f"{res['patient']}\t{res['Sensitivity']*100:.2f}\t{res['FD/h']:.3f}\t{res['Latency']:.2f}\n")
             
-    print(f"详细报表已成功导出至: {out_filename}\n")
+        f.write("\n" + "*"*15 + "\n")
+        f.write(f"【阈值 {target_threshold} 终极微观临床评估报告】\n")
+        f.write(f"全局微观检出率 (Micro Sensitivity): {micro_sens:.2f}% ({global_hits}/{global_real})\n")
+        f.write(f"全局微观误报率 (Micro FD/h): {micro_fd:.3f} 次/小时\n")
+        f.write(f"全局微观延迟 (Micro Latency): {micro_lat:.2f} 秒\n")
+        f.write("*"*15 + "\n")
+            
+    print(f"详细报表及全局汇总已成功导出至: {out_filename}\n")
     
     return micro_sens, micro_fd
 
@@ -86,4 +95,4 @@ if __name__ == "__main__":
     # 狙击模式用法演示：
     # 如果想跑全量，就把 target_patients 删掉或者设为 None
     # 如果想跑特定病人，就像下面这样写列表
-    run_global_inference(target_threshold=0.2, target_patients=["chb15", "chb17"])
+    run_global_inference(target_threshold=0.4, target_patients=["chb15", "chb17"])

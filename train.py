@@ -148,6 +148,7 @@ def train_model(test_patient, train_patients):
             # ==========================================
             
             optimizer.zero_grad()
+            outputs = model(inputs)
 
             # ==========================================
             # 动态 Loss 计算分流

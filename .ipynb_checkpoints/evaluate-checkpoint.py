@@ -8,7 +8,8 @@ from models import TCN_BiLSTM
 from load_data import get_unified_dataloaders
 from post_process import majority_voting_filter, extract_events, merge_close_events, filter_short_events
 
-def evaluate_patient(patient_id="chb01", threshold=None):
+# 核心新增：加入了 use_adaptive_threshold 和 k_factor 参数
+def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=True, target_percentile=99.5):
     if threshold is None:
         threshold = config.PREDICT_THRESHOLD_TEST
         
@@ -17,7 +18,7 @@ def evaluate_patient(patient_id="chb01", threshold=None):
     
     model = TCN_BiLSTM(num_channels=config.NUM_CHANNELS, num_classes=config.NUM_CLASSES).to(device)
     
-    # 核心改动：加载属于这个病人的专属模型！
+    # 加载专属模型
     model_path = os.path.join(config.BASE_DIR, 'outputs', 'models', f'best_model_{patient_id}.pth')
     
     if os.path.exists(model_path):
@@ -28,7 +29,6 @@ def evaluate_patient(patient_id="chb01", threshold=None):
         
     model.eval()
 
-    # 核心改动：确保测试集里只放当前的这 1 个病人
     test_patients = [patient_id]
     dataloader = get_unified_dataloaders(
         patients_list=test_patients,
@@ -37,9 +37,9 @@ def evaluate_patient(patient_id="chb01", threshold=None):
     )
     
     # ==========================================
-    # 3. 机器推理阶段 (生成原始 0/1 序列)
+    # 3. 机器推理阶段 (先号脉，存概率，不急着下定论！)
     # ==========================================
-    all_predictions = []
+    all_probs = []
     all_labels = []
     
     print("模型正在逐窗阅读几十个小时的脑电波，请稍候...")
@@ -49,14 +49,32 @@ def evaluate_patient(patient_id="chb01", threshold=None):
             outputs = model(inputs)
             
             probs = torch.softmax(outputs.data, dim=1)
-            # 爆改：使用外部传进来的动态阈值！不再用 config 里的死配置！
-            predicted = (probs[:, 1] > threshold).int()
-            
-            all_predictions.extend(predicted.cpu().numpy())
+            # 爆改：直接把发作概率存进列表，暂时不做 0/1 截断！
+            all_probs.extend(probs[:, 1].cpu().numpy())
             all_labels.extend(labels.numpy())
 
-    raw_predictions = np.array(all_predictions)
+    all_probs = np.array(all_probs)
     true_labels = np.array(all_labels)
+
+    # ==========================================
+    # 核心修正：基于非参数化分位数的自适应阈值
+    # ==========================================
+    if use_adaptive_threshold:
+        # 直接使用外部传入的 target_percentile 控制严格程度
+        dynamic_thresh = np.percentile(all_probs, target_percentile)
+        
+        # 物理安全锁：即便底噪再高，阈值也不能低于 0.2，最高不超过 0.9
+        final_thresh = np.clip(dynamic_thresh, 0.20, 0.90)
+        
+        print(f"\n[自适应阈值标定] 患者 {patient_id} 专属底噪分析:")
+        print(f"   - {target_percentile}% 分位数计算结果: {dynamic_thresh:.4f}")
+        print(f"   - 截断后最终使用阈值: {final_thresh:.4f}\n")
+    else:
+        final_thresh = threshold
+        print(f"\n[固定阈值模式] 使用预设死板阈值: {final_thresh:.4f}\n")
+
+    # 根据量身定制的 final_thresh 统一宣判
+    raw_predictions = (all_probs > final_thresh).astype(int)
 
     # ==========================================
     # 4. 临床后处理阶段 (老专家 + 缝合大师介入)
@@ -68,7 +86,6 @@ def evaluate_patient(patient_id="chb01", threshold=None):
     raw_ai_events = extract_events(smoothed_predictions, window_duration=config.CHBMIT_WINDOW_SEC)
     real_events = extract_events(true_labels, window_duration=config.CHBMIT_WINDOW_SEC)
     
-    # 动态绑定 2 倍 Collar 容差
     fusion_gap = 2 * config.COLLAR_TOLERANCE
     print(f"启动宏观事件融合引擎 (容忍断档 <= {fusion_gap}秒)...")
     ai_events = merge_close_events(raw_ai_events, min_gap=fusion_gap)
@@ -91,8 +108,8 @@ def evaluate_patient(patient_id="chb01", threshold=None):
         print(f"   - 报警事件 {idx+1}: 第 {ev['start']} 秒 -> 第 {ev['end']} 秒 (持续 {ev['duration']}s)")
     print("="*40)
 
-    # 终极 API 化：把事件列表吐出去，给未来的“判卷脚本”用！
     return real_events, ai_events
+
 
 def get_patient_total_hours(patient_id):
     """
@@ -112,12 +129,9 @@ def get_patient_total_hours(patient_id):
         if filename.endswith('.edf'):
             edf_path = os.path.join(edf_folder, filename)
             try:
-                # preload=False：不读数据，只读表头，速度快如闪电！
                 raw = mne.io.read_raw_edf(edf_path, preload=False, verbose=False)
-                # raw.times[-1] 获取最后一个采样点的时间戳（也就是该文件的总秒数）
                 total_seconds += raw.times[-1] 
             except Exception as e:
-                # 某些损坏的 .edf 文件直接容错跳过
                 print(f"文件 {filename} 头信息损坏，已跳过。原因: {e}")
                 
     total_hours = total_seconds / 3600.0
@@ -128,36 +142,25 @@ def get_patient_total_hours(patient_id):
 def calculate_clinical_metrics(real_events, ai_events, total_record_hours):
     """
     计算三大临床核心指标：灵敏度 (Sensitivity)、每小时误报率 (FD/h)、平均延迟 (Latency)
-    :param real_events: 医生标注的真实发作事件列表 [{'start': 100, 'end': 150}, ...]
-    :param ai_events: AI 预测的报警事件列表
-    :param total_record_hours: 该病人脑电波数据的总时长（小时），用于计算 FD/h
     """
-    hit_count = 0           # 成功命中的真实发作次数
-    delays = []             # 每次命中的延迟时间 (秒)
-    matched_ai_indices = set() # 记录哪些 AI 报警是有效的（剩下的全算作误报）
+    hit_count = 0           
+    delays = []             
+    matched_ai_indices = set() 
 
-    # 1. 遍历每一个真实的医生发作记录
     for real in real_events:
         detected = False
         
         for i, ai in enumerate(ai_events):
-            # 核心判断逻辑：只要 AI 的报警区间和真实发作区间有【任何重叠】，就算命中！
             if ai['start'] <= real['end'] and ai['end'] >= real['start']:
-                if not detected: # 如果这个真实事件还没被认领
+                if not detected: 
                     hit_count += 1
-                    # 延迟时间 = AI 报警开始时间 - 真实发作开始时间
-                    # （如果 AI 提前报警了，延迟可以是负数，临床上叫 anticipation）
                     delay = ai['start'] - real['start']
                     delays.append(delay)
                     detected = True
-                
-                # 把这个 AI 报警标记为“有功之臣”
                 matched_ai_indices.add(i)
 
-    # 2. 计算没命中的“垃圾误报”数量
     false_alarms = len(ai_events) - len(matched_ai_indices)
 
-    # 3. 终极指标结算
     sensitivity = hit_count / len(real_events) if len(real_events) > 0 else 0.0
     fd_per_hour = false_alarms / total_record_hours if total_record_hours > 0 else 0.0
     avg_delay = np.mean(delays) if len(delays) > 0 else 0.0
@@ -167,7 +170,6 @@ def calculate_clinical_metrics(real_events, ai_events, total_record_hours):
     print(f"   - 每小时误报率 (FD/h): {fd_per_hour:.2f} 次/小时")
     print(f"   - 平均报警延迟 (Latency): {avg_delay:.2f} 秒")
 
-    # 除了打印，我们还要把原始的“分子和分母”包装成字典扔出去！
     raw_counts = {
         'hit_count': hit_count,
         'real_total': len(real_events),
@@ -180,16 +182,12 @@ def calculate_clinical_metrics(real_events, ai_events, total_record_hours):
     return sensitivity, fd_per_hour, avg_delay, raw_counts
 
 if __name__ == "__main__":
-    patient_to_eval = "chb01"
+    patient_to_eval = "chb15"
     print(f"=== 正在呼叫临床评估流水线 ({patient_to_eval} 专场) ===")
     
-    # 1. AI 医生上阵：出具评估报告
-    real_events, ai_events = evaluate_patient(patient_id=patient_to_eval)
-    
-    # 2. 时空雷达开启：自动测算该病人监控总时长
+    real_events, ai_events = evaluate_patient(patient_id=patient_to_eval, use_adaptive_threshold=True)
     total_hours = get_patient_total_hours(patient_id=patient_to_eval)
     
-    # 3. 终极算分机器：量化临床指标
     if total_hours > 0:
         calculate_clinical_metrics(real_events, ai_events, total_record_hours=total_hours)
     else:

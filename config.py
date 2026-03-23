@@ -84,6 +84,8 @@ RESUME_TRAINING = False
 # 临床敏感度阈值：默认 0.5。降到 0.3 代表“宁可错杀伪影，绝不漏报发作”
 PREDICT_THRESHOLD = 0.5
 PREDICT_THRESHOLD_TEST = 0.4
+TARGRT_PERCENTILE = 97
+
 # 早停机制 (Early Stopping) 耐心值：
 # 如果连续 16 轮 Val F1 都没有打破历史记录，说明模型已经开始死记硬背（严重过拟合），强行拔电源！
 EARLY_STOP_PATIENCE = 20

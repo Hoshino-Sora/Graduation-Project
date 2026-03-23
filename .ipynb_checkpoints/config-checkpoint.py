@@ -84,6 +84,8 @@ RESUME_TRAINING = False
 # 临床敏感度阈值：默认 0.5。降到 0.3 代表“宁可错杀伪影，绝不漏报发作”
 PREDICT_THRESHOLD = 0.5
 PREDICT_THRESHOLD_TEST = 0.4
+TARGRT_PERCENTILE = 97
+
 # 早停机制 (Early Stopping) 耐心值：
 # 如果连续 16 轮 Val F1 都没有打破历史记录，说明模型已经开始死记硬背（严重过拟合），强行拔电源！
 EARLY_STOP_PATIENCE = 20
@@ -98,3 +100,12 @@ SMOOTHING_WINDOW = 5
 # Collar 容差评分区间 (单位：秒)
 # 国际脑电标准：只要预测发作时间在真实发作前后的 5 秒内，就算命中！
 COLLAR_TOLERANCE = 5.0
+
+# ==========================================
+# 6. 消融实验开关 (Ablation Study Switches)
+# ==========================================
+# Mixup 数据增强开关 (专治误报 FD/h 过高)
+USE_MIXUP = False
+# Mixup 的 Beta 分布参数。0.2 是医学时序信号的黄金甜点区
+# (这代表我们会做轻微的特征融合，而不是把波形糊成一团)
+MIXUP_ALPHA = 0.2

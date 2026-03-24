@@ -1,79 +1,78 @@
 import numpy as np
 import pywt
 
-def compute_statistics(coef):
+def compute_wavelet_entropy(energies):
     """
-    计算单个频段（小波系数）的统计与非线性特征
-    :param coef: 某一个频段的小波系数数组
-    :return: 包含该频段特征的列表
+    新增神级特征：计算小波能量熵 (Wavelet Energy Entropy)
+    反映大脑的混乱程度。癫痫发作时神经元高度同步，熵值会显著下降。
     """
-    # 1. 能量 (Energy): 反映该频段的剧烈程度，癫痫发作时高频能量会突增
-    energy = np.sum(np.square(coef))
+    total_energy = np.sum(energies)
+    if total_energy == 0:
+        return 0.0
     
-    # 2. 方差 (Variance) 与 标准差 (Standard Deviation): 反映信号的波动幅度
-    variance = np.var(coef)
-    std_dev = np.std(coef)
+    # 计算每个频段的能量占比 (概率分布)
+    probs = energies / total_energy
     
-    # 3. 均值 (Mean)
-    mean_val = np.mean(coef)
+    # 过滤掉概率为0的项，防止 log2(0) 报错
+    probs = probs[probs > 0]
     
-    # 将这4个核心标量特征打包
-    return [energy, variance, std_dev, mean_val]
+    # 香农熵公式：- sum(p * log2(p))
+    entropy = -np.sum(probs * np.log2(probs))
+    return entropy
 
-def extract_features_from_window(window_data, wavelet='db4', level=4):
+def extract_features_from_multichannel_window(window_data, wavelet='db4', level=4):
     """
-    对单段脑电窗口进行离散小波变换 (DWT) 并提取特征
-    :param window_data: 一维数组，形状如 (4097,)
-    :param wavelet: 小波基函数，'db4' 在脑电分析中最经典
-    :param level: 分解层数。4层分解会产生 5 个频段 (1个低频近似cA4 + 4个高频细节cD4, cD3, cD2, cD1)
-    :return: 提取出的一维特征向量
+    对【多通道】脑电窗口进行 DWT 并提取物理特征
+    :param window_data: 形状为 (Num_Channels, TimeSteps) -> 例如 CHB-MIT 的 (18, 512)
+    :param wavelet: 小波基函数 'db4'
+    :param level: 分解层数
+    :return: 拍平的一维特征向量
     """
-    # 核心动作：执行 DWT 分解
-    # coeffs 的结构为 [cA4, cD4, cD3, cD2, cD1]，对应脑电的不同生理频段
-    coeffs = pywt.wavedec(window_data, wavelet, level=level)
+    num_channels = window_data.shape[0]
+    all_channel_features = []
     
-    window_features = []
-    # 遍历拆解出来的每一个频段
-    for coef in coeffs:
-        # 计算该频段的统计特征，并拼接到总列表中
-        band_features = compute_statistics(coef)
-        window_features.extend(band_features)
+    # 遍历每一个电极通道
+    for ch in range(num_channels):
+        channel_signal = window_data[ch]
         
-    return np.array(window_features)
-
-def extract_all_features(X):
-    """
-    批量处理所有窗口数据的特征提取流水线
-    :param X: 标准化后的原始脑电矩阵，形状 (Samples, TimeSteps) -> 如 Bonn 的 (5000, 4097)
-    :return: 特征矩阵 (Samples, N_features)
-    """
-    print(f"开始提取 DWT 频域特征，总样本数: {X.shape[0]} ...")
-    
-    all_features = []
-    for i in range(X.shape[0]):
-        # 因为 Bonn 是单通道，X[i] 就是一个一维的时间序列
-        feat = extract_features_from_window(X[i])
-        all_features.append(feat)
+        # DWT 分解：产生 5 个频段 (cA4, cD4, cD3, cD2, cD1)
+        coeffs = pywt.wavedec(channel_signal, wavelet, level=level)
         
-        # 进度条
-        if (i + 1) % 1000 == 0:
-            print(f"   -> 已处理 {i + 1} / {X.shape[0]} 个样本...")
+        ch_features = []
+        energies = []
+        
+        # 提取各个频段的统计特征
+        for coef in coeffs:
+            energy = np.sum(np.square(coef))
+            variance = np.var(coef)
+            std_dev = np.std(coef)
+            mean_val = np.mean(coef)
             
-    feature_matrix = np.array(all_features)
-    print(f"特征提取完成！特征矩阵维度: {feature_matrix.shape}")
-    return feature_matrix
+            ch_features.extend([energy, variance, std_dev, mean_val])
+            energies.append(energy)
+            
+        # 算完该通道所有频段能量后，追加计算小波熵
+        entropy = compute_wavelet_entropy(np.array(energies))
+        ch_features.append(entropy)
+        
+        # 将该通道的所有特征拼接到总列表中
+        all_channel_features.extend(ch_features)
+        
+    # 返回一个极其硬核的特征向量
+    return np.array(all_channel_features, dtype=np.float32)
 
 # --- 独立联调测试 ---
 if __name__ == "__main__":
-    # 模拟一个 Bonn 数据集中的脑电波窗口 (假设包含 4097 个采样点)
-    dummy_window = np.random.randn(4097)
+    # 模拟 CHB-MIT 的一个 2 秒切窗：18 个通道，256Hz采样率 -> 512 个采样点
+    dummy_channels = 18
+    dummy_timesteps = 512
+    dummy_window = np.random.randn(dummy_channels, dummy_timesteps)
     
-    print("测试单窗口特征提取...")
-    single_feat = extract_features_from_window(dummy_window)
-    # 因为 5个频段 * 每个频段4个特征 = 20 个特征
-    print(f"单窗口特征维度: {single_feat.shape} (预期为 20)")
+    print("测试多通道 DWT 特征提取...")
+    features = extract_features_from_multichannel_window(dummy_window)
     
-    print("\n测试批量特征提取...")
-    dummy_X = np.random.randn(10, 4097) # 模拟 10 个样本
-    X_features = extract_all_features(dummy_X)
-    print(f"批量特征矩阵维度: {X_features.shape} (预期为 10x20)")
+    # 算笔账：5个频段 * 每个频段4个特征 = 20 个特征
+    # 追加 1 个小波熵 = 21 个特征/通道
+    # 18 个通道 * 21 = 378 个特征
+    print(f"输入窗口维度: {dummy_window.shape}")
+    print(f"输出先验物理特征维度: {features.shape} (预期为 18 * 21 = 378)")

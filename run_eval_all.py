@@ -108,6 +108,6 @@ if __name__ == "__main__":
     run_global_inference(
         # target_patients=["chb15", "chb17"], 
         target_patients=None,
-        use_adaptive=True, 
+        use_adaptive=config.USE_ADAPTIVE, 
         target_percentile=config.TARGRT_PERCENTILE
     )

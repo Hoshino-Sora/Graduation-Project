@@ -668,64 +668,552 @@
 
 [全新启动] 开启全新双分支训练流水线...
 
-   [Epoch 1/100] Batch [50/2666] | Train Loss: 0.0344
-   [Epoch 1/100] Batch [100/2666] | Train Loss: 0.0742
-   [Epoch 1/100] Batch [150/2666] | Train Loss: 0.0877
-   [Epoch 1/100] Batch [200/2666] | Train Loss: 0.0137
-   [Epoch 1/100] Batch [250/2666] | Train Loss: 0.0187
-   [Epoch 1/100] Batch [300/2666] | Train Loss: 0.0449
-   [Epoch 1/100] Batch [350/2666] | Train Loss: 0.0170
-   [Epoch 1/100] Batch [400/2666] | Train Loss: 0.0173
-   [Epoch 1/100] Batch [450/2666] | Train Loss: 0.0379
-   [Epoch 1/100] Batch [500/2666] | Train Loss: 0.0148
-   [Epoch 1/100] Batch [550/2666] | Train Loss: 0.0112
-   [Epoch 1/100] Batch [600/2666] | Train Loss: 0.0092
-   [Epoch 1/100] Batch [650/2666] | Train Loss: 0.0017
-   [Epoch 1/100] Batch [700/2666] | Train Loss: 0.0278
-   [Epoch 1/100] Batch [750/2666] | Train Loss: 0.0054
-   [Epoch 1/100] Batch [800/2666] | Train Loss: 0.0037
-   [Epoch 1/100] Batch [850/2666] | Train Loss: 0.0037
-   [Epoch 1/100] Batch [900/2666] | Train Loss: 0.0026
-   [Epoch 1/100] Batch [950/2666] | Train Loss: 0.0184
-   [Epoch 1/100] Batch [1000/2666] | Train Loss: 0.0332
-   [Epoch 1/100] Batch [1050/2666] | Train Loss: 0.0201
-   [Epoch 1/100] Batch [1100/2666] | Train Loss: 0.0253
-   [Epoch 1/100] Batch [1150/2666] | Train Loss: 0.0155
-   [Epoch 1/100] Batch [1200/2666] | Train Loss: 0.0314
-   [Epoch 1/100] Batch [1250/2666] | Train Loss: 0.0063
-   [Epoch 1/100] Batch [1300/2666] | Train Loss: 0.0078
-   [Epoch 1/100] Batch [1350/2666] | Train Loss: 0.0158
-   [Epoch 1/100] Batch [1400/2666] | Train Loss: 0.0052
-   [Epoch 1/100] Batch [1450/2666] | Train Loss: 0.0133
-   [Epoch 1/100] Batch [1500/2666] | Train Loss: 0.0063
-   [Epoch 1/100] Batch [1550/2666] | Train Loss: 0.0208
-   [Epoch 1/100] Batch [1600/2666] | Train Loss: 0.0215
-   [Epoch 1/100] Batch [1650/2666] | Train Loss: 0.0271
-   [Epoch 1/100] Batch [1700/2666] | Train Loss: 0.0343
-   [Epoch 1/100] Batch [1750/2666] | Train Loss: 0.0131
-   [Epoch 1/100] Batch [1800/2666] | Train Loss: 0.0035
-   [Epoch 1/100] Batch [1850/2666] | Train Loss: 0.0097
-   [Epoch 1/100] Batch [1900/2666] | Train Loss: 0.0169
-   [Epoch 1/100] Batch [1950/2666] | Train Loss: 0.0130
-   [Epoch 1/100] Batch [2000/2666] | Train Loss: 0.0159
-   [Epoch 1/100] Batch [2050/2666] | Train Loss: 0.0020
-   [Epoch 1/100] Batch [2100/2666] | Train Loss: 0.0076
-   [Epoch 1/100] Batch [2150/2666] | Train Loss: 0.0503
-   [Epoch 1/100] Batch [2200/2666] | Train Loss: 0.0091
-   [Epoch 1/100] Batch [2250/2666] | Train Loss: 0.0180
-   [Epoch 1/100] Batch [2300/2666] | Train Loss: 0.0289
-   [Epoch 1/100] Batch [2350/2666] | Train Loss: 0.0774
-   [Epoch 1/100] Batch [2400/2666] | Train Loss: 0.0016
-   [Epoch 1/100] Batch [2450/2666] | Train Loss: 0.0023
-   [Epoch 1/100] Batch [2500/2666] | Train Loss: 0.0052
-   [Epoch 1/100] Batch [2550/2666] | Train Loss: 0.0045
-   [Epoch 1/100] Batch [2600/2666] | Train Loss: 0.0026
-   [Epoch 1/100] Batch [2650/2666] | Train Loss: 0.0176
+   [Epoch 1/100] Batch [50/2666] | Train Loss: 0.0401
+   [Epoch 1/100] Batch [100/2666] | Train Loss: 0.0150
+   [Epoch 1/100] Batch [150/2666] | Train Loss: 0.0458
+   [Epoch 1/100] Batch [200/2666] | Train Loss: 0.0393
+   [Epoch 1/100] Batch [250/2666] | Train Loss: 0.0266
+   [Epoch 1/100] Batch [300/2666] | Train Loss: 0.0040
+   [Epoch 1/100] Batch [350/2666] | Train Loss: 0.0333
+   [Epoch 1/100] Batch [400/2666] | Train Loss: 0.0320
+   [Epoch 1/100] Batch [450/2666] | Train Loss: 0.0041
+   [Epoch 1/100] Batch [500/2666] | Train Loss: 0.0012
+   [Epoch 1/100] Batch [550/2666] | Train Loss: 0.0032
+   [Epoch 1/100] Batch [600/2666] | Train Loss: 0.0234
+   [Epoch 1/100] Batch [650/2666] | Train Loss: 0.0427
+   [Epoch 1/100] Batch [700/2666] | Train Loss: 0.0244
+   [Epoch 1/100] Batch [750/2666] | Train Loss: 0.0790
+   [Epoch 1/100] Batch [800/2666] | Train Loss: 0.0090
+   [Epoch 1/100] Batch [850/2666] | Train Loss: 0.0094
+   [Epoch 1/100] Batch [900/2666] | Train Loss: 0.0257
+   [Epoch 1/100] Batch [950/2666] | Train Loss: 0.0416
+   [Epoch 1/100] Batch [1000/2666] | Train Loss: 0.0285
+   [Epoch 1/100] Batch [1050/2666] | Train Loss: 0.0265
+   [Epoch 1/100] Batch [1100/2666] | Train Loss: 0.0233
+   [Epoch 1/100] Batch [1150/2666] | Train Loss: 0.0416
+   [Epoch 1/100] Batch [1200/2666] | Train Loss: 0.0037
+   [Epoch 1/100] Batch [1250/2666] | Train Loss: 0.0218
+   [Epoch 1/100] Batch [1300/2666] | Train Loss: 0.0219
+   [Epoch 1/100] Batch [1350/2666] | Train Loss: 0.0276
+   [Epoch 1/100] Batch [1400/2666] | Train Loss: 0.0293
+   [Epoch 1/100] Batch [1450/2666] | Train Loss: 0.0071
+   [Epoch 1/100] Batch [1500/2666] | Train Loss: 0.0161
+   [Epoch 1/100] Batch [1550/2666] | Train Loss: 0.0049
+   [Epoch 1/100] Batch [1600/2666] | Train Loss: 0.0050
+   [Epoch 1/100] Batch [1650/2666] | Train Loss: 0.0198
+   [Epoch 1/100] Batch [1700/2666] | Train Loss: 0.0675
+   [Epoch 1/100] Batch [1750/2666] | Train Loss: 0.0287
+   [Epoch 1/100] Batch [1800/2666] | Train Loss: 0.0040
+   [Epoch 1/100] Batch [1850/2666] | Train Loss: 0.0259
+   [Epoch 1/100] Batch [1900/2666] | Train Loss: 0.0082
+   [Epoch 1/100] Batch [1950/2666] | Train Loss: 0.0117
+   [Epoch 1/100] Batch [2000/2666] | Train Loss: 0.0316
+   [Epoch 1/100] Batch [2050/2666] | Train Loss: 0.0209
+   [Epoch 1/100] Batch [2100/2666] | Train Loss: 0.0088
+   [Epoch 1/100] Batch [2150/2666] | Train Loss: 0.0430
+   [Epoch 1/100] Batch [2200/2666] | Train Loss: 0.0244
+   [Epoch 1/100] Batch [2250/2666] | Train Loss: 0.0029
+   [Epoch 1/100] Batch [2300/2666] | Train Loss: 0.0213
+   [Epoch 1/100] Batch [2350/2666] | Train Loss: 0.0043
+   [Epoch 1/100] Batch [2400/2666] | Train Loss: 0.0048
+   [Epoch 1/100] Batch [2450/2666] | Train Loss: 0.0278
+   [Epoch 1/100] Batch [2500/2666] | Train Loss: 0.0067
+   [Epoch 1/100] Batch [2550/2666] | Train Loss: 0.0344
+   [Epoch 1/100] Batch [2600/2666] | Train Loss: 0.0040
+   [Epoch 1/100] Batch [2650/2666] | Train Loss: 0.0073
 Epoch 1 结束，正在进行验证集全量体检...
 --------------------------------------------------
    Epoch [1/100] 战报:
-   Train Loss: 0.0194 | Val Loss: 0.0329
-   Val F1-Score: 0.3408
-破纪录了！Val F1 从 -1.0000 提升至 0.3408，正在保存神级权重...
+   Train Loss: 0.0209 | Val Loss: 0.0397
+   Val F1-Score: 0.4017
+破纪录了！Val F1 从 -1.0000 提升至 0.4017，正在保存神级权重...
+--------------------------------------------------
+
+   [Epoch 2/100] Batch [50/2666] | Train Loss: 0.0121
+   [Epoch 2/100] Batch [100/2666] | Train Loss: 0.0046
+   [Epoch 2/100] Batch [150/2666] | Train Loss: 0.0032
+   [Epoch 2/100] Batch [200/2666] | Train Loss: 0.0456
+   [Epoch 2/100] Batch [250/2666] | Train Loss: 0.0019
+   [Epoch 2/100] Batch [300/2666] | Train Loss: 0.0285
+   [Epoch 2/100] Batch [350/2666] | Train Loss: 0.0265
+   [Epoch 2/100] Batch [400/2666] | Train Loss: 0.0012
+   [Epoch 2/100] Batch [450/2666] | Train Loss: 0.0050
+   [Epoch 2/100] Batch [500/2666] | Train Loss: 0.0071
+   [Epoch 2/100] Batch [550/2666] | Train Loss: 0.0239
+   [Epoch 2/100] Batch [600/2666] | Train Loss: 0.0060
+   [Epoch 2/100] Batch [650/2666] | Train Loss: 0.0101
+   [Epoch 2/100] Batch [700/2666] | Train Loss: 0.0206
+   [Epoch 2/100] Batch [750/2666] | Train Loss: 0.0013
+   [Epoch 2/100] Batch [800/2666] | Train Loss: 0.0202
+   [Epoch 2/100] Batch [850/2666] | Train Loss: 0.0567
+   [Epoch 2/100] Batch [900/2666] | Train Loss: 0.0133
+   [Epoch 2/100] Batch [950/2666] | Train Loss: 0.0307
+   [Epoch 2/100] Batch [1000/2666] | Train Loss: 0.0277
+   [Epoch 2/100] Batch [1050/2666] | Train Loss: 0.0009
+   [Epoch 2/100] Batch [1100/2666] | Train Loss: 0.0117
+   [Epoch 2/100] Batch [1150/2666] | Train Loss: 0.0305
+   [Epoch 2/100] Batch [1200/2666] | Train Loss: 0.0255
+   [Epoch 2/100] Batch [1250/2666] | Train Loss: 0.0014
+   [Epoch 2/100] Batch [1300/2666] | Train Loss: 0.0157
+   [Epoch 2/100] Batch [1350/2666] | Train Loss: 0.0024
+   [Epoch 2/100] Batch [1400/2666] | Train Loss: 0.0354
+   [Epoch 2/100] Batch [1450/2666] | Train Loss: 0.0106
+   [Epoch 2/100] Batch [1500/2666] | Train Loss: 0.0280
+   [Epoch 2/100] Batch [1550/2666] | Train Loss: 0.0332
+   [Epoch 2/100] Batch [1600/2666] | Train Loss: 0.0037
+   [Epoch 2/100] Batch [1650/2666] | Train Loss: 0.0039
+   [Epoch 2/100] Batch [1700/2666] | Train Loss: 0.0010
+   [Epoch 2/100] Batch [1750/2666] | Train Loss: 0.0404
+   [Epoch 2/100] Batch [1800/2666] | Train Loss: 0.0055
+   [Epoch 2/100] Batch [1850/2666] | Train Loss: 0.0293
+   [Epoch 2/100] Batch [1900/2666] | Train Loss: 0.0047
+   [Epoch 2/100] Batch [1950/2666] | Train Loss: 0.0034
+   [Epoch 2/100] Batch [2000/2666] | Train Loss: 0.0135
+   [Epoch 2/100] Batch [2050/2666] | Train Loss: 0.0131
+   [Epoch 2/100] Batch [2100/2666] | Train Loss: 0.0330
+   [Epoch 2/100] Batch [2150/2666] | Train Loss: 0.0040
+   [Epoch 2/100] Batch [2200/2666] | Train Loss: 0.0320
+   [Epoch 2/100] Batch [2250/2666] | Train Loss: 0.0058
+   [Epoch 2/100] Batch [2300/2666] | Train Loss: 0.0036
+   [Epoch 2/100] Batch [2350/2666] | Train Loss: 0.0046
+   [Epoch 2/100] Batch [2400/2666] | Train Loss: 0.0039
+   [Epoch 2/100] Batch [2450/2666] | Train Loss: 0.0179
+   [Epoch 2/100] Batch [2500/2666] | Train Loss: 0.0027
+   [Epoch 2/100] Batch [2550/2666] | Train Loss: 0.0023
+   [Epoch 2/100] Batch [2600/2666] | Train Loss: 0.0241
+   [Epoch 2/100] Batch [2650/2666] | Train Loss: 0.0043
+Epoch 2 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [2/100] 战报:
+   Train Loss: 0.0141 | Val Loss: 0.0304
+   Val F1-Score: 0.4396
+破纪录了！Val F1 从 0.4017 提升至 0.4396，正在保存神级权重...
+--------------------------------------------------
+
+   [Epoch 3/100] Batch [50/2666] | Train Loss: 0.0377
+   [Epoch 3/100] Batch [100/2666] | Train Loss: 0.0049
+   [Epoch 3/100] Batch [150/2666] | Train Loss: 0.0082
+   [Epoch 3/100] Batch [200/2666] | Train Loss: 0.0167
+   [Epoch 3/100] Batch [250/2666] | Train Loss: 0.0315
+   [Epoch 3/100] Batch [300/2666] | Train Loss: 0.0211
+   [Epoch 3/100] Batch [350/2666] | Train Loss: 0.0090
+   [Epoch 3/100] Batch [400/2666] | Train Loss: 0.0031
+   [Epoch 3/100] Batch [450/2666] | Train Loss: 0.0051
+   [Epoch 3/100] Batch [500/2666] | Train Loss: 0.0017
+   [Epoch 3/100] Batch [550/2666] | Train Loss: 0.0071
+   [Epoch 3/100] Batch [600/2666] | Train Loss: 0.0027
+   [Epoch 3/100] Batch [650/2666] | Train Loss: 0.0021
+   [Epoch 3/100] Batch [700/2666] | Train Loss: 0.0100
+   [Epoch 3/100] Batch [750/2666] | Train Loss: 0.0056
+   [Epoch 3/100] Batch [800/2666] | Train Loss: 0.0033
+   [Epoch 3/100] Batch [850/2666] | Train Loss: 0.0017
+   [Epoch 3/100] Batch [900/2666] | Train Loss: 0.0137
+   [Epoch 3/100] Batch [950/2666] | Train Loss: 0.0233
+   [Epoch 3/100] Batch [1000/2666] | Train Loss: 0.0006
+   [Epoch 3/100] Batch [1050/2666] | Train Loss: 0.0049
+   [Epoch 3/100] Batch [1100/2666] | Train Loss: 0.0464
+   [Epoch 3/100] Batch [1150/2666] | Train Loss: 0.0020
+   [Epoch 3/100] Batch [1200/2666] | Train Loss: 0.0012
+   [Epoch 3/100] Batch [1250/2666] | Train Loss: 0.0023
+   [Epoch 3/100] Batch [1300/2666] | Train Loss: 0.0024
+   [Epoch 3/100] Batch [1350/2666] | Train Loss: 0.0054
+   [Epoch 3/100] Batch [1400/2666] | Train Loss: 0.0081
+   [Epoch 3/100] Batch [1450/2666] | Train Loss: 0.0034
+   [Epoch 3/100] Batch [1500/2666] | Train Loss: 0.0190
+   [Epoch 3/100] Batch [1550/2666] | Train Loss: 0.0223
+   [Epoch 3/100] Batch [1600/2666] | Train Loss: 0.0012
+   [Epoch 3/100] Batch [1650/2666] | Train Loss: 0.0277
+   [Epoch 3/100] Batch [1700/2666] | Train Loss: 0.0016
+   [Epoch 3/100] Batch [1750/2666] | Train Loss: 0.0017
+   [Epoch 3/100] Batch [1800/2666] | Train Loss: 0.0026
+   [Epoch 3/100] Batch [1850/2666] | Train Loss: 0.0165
+   [Epoch 3/100] Batch [1900/2666] | Train Loss: 0.0010
+   [Epoch 3/100] Batch [1950/2666] | Train Loss: 0.0022
+   [Epoch 3/100] Batch [2000/2666] | Train Loss: 0.0022
+   [Epoch 3/100] Batch [2050/2666] | Train Loss: 0.0456
+   [Epoch 3/100] Batch [2100/2666] | Train Loss: 0.0222
+   [Epoch 3/100] Batch [2150/2666] | Train Loss: 0.0043
+   [Epoch 3/100] Batch [2200/2666] | Train Loss: 0.0015
+   [Epoch 3/100] Batch [2250/2666] | Train Loss: 0.0212
+   [Epoch 3/100] Batch [2300/2666] | Train Loss: 0.0151
+   [Epoch 3/100] Batch [2350/2666] | Train Loss: 0.0027
+   [Epoch 3/100] Batch [2400/2666] | Train Loss: 0.0047
+   [Epoch 3/100] Batch [2450/2666] | Train Loss: 0.0035
+   [Epoch 3/100] Batch [2500/2666] | Train Loss: 0.0092
+   [Epoch 3/100] Batch [2550/2666] | Train Loss: 0.0029
+   [Epoch 3/100] Batch [2600/2666] | Train Loss: 0.0020
+   [Epoch 3/100] Batch [2650/2666] | Train Loss: 0.0416
+Epoch 3 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [3/100] 战报:
+   Train Loss: 0.0129 | Val Loss: 0.0294
+   Val F1-Score: 0.5179
+破纪录了！Val F1 从 0.4396 提升至 0.5179，正在保存神级权重...
+--------------------------------------------------
+
+   [Epoch 4/100] Batch [50/2666] | Train Loss: 0.0313
+   [Epoch 4/100] Batch [100/2666] | Train Loss: 0.0020
+   [Epoch 4/100] Batch [150/2666] | Train Loss: 0.0029
+   [Epoch 4/100] Batch [200/2666] | Train Loss: 0.0063
+   [Epoch 4/100] Batch [250/2666] | Train Loss: 0.0070
+   [Epoch 4/100] Batch [300/2666] | Train Loss: 0.0261
+   [Epoch 4/100] Batch [350/2666] | Train Loss: 0.0043
+   [Epoch 4/100] Batch [400/2666] | Train Loss: 0.0241
+   [Epoch 4/100] Batch [450/2666] | Train Loss: 0.0058
+   [Epoch 4/100] Batch [500/2666] | Train Loss: 0.0609
+   [Epoch 4/100] Batch [550/2666] | Train Loss: 0.0046
+   [Epoch 4/100] Batch [600/2666] | Train Loss: 0.0023
+   [Epoch 4/100] Batch [650/2666] | Train Loss: 0.0224
+   [Epoch 4/100] Batch [700/2666] | Train Loss: 0.0025
+   [Epoch 4/100] Batch [750/2666] | Train Loss: 0.0273
+   [Epoch 4/100] Batch [800/2666] | Train Loss: 0.0054
+   [Epoch 4/100] Batch [850/2666] | Train Loss: 0.0026
+   [Epoch 4/100] Batch [900/2666] | Train Loss: 0.0101
+   [Epoch 4/100] Batch [950/2666] | Train Loss: 0.0185
+   [Epoch 4/100] Batch [1000/2666] | Train Loss: 0.0043
+   [Epoch 4/100] Batch [1050/2666] | Train Loss: 0.0195
+   [Epoch 4/100] Batch [1100/2666] | Train Loss: 0.0031
+   [Epoch 4/100] Batch [1150/2666] | Train Loss: 0.0044
+   [Epoch 4/100] Batch [1200/2666] | Train Loss: 0.0013
+   [Epoch 4/100] Batch [1250/2666] | Train Loss: 0.0037
+   [Epoch 4/100] Batch [1300/2666] | Train Loss: 0.0054
+   [Epoch 4/100] Batch [1350/2666] | Train Loss: 0.0164
+   [Epoch 4/100] Batch [1400/2666] | Train Loss: 0.0171
+   [Epoch 4/100] Batch [1450/2666] | Train Loss: 0.0016
+   [Epoch 4/100] Batch [1500/2666] | Train Loss: 0.0173
+   [Epoch 4/100] Batch [1550/2666] | Train Loss: 0.0254
+   [Epoch 4/100] Batch [1600/2666] | Train Loss: 0.0044
+   [Epoch 4/100] Batch [1650/2666] | Train Loss: 0.0396
+   [Epoch 4/100] Batch [1700/2666] | Train Loss: 0.0027
+   [Epoch 4/100] Batch [1750/2666] | Train Loss: 0.0157
+   [Epoch 4/100] Batch [1800/2666] | Train Loss: 0.0031
+   [Epoch 4/100] Batch [1850/2666] | Train Loss: 0.0246
+   [Epoch 4/100] Batch [1900/2666] | Train Loss: 0.0012
+   [Epoch 4/100] Batch [1950/2666] | Train Loss: 0.0030
+   [Epoch 4/100] Batch [2000/2666] | Train Loss: 0.0040
+   [Epoch 4/100] Batch [2050/2666] | Train Loss: 0.0170
+   [Epoch 4/100] Batch [2100/2666] | Train Loss: 0.0009
+   [Epoch 4/100] Batch [2150/2666] | Train Loss: 0.0022
+   [Epoch 4/100] Batch [2200/2666] | Train Loss: 0.0020
+   [Epoch 4/100] Batch [2250/2666] | Train Loss: 0.0197
+   [Epoch 4/100] Batch [2300/2666] | Train Loss: 0.0247
+   [Epoch 4/100] Batch [2350/2666] | Train Loss: 0.0033
+   [Epoch 4/100] Batch [2400/2666] | Train Loss: 0.0006
+   [Epoch 4/100] Batch [2450/2666] | Train Loss: 0.0015
+   [Epoch 4/100] Batch [2500/2666] | Train Loss: 0.0072
+   [Epoch 4/100] Batch [2550/2666] | Train Loss: 0.0212
+   [Epoch 4/100] Batch [2600/2666] | Train Loss: 0.0005
+   [Epoch 4/100] Batch [2650/2666] | Train Loss: 0.0010
+Epoch 4 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [4/100] 战报:
+   Train Loss: 0.0119 | Val Loss: 0.0261
+   Val F1-Score: 0.5319
+破纪录了！Val F1 从 0.5179 提升至 0.5319，正在保存神级权重...
+--------------------------------------------------
+
+   [Epoch 5/100] Batch [50/2666] | Train Loss: 0.0266
+   [Epoch 5/100] Batch [100/2666] | Train Loss: 0.0032
+   [Epoch 5/100] Batch [150/2666] | Train Loss: 0.0313
+   [Epoch 5/100] Batch [200/2666] | Train Loss: 0.0285
+   [Epoch 5/100] Batch [250/2666] | Train Loss: 0.0007
+   [Epoch 5/100] Batch [300/2666] | Train Loss: 0.0058
+   [Epoch 5/100] Batch [350/2666] | Train Loss: 0.0046
+   [Epoch 5/100] Batch [400/2666] | Train Loss: 0.0016
+   [Epoch 5/100] Batch [450/2666] | Train Loss: 0.0021
+   [Epoch 5/100] Batch [500/2666] | Train Loss: 0.0018
+   [Epoch 5/100] Batch [550/2666] | Train Loss: 0.0111
+   [Epoch 5/100] Batch [600/2666] | Train Loss: 0.0624
+   [Epoch 5/100] Batch [650/2666] | Train Loss: 0.0082
+   [Epoch 5/100] Batch [700/2666] | Train Loss: 0.0019
+   [Epoch 5/100] Batch [750/2666] | Train Loss: 0.0028
+   [Epoch 5/100] Batch [800/2666] | Train Loss: 0.0039
+   [Epoch 5/100] Batch [850/2666] | Train Loss: 0.0376
+   [Epoch 5/100] Batch [900/2666] | Train Loss: 0.0208
+   [Epoch 5/100] Batch [950/2666] | Train Loss: 0.0036
+   [Epoch 5/100] Batch [1000/2666] | Train Loss: 0.0014
+   [Epoch 5/100] Batch [1050/2666] | Train Loss: 0.0045
+   [Epoch 5/100] Batch [1100/2666] | Train Loss: 0.0090
+   [Epoch 5/100] Batch [1150/2666] | Train Loss: 0.0030
+   [Epoch 5/100] Batch [1200/2666] | Train Loss: 0.0289
+   [Epoch 5/100] Batch [1250/2666] | Train Loss: 0.0015
+   [Epoch 5/100] Batch [1300/2666] | Train Loss: 0.0050
+   [Epoch 5/100] Batch [1350/2666] | Train Loss: 0.0049
+   [Epoch 5/100] Batch [1400/2666] | Train Loss: 0.0043
+   [Epoch 5/100] Batch [1450/2666] | Train Loss: 0.0325
+   [Epoch 5/100] Batch [1500/2666] | Train Loss: 0.0011
+   [Epoch 5/100] Batch [1550/2666] | Train Loss: 0.0047
+   [Epoch 5/100] Batch [1600/2666] | Train Loss: 0.0370
+   [Epoch 5/100] Batch [1650/2666] | Train Loss: 0.0033
+   [Epoch 5/100] Batch [1700/2666] | Train Loss: 0.0152
+   [Epoch 5/100] Batch [1750/2666] | Train Loss: 0.0143
+   [Epoch 5/100] Batch [1800/2666] | Train Loss: 0.0202
+   [Epoch 5/100] Batch [1850/2666] | Train Loss: 0.0265
+   [Epoch 5/100] Batch [1900/2666] | Train Loss: 0.0013
+   [Epoch 5/100] Batch [1950/2666] | Train Loss: 0.0018
+   [Epoch 5/100] Batch [2000/2666] | Train Loss: 0.0307
+   [Epoch 5/100] Batch [2050/2666] | Train Loss: 0.0413
+   [Epoch 5/100] Batch [2100/2666] | Train Loss: 0.0023
+   [Epoch 5/100] Batch [2150/2666] | Train Loss: 0.0038
+   [Epoch 5/100] Batch [2200/2666] | Train Loss: 0.0015
+   [Epoch 5/100] Batch [2250/2666] | Train Loss: 0.0406
+   [Epoch 5/100] Batch [2300/2666] | Train Loss: 0.0007
+   [Epoch 5/100] Batch [2350/2666] | Train Loss: 0.0047
+   [Epoch 5/100] Batch [2400/2666] | Train Loss: 0.0015
+   [Epoch 5/100] Batch [2450/2666] | Train Loss: 0.0197
+   [Epoch 5/100] Batch [2500/2666] | Train Loss: 0.0019
+   [Epoch 5/100] Batch [2550/2666] | Train Loss: 0.0042
+   [Epoch 5/100] Batch [2600/2666] | Train Loss: 0.0099
+   [Epoch 5/100] Batch [2650/2666] | Train Loss: 0.0056
+Epoch 5 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [5/100] 战报:
+   Train Loss: 0.0113 | Val Loss: 0.0341
+   Val F1-Score: 0.5343
+破纪录了！Val F1 从 0.5319 提升至 0.5343，正在保存神级权重...
+--------------------------------------------------
+
+   [Epoch 6/100] Batch [50/2666] | Train Loss: 0.0022
+   [Epoch 6/100] Batch [100/2666] | Train Loss: 0.0032
+   [Epoch 6/100] Batch [150/2666] | Train Loss: 0.0004
+   [Epoch 6/100] Batch [200/2666] | Train Loss: 0.0140
+   [Epoch 6/100] Batch [250/2666] | Train Loss: 0.0043
+   [Epoch 6/100] Batch [300/2666] | Train Loss: 0.0029
+   [Epoch 6/100] Batch [350/2666] | Train Loss: 0.0036
+   [Epoch 6/100] Batch [400/2666] | Train Loss: 0.0014
+   [Epoch 6/100] Batch [450/2666] | Train Loss: 0.0029
+   [Epoch 6/100] Batch [500/2666] | Train Loss: 0.0178
+   [Epoch 6/100] Batch [550/2666] | Train Loss: 0.0012
+   [Epoch 6/100] Batch [600/2666] | Train Loss: 0.0267
+   [Epoch 6/100] Batch [650/2666] | Train Loss: 0.0121
+   [Epoch 6/100] Batch [700/2666] | Train Loss: 0.0008
+   [Epoch 6/100] Batch [750/2666] | Train Loss: 0.0028
+   [Epoch 6/100] Batch [800/2666] | Train Loss: 0.0142
+   [Epoch 6/100] Batch [850/2666] | Train Loss: 0.0225
+   [Epoch 6/100] Batch [900/2666] | Train Loss: 0.0064
+   [Epoch 6/100] Batch [950/2666] | Train Loss: 0.0046
+   [Epoch 6/100] Batch [1000/2666] | Train Loss: 0.0008
+   [Epoch 6/100] Batch [1050/2666] | Train Loss: 0.0026
+   [Epoch 6/100] Batch [1100/2666] | Train Loss: 0.0296
+   [Epoch 6/100] Batch [1150/2666] | Train Loss: 0.0148
+   [Epoch 6/100] Batch [1200/2666] | Train Loss: 0.0006
+   [Epoch 6/100] Batch [1250/2666] | Train Loss: 0.0086
+   [Epoch 6/100] Batch [1300/2666] | Train Loss: 0.0198
+   [Epoch 6/100] Batch [1350/2666] | Train Loss: 0.0063
+   [Epoch 6/100] Batch [1400/2666] | Train Loss: 0.0386
+   [Epoch 6/100] Batch [1450/2666] | Train Loss: 0.0015
+   [Epoch 6/100] Batch [1500/2666] | Train Loss: 0.0188
+   [Epoch 6/100] Batch [1550/2666] | Train Loss: 0.0025
+   [Epoch 6/100] Batch [1600/2666] | Train Loss: 0.0034
+   [Epoch 6/100] Batch [1650/2666] | Train Loss: 0.0018
+   [Epoch 6/100] Batch [1700/2666] | Train Loss: 0.0121
+   [Epoch 6/100] Batch [1750/2666] | Train Loss: 0.0013
+   [Epoch 6/100] Batch [1800/2666] | Train Loss: 0.0137
+   [Epoch 6/100] Batch [1850/2666] | Train Loss: 0.0061
+   [Epoch 6/100] Batch [1900/2666] | Train Loss: 0.0140
+   [Epoch 6/100] Batch [1950/2666] | Train Loss: 0.0023
+   [Epoch 6/100] Batch [2000/2666] | Train Loss: 0.0040
+   [Epoch 6/100] Batch [2050/2666] | Train Loss: 0.0036
+   [Epoch 6/100] Batch [2100/2666] | Train Loss: 0.0021
+   [Epoch 6/100] Batch [2150/2666] | Train Loss: 0.0132
+   [Epoch 6/100] Batch [2200/2666] | Train Loss: 0.0021
+   [Epoch 6/100] Batch [2250/2666] | Train Loss: 0.0154
+   [Epoch 6/100] Batch [2300/2666] | Train Loss: 0.0021
+   [Epoch 6/100] Batch [2350/2666] | Train Loss: 0.0017
+   [Epoch 6/100] Batch [2400/2666] | Train Loss: 0.0005
+   [Epoch 6/100] Batch [2450/2666] | Train Loss: 0.0017
+   [Epoch 6/100] Batch [2500/2666] | Train Loss: 0.0018
+   [Epoch 6/100] Batch [2550/2666] | Train Loss: 0.0038
+   [Epoch 6/100] Batch [2600/2666] | Train Loss: 0.0007
+   [Epoch 6/100] Batch [2650/2666] | Train Loss: 0.0162
+Epoch 6 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [6/100] 战报:
+   Train Loss: 0.0109 | Val Loss: 0.0298
+   Val F1-Score: 0.5198
+早停警告: 连续 1/20 轮无提升。
+--------------------------------------------------
+
+   [Epoch 7/100] Batch [50/2666] | Train Loss: 0.0218
+   [Epoch 7/100] Batch [100/2666] | Train Loss: 0.0023
+   [Epoch 7/100] Batch [150/2666] | Train Loss: 0.0026
+   [Epoch 7/100] Batch [200/2666] | Train Loss: 0.0026
+   [Epoch 7/100] Batch [250/2666] | Train Loss: 0.0027
+   [Epoch 7/100] Batch [300/2666] | Train Loss: 0.0020
+   [Epoch 7/100] Batch [350/2666] | Train Loss: 0.0322
+   [Epoch 7/100] Batch [400/2666] | Train Loss: 0.0215
+   [Epoch 7/100] Batch [450/2666] | Train Loss: 0.0047
+   [Epoch 7/100] Batch [500/2666] | Train Loss: 0.0051
+   [Epoch 7/100] Batch [550/2666] | Train Loss: 0.0050
+   [Epoch 7/100] Batch [600/2666] | Train Loss: 0.0020
+   [Epoch 7/100] Batch [650/2666] | Train Loss: 0.0016
+   [Epoch 7/100] Batch [700/2666] | Train Loss: 0.0048
+   [Epoch 7/100] Batch [750/2666] | Train Loss: 0.0021
+   [Epoch 7/100] Batch [800/2666] | Train Loss: 0.0005
+   [Epoch 7/100] Batch [850/2666] | Train Loss: 0.0049
+   [Epoch 7/100] Batch [900/2666] | Train Loss: 0.0020
+   [Epoch 7/100] Batch [950/2666] | Train Loss: 0.0048
+   [Epoch 7/100] Batch [1000/2666] | Train Loss: 0.0063
+   [Epoch 7/100] Batch [1050/2666] | Train Loss: 0.0151
+   [Epoch 7/100] Batch [1100/2666] | Train Loss: 0.0018
+   [Epoch 7/100] Batch [1150/2666] | Train Loss: 0.0054
+   [Epoch 7/100] Batch [1200/2666] | Train Loss: 0.0035
+   [Epoch 7/100] Batch [1250/2666] | Train Loss: 0.0031
+   [Epoch 7/100] Batch [1300/2666] | Train Loss: 0.0009
+   [Epoch 7/100] Batch [1350/2666] | Train Loss: 0.0188
+   [Epoch 7/100] Batch [1400/2666] | Train Loss: 0.0115
+   [Epoch 7/100] Batch [1450/2666] | Train Loss: 0.0345
+   [Epoch 7/100] Batch [1500/2666] | Train Loss: 0.0077
+   [Epoch 7/100] Batch [1550/2666] | Train Loss: 0.0244
+   [Epoch 7/100] Batch [1600/2666] | Train Loss: 0.0093
+   [Epoch 7/100] Batch [1650/2666] | Train Loss: 0.0022
+   [Epoch 7/100] Batch [1700/2666] | Train Loss: 0.0016
+   [Epoch 7/100] Batch [1750/2666] | Train Loss: 0.0261
+   [Epoch 7/100] Batch [1800/2666] | Train Loss: 0.0057
+   [Epoch 7/100] Batch [1850/2666] | Train Loss: 0.0050
+   [Epoch 7/100] Batch [1900/2666] | Train Loss: 0.0441
+   [Epoch 7/100] Batch [1950/2666] | Train Loss: 0.0208
+   [Epoch 7/100] Batch [2000/2666] | Train Loss: 0.0224
+   [Epoch 7/100] Batch [2050/2666] | Train Loss: 0.0046
+   [Epoch 7/100] Batch [2100/2666] | Train Loss: 0.0017
+   [Epoch 7/100] Batch [2150/2666] | Train Loss: 0.0325
+   [Epoch 7/100] Batch [2200/2666] | Train Loss: 0.0303
+   [Epoch 7/100] Batch [2250/2666] | Train Loss: 0.0012
+   [Epoch 7/100] Batch [2300/2666] | Train Loss: 0.0196
+   [Epoch 7/100] Batch [2350/2666] | Train Loss: 0.0070
+   [Epoch 7/100] Batch [2400/2666] | Train Loss: 0.0018
+   [Epoch 7/100] Batch [2450/2666] | Train Loss: 0.0010
+   [Epoch 7/100] Batch [2500/2666] | Train Loss: 0.0028
+   [Epoch 7/100] Batch [2550/2666] | Train Loss: 0.0006
+   [Epoch 7/100] Batch [2600/2666] | Train Loss: 0.0017
+   [Epoch 7/100] Batch [2650/2666] | Train Loss: 0.0159
+Epoch 7 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [7/100] 战报:
+   Train Loss: 0.0105 | Val Loss: 0.0241
+   Val F1-Score: 0.5347
+破纪录了！Val F1 从 0.5343 提升至 0.5347，正在保存神级权重...
+--------------------------------------------------
+
+   [Epoch 8/100] Batch [50/2666] | Train Loss: 0.0039
+   [Epoch 8/100] Batch [100/2666] | Train Loss: 0.0011
+   [Epoch 8/100] Batch [150/2666] | Train Loss: 0.0043
+   [Epoch 8/100] Batch [200/2666] | Train Loss: 0.0038
+   [Epoch 8/100] Batch [250/2666] | Train Loss: 0.0017
+   [Epoch 8/100] Batch [300/2666] | Train Loss: 0.0295
+   [Epoch 8/100] Batch [350/2666] | Train Loss: 0.0034
+   [Epoch 8/100] Batch [400/2666] | Train Loss: 0.0334
+   [Epoch 8/100] Batch [450/2666] | Train Loss: 0.0261
+   [Epoch 8/100] Batch [500/2666] | Train Loss: 0.0221
+   [Epoch 8/100] Batch [550/2666] | Train Loss: 0.0044
+   [Epoch 8/100] Batch [600/2666] | Train Loss: 0.0012
+   [Epoch 8/100] Batch [650/2666] | Train Loss: 0.0349
+   [Epoch 8/100] Batch [700/2666] | Train Loss: 0.0009
+   [Epoch 8/100] Batch [750/2666] | Train Loss: 0.0037
+   [Epoch 8/100] Batch [800/2666] | Train Loss: 0.0158
+   [Epoch 8/100] Batch [850/2666] | Train Loss: 0.0004
+   [Epoch 8/100] Batch [900/2666] | Train Loss: 0.0320
+   [Epoch 8/100] Batch [950/2666] | Train Loss: 0.0024
+   [Epoch 8/100] Batch [1000/2666] | Train Loss: 0.0006
+   [Epoch 8/100] Batch [1050/2666] | Train Loss: 0.0035
+   [Epoch 8/100] Batch [1100/2666] | Train Loss: 0.0024
+   [Epoch 8/100] Batch [1150/2666] | Train Loss: 0.0027
+   [Epoch 8/100] Batch [1200/2666] | Train Loss: 0.0168
+   [Epoch 8/100] Batch [1250/2666] | Train Loss: 0.0012
+   [Epoch 8/100] Batch [1300/2666] | Train Loss: 0.0032
+   [Epoch 8/100] Batch [1350/2666] | Train Loss: 0.0089
+   [Epoch 8/100] Batch [1400/2666] | Train Loss: 0.0020
+   [Epoch 8/100] Batch [1450/2666] | Train Loss: 0.0015
+   [Epoch 8/100] Batch [1500/2666] | Train Loss: 0.0015
+   [Epoch 8/100] Batch [1550/2666] | Train Loss: 0.0250
+   [Epoch 8/100] Batch [1600/2666] | Train Loss: 0.0012
+   [Epoch 8/100] Batch [1650/2666] | Train Loss: 0.0027
+   [Epoch 8/100] Batch [1700/2666] | Train Loss: 0.0021
+   [Epoch 8/100] Batch [1750/2666] | Train Loss: 0.0061
+   [Epoch 8/100] Batch [1800/2666] | Train Loss: 0.0132
+   [Epoch 8/100] Batch [1850/2666] | Train Loss: 0.0031
+   [Epoch 8/100] Batch [1900/2666] | Train Loss: 0.0022
+   [Epoch 8/100] Batch [1950/2666] | Train Loss: 0.0038
+   [Epoch 8/100] Batch [2000/2666] | Train Loss: 0.0031
+   [Epoch 8/100] Batch [2050/2666] | Train Loss: 0.0095
+   [Epoch 8/100] Batch [2100/2666] | Train Loss: 0.0053
+   [Epoch 8/100] Batch [2150/2666] | Train Loss: 0.0284
+   [Epoch 8/100] Batch [2200/2666] | Train Loss: 0.0117
+   [Epoch 8/100] Batch [2250/2666] | Train Loss: 0.0015
+   [Epoch 8/100] Batch [2300/2666] | Train Loss: 0.0012
+   [Epoch 8/100] Batch [2350/2666] | Train Loss: 0.0033
+   [Epoch 8/100] Batch [2400/2666] | Train Loss: 0.0033
+   [Epoch 8/100] Batch [2450/2666] | Train Loss: 0.0064
+   [Epoch 8/100] Batch [2500/2666] | Train Loss: 0.0032
+   [Epoch 8/100] Batch [2550/2666] | Train Loss: 0.0096
+   [Epoch 8/100] Batch [2600/2666] | Train Loss: 0.0015
+   [Epoch 8/100] Batch [2650/2666] | Train Loss: 0.0109
+Epoch 8 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [8/100] 战报:
+   Train Loss: 0.0100 | Val Loss: 0.0288
+   Val F1-Score: 0.5486
+破纪录了！Val F1 从 0.5347 提升至 0.5486，正在保存神级权重...
+--------------------------------------------------
+
+   [Epoch 9/100] Batch [50/2666] | Train Loss: 0.0013
+   [Epoch 9/100] Batch [100/2666] | Train Loss: 0.0039
+   [Epoch 9/100] Batch [150/2666] | Train Loss: 0.0035
+   [Epoch 9/100] Batch [200/2666] | Train Loss: 0.0053
+   [Epoch 9/100] Batch [250/2666] | Train Loss: 0.0026
+   [Epoch 9/100] Batch [300/2666] | Train Loss: 0.0028
+   [Epoch 9/100] Batch [350/2666] | Train Loss: 0.0011
+   [Epoch 9/100] Batch [400/2666] | Train Loss: 0.0012
+   [Epoch 9/100] Batch [450/2666] | Train Loss: 0.0008
+   [Epoch 9/100] Batch [500/2666] | Train Loss: 0.0097
+   [Epoch 9/100] Batch [550/2666] | Train Loss: 0.0194
+   [Epoch 9/100] Batch [600/2666] | Train Loss: 0.0018
+   [Epoch 9/100] Batch [650/2666] | Train Loss: 0.0041
+   [Epoch 9/100] Batch [700/2666] | Train Loss: 0.0022
+   [Epoch 9/100] Batch [750/2666] | Train Loss: 0.0084
+   [Epoch 9/100] Batch [800/2666] | Train Loss: 0.0163
+   [Epoch 9/100] Batch [850/2666] | Train Loss: 0.0404
+   [Epoch 9/100] Batch [900/2666] | Train Loss: 0.0043
+   [Epoch 9/100] Batch [950/2666] | Train Loss: 0.0100
+   [Epoch 9/100] Batch [1000/2666] | Train Loss: 0.0011
+   [Epoch 9/100] Batch [1050/2666] | Train Loss: 0.0431
+   [Epoch 9/100] Batch [1100/2666] | Train Loss: 0.0028
+   [Epoch 9/100] Batch [1150/2666] | Train Loss: 0.0031
+   [Epoch 9/100] Batch [1200/2666] | Train Loss: 0.0036
+   [Epoch 9/100] Batch [1250/2666] | Train Loss: 0.0022
+   [Epoch 9/100] Batch [1300/2666] | Train Loss: 0.0041
+   [Epoch 9/100] Batch [1350/2666] | Train Loss: 0.0266
+   [Epoch 9/100] Batch [1400/2666] | Train Loss: 0.0019
+   [Epoch 9/100] Batch [1450/2666] | Train Loss: 0.0061
+   [Epoch 9/100] Batch [1500/2666] | Train Loss: 0.0330
+   [Epoch 9/100] Batch [1550/2666] | Train Loss: 0.0018
+   [Epoch 9/100] Batch [1600/2666] | Train Loss: 0.0049
+   [Epoch 9/100] Batch [1650/2666] | Train Loss: 0.0090
+   [Epoch 9/100] Batch [1700/2666] | Train Loss: 0.0021
+   [Epoch 9/100] Batch [1750/2666] | Train Loss: 0.0030
+   [Epoch 9/100] Batch [1800/2666] | Train Loss: 0.0007
+   [Epoch 9/100] Batch [1850/2666] | Train Loss: 0.0017
+   [Epoch 9/100] Batch [1900/2666] | Train Loss: 0.0010
+   [Epoch 9/100] Batch [1950/2666] | Train Loss: 0.0043
+   [Epoch 9/100] Batch [2000/2666] | Train Loss: 0.0335
+   [Epoch 9/100] Batch [2050/2666] | Train Loss: 0.0466
+   [Epoch 9/100] Batch [2100/2666] | Train Loss: 0.0287
+   [Epoch 9/100] Batch [2150/2666] | Train Loss: 0.0010
+   [Epoch 9/100] Batch [2200/2666] | Train Loss: 0.0026
+   [Epoch 9/100] Batch [2250/2666] | Train Loss: 0.0017
+   [Epoch 9/100] Batch [2300/2666] | Train Loss: 0.0015
+   [Epoch 9/100] Batch [2350/2666] | Train Loss: 0.0012
+   [Epoch 9/100] Batch [2400/2666] | Train Loss: 0.0267
+   [Epoch 9/100] Batch [2450/2666] | Train Loss: 0.0009
+   [Epoch 9/100] Batch [2500/2666] | Train Loss: 0.0009
+   [Epoch 9/100] Batch [2550/2666] | Train Loss: 0.0018
+   [Epoch 9/100] Batch [2600/2666] | Train Loss: 0.0099
+   [Epoch 9/100] Batch [2650/2666] | Train Loss: 0.0013
+Epoch 9 结束，正在进行验证集全量体检...
+--------------------------------------------------
+   Epoch [9/100] 战报:
+   Train Loss: 0.0098 | Val Loss: 0.0287
+   Val F1-Score: 0.2968
+早停警告: 连续 1/20 轮无提升。
 --------------------------------------------------
 

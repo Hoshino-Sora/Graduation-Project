@@ -9,7 +9,7 @@ from load_data import get_unified_dataloaders
 from post_process import majority_voting_filter, extract_events, merge_close_events, filter_short_events
 
 # 核心改动 2：增加 model_type 参数，默认是 'dual'，但你可以传 'baseline'
-def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=True, target_percentile=97, model_type="dual"):
+def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=True, target_percentile=98, model_type="dual"):
     if threshold is None:
         threshold = config.PREDICT_THRESHOLD_TEST
         
@@ -68,6 +68,8 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
                 inputs_wave = inputs_wave.to(device)
                 inputs_dwt = inputs_dwt.to(device)
                 outputs, attn_weights = model(inputs_wave, inputs_dwt)
+                # 临时打印一下这一个 Batch 的注意力平均分配情况
+                print(f"左脑权重: {attn_weights[:, 0].mean().item():.3f}, 右脑权重: {attn_weights[:, 1].mean().item():.3f}")
             
             probs = torch.softmax(outputs.data, dim=1)
             all_probs.extend(probs[:, 1].cpu().numpy())

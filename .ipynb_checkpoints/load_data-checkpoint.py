@@ -24,8 +24,7 @@ class CHBMITDataset(Dataset):
         
         if self.extract_dwt:
             dwt_path = x_path.replace('_X.npy', '_dwt.npy')
-            dwt_data = np.load(dwt_path) 
-            self.dwt_disk = dwt_data 
+            self.dwt_disk = np.load(dwt_path)
             assert self.dwt_disk.shape[0] == self.num_samples, "特征数与波形数不对齐！"
             
         

@@ -104,9 +104,9 @@ class PriorFeatureBranch(nn.Module):
         """
         super(PriorFeatureBranch, self).__init__()
         self.mlp = nn.Sequential(
-            nn.BatchNorm1d(input_dim),
+
             nn.Linear(input_dim, 256),
-            nn.BatchNorm1d(256),
+ 
             nn.ReLU(),
             nn.Dropout(p=config.DROPOUT_RATE),
             nn.Linear(256, hidden_dim),
@@ -152,9 +152,11 @@ class DualBranchAttentionNet(nn.Module):
         h_t = self.temporal_branch(x_wave, return_features=True)
         
         # 2. 右脑出列：计算白盒频域特征 [Batch, 128]
-        x_dwt_log = torch.log1p(torch.abs(x_dwt))
 
-        h_f = self.frequency_branch(x_dwt_log)
+        x_dwt_log = torch.log1p(torch.abs(x_dwt))
+        x_dwt_norm = F.normalize(x_dwt_log, p=2, dim=1, eps=1e-8)
+
+        h_f = self.frequency_branch(x_dwt_norm)
         
         # 3. 皮层开会：打分器介入
         # 拼接特征供打分器审阅 [Batch, 256]

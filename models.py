@@ -104,14 +104,13 @@ class PriorFeatureBranch(nn.Module):
         """
         super(PriorFeatureBranch, self).__init__()
         self.mlp = nn.Sequential(
-            nn.LayerNorm(input_dim), 
 
             nn.Linear(input_dim, 256),
  
             nn.ReLU(),
             nn.Dropout(p=config.DROPOUT_RATE),
             nn.Linear(256, hidden_dim),
-            nn.Tanh()
+
         )
 
     def forward(self, x):

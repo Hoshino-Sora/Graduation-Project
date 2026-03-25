@@ -3,6 +3,7 @@ import gc
 import time  # 新增：时间记录模块
 import torch
 import numpy as np
+import config
 
 # 导入你的核心模块
 from train import train_model
@@ -16,8 +17,8 @@ def run_loocv_pipeline():
     
     FULL_PATIENTS_LIST = [f"chb{i:02d}" for i in range(1, 25)]
     # target_patients = [f"chb{i:02d}" for i in range(1, 25)]
-    target_patients = ["chb06", "chb12", "chb13", "chb14", "chb16"]
-    # target_patients = ["chb16"]
+    # target_patients = ["chb06", "chb12", "chb13", "chb14", "chb16"]
+    target_patients = ["chb16"]
     
     # 用来收集所有人的成绩表
     final_results = []
@@ -43,7 +44,14 @@ def run_loocv_pipeline():
         
         # 3. 训练完毕，立刻启动该病人的临床体检！
         print(f"\n训练完成！正在对 {test_patient} 进行全时段临床体检...")
-        real_events, ai_events = evaluate_patient(patient_id=test_patient)
+
+        # 核心联动：让 LOOCV 体检也严格听从 config 的指挥！
+        current_model_type = "dual" if config.USE_DUAL_BRANCH else "baseline"
+        
+        real_events, ai_events = evaluate_patient(
+            patient_id=test_patient,
+            model_type=current_model_type  # 传参！
+        )
         total_hours = get_patient_total_hours(patient_id=test_patient)
         
         if total_hours > 0:

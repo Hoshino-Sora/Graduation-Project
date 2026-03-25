@@ -55,7 +55,7 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
     print("模型正在逐窗阅读脑电波，请稍候...")
     with torch.no_grad():
         # 核心改动 4：根据不同模型，动态分发粮草
-        for batch_idx, batch in dataloader:
+        for batch_idx, batch in enumerate(dataloader):
             if model_type == "baseline":
                 # 基线模式：后勤只吐出两件套
                 inputs_wave, labels = batch

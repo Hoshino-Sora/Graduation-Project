@@ -75,7 +75,7 @@ NUM_CLASSES = 2                             # 0:正常, 1:发作
 
 # 针对 1:89 极度不平衡数据的“狙击手权重” 
 # 0代表正常(权重1)，1代表发作(权重89，严惩漏报！)
-LOSS_WEIGHTS = [1.0, 5.0]
+LOSS_WEIGHTS = [1.0, 25.0]
 GAMMA = 1
 # 断点续训总开关：
 # True = 机器意外重启时接着跑；False = 无视旧存档，从 Epoch 1 全新开机（消融实验必备！）
@@ -111,4 +111,5 @@ USE_MIXUP = False
 # (这代表我们会做轻微的特征融合，而不是把波形糊成一团)
 MIXUP_ALPHA = 0.2
 
-EXTRACT_DWT = True
+USE_DUAL_BRANCH = True  # False = 跑纯 TCN-BiLSTM 基线；True = 跑双分支神装
+EXTRACT_DWT = USE_DUAL_BRANCH  # 联动：只有跑双分支时才提取 DWT

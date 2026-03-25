@@ -5,7 +5,7 @@ import config
 from evaluate import evaluate_patient, get_patient_total_hours, calculate_clinical_metrics
 
 # 核心新增：把 adaptive 开关和 k_factor 提拔到总控台参数里！
-def run_global_inference(target_threshold=None, target_patients=None, use_adaptive=True, target_percentile=99.5):
+def run_global_inference(target_threshold=None, target_patients=None, use_adaptive=True, target_percentile=99.5, model_type="dual"):
     if target_threshold is None:
         target_threshold = config.PREDICT_THRESHOLD_TEST
         
@@ -41,7 +41,8 @@ def run_global_inference(target_threshold=None, target_patients=None, use_adapti
             patient_id=test_patient, 
             threshold=target_threshold, 
             use_adaptive_threshold=use_adaptive,
-            target_percentile=target_percentile
+            target_percentile=target_percentile,
+            model_type=model_type # 核心：挂挡！
         )
         total_hours = get_patient_total_hours(patient_id=test_patient)
         
@@ -83,9 +84,9 @@ def run_global_inference(target_threshold=None, target_patients=None, use_adapti
     # 核心防混淆：动态生成科学的报表文件名！
     suffix = "_Targeted" if target_patients else ""
     if use_adaptive:
-        out_filename = f"Eval_Results_Adaptive_P{target_percentile}{suffix}.txt"
+        out_filename = f"Eval_{model_type.capitalize()}_Adaptive_P{target_percentile}{suffix}.txt"
     else:
-        out_filename = f"Eval_Results_FixedThresh_{target_threshold}{suffix}.txt"
+        out_filename = f"Eval_{model_type.capitalize()}_Fixed_{target_threshold}{suffix}.txt"
         
     with open(out_filename, "w", encoding='utf-8') as f:
         f.write("Patient\tSensitivity(%)\tFD/h\tLatency(s)\n")
@@ -106,7 +107,12 @@ def run_global_inference(target_threshold=None, target_patients=None, use_adapti
 if __name__ == "__main__":
     # 终极优雅调用方式：
     run_global_inference(
-        target_patients=["chb15", "chb17"], 
-        use_adaptive=True, 
-        target_percentile=config.TARGRT_PERCENTILE
+        target_patients=["chb16"], 
+        # target_patients=["chb06", "chb12", "chb13", "chb14", "chb16"], 
+        # target_patients=["chb15", "chb17"], 
+        # target_patients=None,
+        use_adaptive=config.USE_ADAPTIVE, 
+        target_percentile=config.TARGRT_PERCENTILE,
+        # model_type="baseline",
+        model_type="dual"
     )

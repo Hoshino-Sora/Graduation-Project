@@ -2,30 +2,39 @@ import os
 import torch
 import numpy as np
 import mne
-# 导入咱们的“中枢神经”和“后勤/前线部队”
 import config
-from models import TCN_BiLSTM
+# 核心改动 1：把新老模型都请进指挥部！
+from models import TCN_BiLSTM, DualBranchAttentionNet
 from load_data import get_unified_dataloaders
 from post_process import majority_voting_filter, extract_events, merge_close_events, filter_short_events
 
-# 核心新增：加入了 use_adaptive_threshold 和 k_factor 参数
-def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=True, target_percentile=99.5):
+# 核心改动 2：增加 model_type 参数，默认是 'dual'，但你可以传 'baseline'
+def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=True, target_percentile=97, model_type="dual"):
     if threshold is None:
         threshold = config.PREDICT_THRESHOLD_TEST
         
-    print(f"=== 开启 AI 脑电临床评估流水线 ({patient_id} 专场) ===")
+    print(f"=== 开启 AI 脑电临床评估流水线 ({patient_id} | 模式: {model_type}) ===")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
-    model = TCN_BiLSTM(num_channels=config.NUM_CHANNELS, num_classes=config.NUM_CLASSES).to(device)
+    # 核心改动 3：根据指令，挂载不同的武器和装甲！
+    if model_type == "baseline":
+        model = TCN_BiLSTM(num_channels=config.NUM_CHANNELS, num_classes=config.NUM_CLASSES).to(device)
+        extract_dwt_flag = False # 老基线不需要物理特征
+    else:
+        model = DualBranchAttentionNet(num_channels=config.NUM_CHANNELS, num_classes=config.NUM_CLASSES, dwt_feature_dim=378).to(device)
+        extract_dwt_flag = True  # 新神装必须开启老中医特征
     
-    # 加载专属模型
-    model_path = os.path.join(config.BASE_DIR, 'outputs', 'models', f'best_model_{patient_id}.pth')
+    # 这里有个小细节：你以后保存基线权重最好叫 best_model_baseline_chb06.pth，
+    # 但为了兼容你现在硬盘里的老文件，如果是基线，我们就去找原来的名字
+    model_name = f'best_model_{patient_id}.pth' 
+    model_path = os.path.join(config.BASE_DIR, 'outputs', 'models', model_name)
     
     if os.path.exists(model_path):
         model.load_state_dict(torch.load(model_path, map_location=device))
         print(f"成功加载专属模型权重: {model_path}")
     else:
-        print(f"警告：未找到 {patient_id} 的专属权重，请确认是否训练成功！")
+        print(f"警告：未找到 {patient_id} 的专属权重！")
+        return [], []
         
     model.eval()
 
@@ -33,23 +42,34 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
     dataloader = get_unified_dataloaders(
         patients_list=test_patients,
         batch_size=config.BATCH_SIZE,
-        is_test=True 
+        is_test=True,
+        extract_dwt=extract_dwt_flag # 动态决定要不要提取特征
     )
     
-    # ==========================================
-    # 3. 机器推理阶段 (先号脉，存概率，不急着下定论！)
-    # ==========================================
+    if dataloader is None:
+        print(f"数据缺失，已安全跳过 {patient_id} 的体检。")
+        return [], []
+        
     all_probs = []
     all_labels = []
     
-    print("模型正在逐窗阅读几十个小时的脑电波，请稍候...")
+    print("模型正在逐窗阅读脑电波，请稍候...")
     with torch.no_grad():
-        for inputs, labels in dataloader:
-            inputs = inputs.to(device)
-            outputs = model(inputs)
+        # 核心改动 4：根据不同模型，动态分发粮草
+        for batch in dataloader:
+            if model_type == "baseline":
+                # 基线模式：后勤只吐出两件套
+                inputs_wave, labels = batch
+                inputs_wave = inputs_wave.to(device)
+                outputs = model(inputs_wave) # 注意：你原来基线如果加了 return_features，这里要确保不传
+            else:
+                # 双分支模式：后勤吐出三件套
+                inputs_wave, inputs_dwt, labels = batch
+                inputs_wave = inputs_wave.to(device)
+                inputs_dwt = inputs_dwt.to(device)
+                outputs, attn_weights = model(inputs_wave, inputs_dwt)
             
             probs = torch.softmax(outputs.data, dim=1)
-            # 爆改：直接把发作概率存进列表，暂时不做 0/1 截断！
             all_probs.extend(probs[:, 1].cpu().numpy())
             all_labels.extend(labels.numpy())
 
@@ -60,11 +80,8 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
     # 核心修正：基于非参数化分位数的自适应阈值
     # ==========================================
     if use_adaptive_threshold:
-        # 直接使用外部传入的 target_percentile 控制严格程度
         dynamic_thresh = np.percentile(all_probs, target_percentile)
-        
-        # 物理安全锁：即便底噪再高，阈值也不能低于 0.2，最高不超过 0.9
-        final_thresh = np.clip(dynamic_thresh, 0.20, 0.90)
+        final_thresh = np.clip(dynamic_thresh, 0.01, 0.99)
         
         print(f"\n[自适应阈值标定] 患者 {patient_id} 专属底噪分析:")
         print(f"   - {target_percentile}% 分位数计算结果: {dynamic_thresh:.4f}")
@@ -73,11 +90,10 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
         final_thresh = threshold
         print(f"\n[固定阈值模式] 使用预设死板阈值: {final_thresh:.4f}\n")
 
-    # 根据量身定制的 final_thresh 统一宣判
     raw_predictions = (all_probs > final_thresh).astype(int)
 
     # ==========================================
-    # 4. 临床后处理阶段 (老专家 + 缝合大师介入)
+    # 4. 临床后处理阶段
     # ==========================================
     print("后处理平滑引擎介入，清洗孤立误报...")
     smoothed_predictions = majority_voting_filter(raw_predictions, window_size=config.SMOOTHING_WINDOW)
@@ -86,12 +102,12 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
     raw_ai_events = extract_events(smoothed_predictions, window_duration=config.CHBMIT_WINDOW_SEC)
     real_events = extract_events(true_labels, window_duration=config.CHBMIT_WINDOW_SEC)
     
-    fusion_gap = 2 * config.COLLAR_TOLERANCE
+    fusion_gap = 60
     print(f"启动宏观事件融合引擎 (容忍断档 <= {fusion_gap}秒)...")
     ai_events = merge_close_events(raw_ai_events, min_gap=fusion_gap)
 
-    print("启动物理超度：清除持续时间不足 10 秒的孤立肌电伪影...")
-    ai_events = filter_short_events(ai_events, min_duration=10.0)
+    print("启动物理超度：清除持续时间不足 5 秒的孤立肌电伪影...")
+    ai_events = filter_short_events(ai_events, min_duration=5.0)
     
     # ==========================================
     # 5. 打印最终临床体检报告
@@ -110,39 +126,37 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
 
     return real_events, ai_events
 
-
 def get_patient_total_hours(patient_id):
     """
-    动态扫描计算单个患者所有有效 EDF 文件的总时长 (小时)。
-    利用 preload=False 黑科技，只读文件头，零内存消耗，极速秒出！
+    全 npy 化极速版：不再依赖原始 .edf 文件，直接通过统计 .npy 切片的数量来反推总时长！
+    极其优雅，零内存消耗，瞬间出结果！
     """
-    edf_folder = os.path.join(config.CHBMIT_DATA_PATH, patient_id)
-    total_seconds = 0.0
+    # 直接去咱们的后勤加工厂找数据
+    data_dir = os.path.join(config.PROCESSED_DATA_PATH, patient_id, "win2s_ov0s")
+    import glob
+    y_files = glob.glob(os.path.join(data_dir, "*_y.npy"))
     
-    if not os.path.exists(edf_folder):
-        print(f"找不到患者目录: {edf_folder}")
+    if not y_files:
+        print(f"找不到患者 {patient_id} 的预处理标签文件，无法计算时长！")
         return 0.0
         
-    print(f"正在极速扫描 {patient_id} 的脑电时空记录...")
+    print(f"正在极速扫描 {patient_id} 的 .npy 时空碎片...")
     
-    for filename in os.listdir(edf_folder):
-        if filename.endswith('.edf'):
-            edf_path = os.path.join(edf_folder, filename)
-            try:
-                raw = mne.io.read_raw_edf(edf_path, preload=False, verbose=False)
-                total_seconds += raw.times[-1] 
-            except Exception as e:
-                print(f"文件 {filename} 头信息损坏，已跳过。原因: {e}")
-                
+    total_windows = 0
+    for y_file in y_files:
+        # 使用 mmap_mode='r' 极速读取，根本不进内存，只看形状！
+        y_data = np.load(y_file, mmap_mode='r')
+        total_windows += y_data.shape[0]
+        
+    # 计算物理总时间：窗口数 * 每个窗口的秒数 (默认2秒)
+    total_seconds = total_windows * config.CHBMIT_WINDOW_SEC
     total_hours = total_seconds / 3600.0
-    print(f"扫描完毕: 患者 {patient_id} 共有 {total_hours:.2f} 小时的有效脑电记录。")
+    
+    print(f"扫描完毕: 患者 {patient_id} 共有 {total_windows} 个切窗，折合 {total_hours:.2f} 小时的有效脑电记录。")
     
     return total_hours
 
 def calculate_clinical_metrics(real_events, ai_events, total_record_hours):
-    """
-    计算三大临床核心指标：灵敏度 (Sensitivity)、每小时误报率 (FD/h)、平均延迟 (Latency)
-    """
     hit_count = 0           
     delays = []             
     matched_ai_indices = set() 

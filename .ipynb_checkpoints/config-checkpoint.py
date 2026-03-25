@@ -83,8 +83,9 @@ RESUME_TRAINING = False
 
 # 临床敏感度阈值：默认 0.5。降到 0.3 代表“宁可错杀伪影，绝不漏报发作”
 PREDICT_THRESHOLD = 0.5
-PREDICT_THRESHOLD_TEST = 0.4
-TARGRT_PERCENTILE = 97
+PREDICT_THRESHOLD_TEST = 0.2
+TARGRT_PERCENTILE = 98
+USE_ADAPTIVE = True
 
 # 早停机制 (Early Stopping) 耐心值：
 # 如果连续 16 轮 Val F1 都没有打破历史记录，说明模型已经开始死记硬背（严重过拟合），强行拔电源！
@@ -109,3 +110,5 @@ USE_MIXUP = False
 # Mixup 的 Beta 分布参数。0.2 是医学时序信号的黄金甜点区
 # (这代表我们会做轻微的特征融合，而不是把波形糊成一团)
 MIXUP_ALPHA = 0.2
+
+EXTRACT_DWT = True

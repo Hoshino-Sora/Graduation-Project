@@ -20,10 +20,15 @@ class CHBMITDataset(Dataset):
         
         self.X_disk = np.load(x_path, mmap_mode='r')
         self.y_disk = np.load(y_path, mmap_mode='r')
-        
-        assert self.X_disk.shape[0] == self.y_disk.shape[0], "严重错误：X 和 y 的样本数对不上！"
         self.num_samples = self.X_disk.shape[0]
-
+        
+        if self.extract_dwt:
+            dwt_path = x_path.replace('_X.npy', '_dwt.npy')
+            dwt_data = np.load(dwt_path) 
+            self.dwt_disk = dwt_data 
+            assert self.dwt_disk.shape[0] == self.num_samples, "特征数与波形数不对齐！"
+            
+        
     def __len__(self):
         return self.num_samples
 
@@ -38,12 +43,8 @@ class CHBMITDataset(Dataset):
         
         # 核心升级：如果开启了老中医模式，当场计算 DWT 物理特征！
         if self.extract_dwt:
-            # 调用 features.py 里的多通道提取函数
-            # 注意：x_window 的形状必须是 (Num_Channels, TimeSteps)
-            dwt_feats = features.extract_features_from_multichannel_window(x_window)
-            dwt_tensor = torch.tensor(dwt_feats, dtype=torch.float32)
-            
-            # 返回三件套：原始波形, 物理先验特征, 标签
+            dwt_window = self.dwt_disk[idx].copy()
+            dwt_tensor = torch.tensor(dwt_window, dtype=torch.float32)
             return x_tensor, dwt_tensor, y_tensor
             
         return x_tensor, y_tensor
@@ -88,13 +89,26 @@ def get_unified_dataloaders(patients_list, val_ratio=0.2, batch_size=64, force_p
             for x, y in zip(x_files[split_idx:], y_files[split_idx:]):
                 val_or_test_datasets.append(CHBMITDataset(x, y, extract_dwt=extract_dwt))
                 
+    # ==========================================
+    # 最终打包发货 (带空载安全锁)
+    # ==========================================
     num_workers = 12 if sys.platform.startswith('linux') else 0
 
     if is_test:
+        # 核心拦截锁 1：如果什么数据都没找到，直接返回 None！
+        if len(val_or_test_datasets) == 0:
+            print(f"后勤部警告：{patients_list} 仓库为空，无法发货！")
+            return None
+            
         test_dataset = ConcatDataset(val_or_test_datasets)
         test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers, pin_memory=True)
         return test_loader
     else:
+        # 核心拦截锁 2：同理保护训练模式
+        if len(train_datasets) == 0 or len(val_or_test_datasets) == 0:
+            print(f"后勤部警告：训练集或验证集兵力为空，无法发货！")
+            return None, None
+            
         train_dataset = ConcatDataset(train_datasets)
         val_dataset = ConcatDataset(val_or_test_datasets)
         train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers, pin_memory=True)

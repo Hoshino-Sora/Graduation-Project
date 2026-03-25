@@ -80,7 +80,7 @@ def merge_close_events(events, min_gap):
             
     return merged
 
-def filter_short_events(events, min_duration=10.0):
+def filter_short_events(events, min_duration=5.0):
     """
     终极物理超度：将持续时间极短的孤立伪影（如咬牙、眨眼）强行抹除！
     :param events: 事件列表

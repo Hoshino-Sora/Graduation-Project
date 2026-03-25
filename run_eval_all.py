@@ -30,7 +30,7 @@ def run_global_inference(target_threshold=None, target_patients=None, use_adapti
     global_delay_sum, global_delay_count = 0.0, 0
     
     for test_patient in patients_to_run:
-        model_path = os.path.join('outputs', 'models', f'best_model_{test_patient}.pth')
+        model_path = os.path.join('outputs', 'models', f'best_model_{model_type}_{test_patient}.pth')
         if not os.path.exists(model_path):
             print(f"跳过 {test_patient}：未找到专属权重")
             continue
@@ -105,6 +105,7 @@ def run_global_inference(target_threshold=None, target_patients=None, use_adapti
     return micro_sens, micro_fd
 
 if __name__ == "__main__":
+    current_model_type = "dual" if config.USE_DUAL_BRANCH else "baseline"
     # 终极优雅调用方式：
     run_global_inference(
         target_patients=["chb16"], 
@@ -114,5 +115,5 @@ if __name__ == "__main__":
         use_adaptive=config.USE_ADAPTIVE, 
         target_percentile=config.TARGRT_PERCENTILE,
         # model_type="baseline",
-        model_type="dual"
+        model_type=current_model_type
     )

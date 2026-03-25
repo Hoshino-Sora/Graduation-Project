@@ -24,9 +24,8 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
         model = DualBranchAttentionNet(num_channels=config.NUM_CHANNELS, num_classes=config.NUM_CLASSES, dwt_feature_dim=378).to(device)
         extract_dwt_flag = True  # 新神装必须开启老中医特征
     
-    # 这里有个小细节：你以后保存基线权重最好叫 best_model_baseline_chb06.pth，
-    # 但为了兼容你现在硬盘里的老文件，如果是基线，我们就去找原来的名字
-    model_name = f'best_model_{patient_id}.pth' 
+    # 彻底抛弃兼容老名字的幻想，严格区分新老权重！
+    model_name = f'best_model_{model_type}_{patient_id}.pth' 
     model_path = os.path.join(config.BASE_DIR, 'outputs', 'models', model_name)
     
     if os.path.exists(model_path):
@@ -56,7 +55,7 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
     print("模型正在逐窗阅读脑电波，请稍候...")
     with torch.no_grad():
         # 核心改动 4：根据不同模型，动态分发粮草
-        for batch in dataloader:
+        for batch_idx, batch in dataloader:
             if model_type == "baseline":
                 # 基线模式：后勤只吐出两件套
                 inputs_wave, labels = batch
@@ -69,7 +68,8 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
                 inputs_dwt = inputs_dwt.to(device)
                 outputs, attn_weights = model(inputs_wave, inputs_dwt)
                 # 临时打印一下这一个 Batch 的注意力平均分配情况
-                print(f"左脑权重: {attn_weights[:, 0].mean().item():.3f}, 右脑权重: {attn_weights[:, 1].mean().item():.3f}")
+                if batch_idx % 100 == 0:
+                    print(f"   [抽查 Batch {batch_idx}] 左脑信任度: {attn_weights[:, 0].mean().item():.3f} | 右脑信任度: {attn_weights[:, 1].mean().item():.3f}")
             
             probs = torch.softmax(outputs.data, dim=1)
             all_probs.extend(probs[:, 1].cpu().numpy())
@@ -199,9 +199,17 @@ def calculate_clinical_metrics(real_events, ai_events, total_record_hours):
 
 if __name__ == "__main__":
     patient_to_eval = "chb15"
-    print(f"=== 正在呼叫临床评估流水线 ({patient_to_eval} 专场) ===")
     
-    real_events, ai_events = evaluate_patient(patient_id=patient_to_eval, use_adaptive_threshold=True)
+    # 核心联动：单点调试也保持绝对同步
+    current_model_type = "dual" if config.USE_DUAL_BRANCH else "baseline"
+    
+    print(f"=== 正在呼叫临床评估流水线 ({patient_to_eval} 专场 | 模式: {current_model_type}) ===")
+    
+    real_events, ai_events = evaluate_patient(
+        patient_id=patient_to_eval, 
+        use_adaptive_threshold=True,
+        model_type=current_model_type  # 传参！
+    )
     total_hours = get_patient_total_hours(patient_id=patient_to_eval)
     
     if total_hours > 0:

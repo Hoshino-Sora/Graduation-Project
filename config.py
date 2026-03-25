@@ -111,4 +111,5 @@ USE_MIXUP = False
 # (这代表我们会做轻微的特征融合，而不是把波形糊成一团)
 MIXUP_ALPHA = 0.2
 
-EXTRACT_DWT = True
+USE_DUAL_BRANCH = False  # False = 跑纯 TCN-BiLSTM 基线；True = 跑双分支神装
+EXTRACT_DWT = USE_DUAL_BRANCH  # 联动：只有跑双分支时才提取 DWT

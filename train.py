@@ -8,7 +8,7 @@ import torch.nn.functional as F
 
 import config
 # 核心改动 1：导入我们的终极神装 DualBranchAttentionNet
-from models import DualBranchAttentionNet
+from models import DualBranchAttentionNet, TCN_BiLSTM
 from load_data import get_unified_dataloaders
 from utils import plot_training_curves
 
@@ -17,25 +17,27 @@ class FocalLoss(nn.Module):
         super(FocalLoss, self).__init__()
         self.gamma = gamma
         self.reduction = reduction
-        if alpha is not None:
-            self.alpha = torch.tensor(alpha, dtype=torch.float32)
-        else:
-            self.alpha = None
+        # 将传入的 list 转换为 tensor
+        self.alpha = torch.tensor(alpha, dtype=torch.float32) if alpha is not None else None
 
     def forward(self, inputs, targets):
-        if self.alpha is not None:
-            self.alpha = self.alpha.to(inputs.device)
-            
-        ce_loss = F.cross_entropy(inputs, targets, reduction='none', weight=self.alpha)
+        # 1. 计算纯净的交叉熵，绝对不能在这里加 weight！
+        ce_loss = F.cross_entropy(inputs, targets, reduction='none')
+        # 2. 反推真实的概率 p_t
         pt = torch.exp(-ce_loss)
+        # 3. 计算 Focal Loss 的调节因子
         focal_loss = ((1 - pt) ** self.gamma) * ce_loss
         
+        # 4. 最后手动乘上类别权重 (alpha)
+        if self.alpha is not None:
+            self.alpha = self.alpha.to(inputs.device)
+            alpha_t = self.alpha[targets]
+            focal_loss = alpha_t * focal_loss
+            
         if self.reduction == 'mean':
             return focal_loss.mean()
-        elif self.reduction == 'sum':
-            return focal_loss.sum()
         else:
-            return focal_loss
+            return focal_loss.sum()
 
 def train_model(test_patient, train_patients):
     print(f"\n" + "="*50)
@@ -61,11 +63,19 @@ def train_model(test_patient, train_patients):
     # 2. 组装模型与核武器
     # ==========================================
     # 核心改动 3：换装 DualBranchAttentionNet！
-    model = DualBranchAttentionNet(
-        num_channels=config.NUM_CHANNELS, 
-        num_classes=config.NUM_CLASSES,
-        dwt_feature_dim=378  # 18 通道 * 21 个特征
-    ).to(device)
+    if config.USE_DUAL_BRANCH:
+        print("启用创新架构：双分支注意力融合网络 (DualBranchAttentionNet)")
+        model = DualBranchAttentionNet(
+            num_channels=config.NUM_CHANNELS, 
+            num_classes=config.NUM_CLASSES,
+            dwt_feature_dim=378
+        ).to(device)
+    else:
+        print("启用基线架构：纯时空黑盒 (TCN-BiLSTM)")
+        model = TCN_BiLSTM(
+            num_channels=config.NUM_CHANNELS, 
+            num_classes=config.NUM_CLASSES
+        ).to(device)
     
     criterion = FocalLoss(alpha=config.LOSS_WEIGHTS, gamma=2.0).to(device)
     optimizer = optim.Adam(model.parameters(), lr=config.LEARNING_RATE, weight_decay=1e-4)
@@ -75,8 +85,9 @@ def train_model(test_patient, train_patients):
     # 3. 灾备系统初始化
     # ==========================================
     os.makedirs(os.path.join(config.BASE_DIR, 'outputs', 'models'), exist_ok=True)
-    best_model_path = os.path.join(config.BASE_DIR, 'outputs', 'models', f'best_model_{test_patient}.pth')
-    checkpoint_path = os.path.join(config.BASE_DIR, 'outputs', 'models', f'checkpoint_{test_patient}.pth')
+    model_type_str = "dual" if config.USE_DUAL_BRANCH else "baseline"
+    best_model_path = os.path.join(config.BASE_DIR, 'outputs', 'models', f'best_model_{model_type_str}_{test_patient}.pth')
+    checkpoint_path = os.path.join(config.BASE_DIR, 'outputs', 'models', f'checkpoint_{model_type_str}_{test_patient}.pth')
     
     start_epoch = 0
     best_val_f1 = -1.0
@@ -111,10 +122,15 @@ def train_model(test_patient, train_patients):
         running_loss = 0.0
         total_batches = len(train_loader)
         
-        # 核心改动 4：接收 DataLoader 吐出的三件套！
-        for batch_idx, (inputs_wave, inputs_dwt, labels) in enumerate(train_loader):
+        # 核心改动 4：动态接收 DataLoader 吐出的数据
+        for batch_idx, batch in enumerate(train_loader):
+            if config.USE_DUAL_BRANCH:
+                inputs_wave, inputs_dwt, labels = batch
+                inputs_dwt = inputs_dwt.to(device)
+            else:
+                inputs_wave, labels = batch # 基线只有两件套
+            
             inputs_wave = inputs_wave.to(device)
-            inputs_dwt = inputs_dwt.to(device)
             labels = labels.to(device)
 
             use_mixup = getattr(config, 'USE_MIXUP', False)
@@ -124,15 +140,18 @@ def train_model(test_patient, train_patients):
                 batch_size = inputs_wave.size(0)
                 index = torch.randperm(batch_size).to(device)
                 
-                # 双燃料混合：波形和频域特征都要混！
                 inputs_wave = lam * inputs_wave + (1 - lam) * inputs_wave[index]
-                inputs_dwt = lam * inputs_dwt + (1 - lam) * inputs_dwt[index]
+                if config.USE_DUAL_BRANCH: # Mixup也要分情况！
+                    inputs_dwt = lam * inputs_dwt + (1 - lam) * inputs_dwt[index]
                 labels_a, labels_b = labels, labels[index]
             
             optimizer.zero_grad()
             
-            # 🌟 核心改动 5：双口喂食！并且接住两个返回值！
-            outputs, attn_weights = model(inputs_wave, inputs_dwt)
+            # 核心改动 5：根据架构双口喂食
+            if config.USE_DUAL_BRANCH:
+                outputs, attn_weights = model(inputs_wave, inputs_dwt)
+            else:
+                outputs = model(inputs_wave)  # 基线只吃波形
 
             if use_mixup:
                 loss = lam * criterion(outputs, labels_a) + (1 - lam) * criterion(outputs, labels_b)
@@ -159,13 +178,19 @@ def train_model(test_patient, train_patients):
         
         print(f"Epoch {epoch+1} 结束，正在进行验证集全量体检...")
         with torch.no_grad(): 
-            # 核心改动 6：验证集也要接住三件套
-            for inputs_wave, inputs_dwt, labels in val_loader:
-                inputs_wave = inputs_wave.to(device)
-                inputs_dwt = inputs_dwt.to(device)
-                labels = labels.to(device)
-                
-                outputs, attn_weights = model(inputs_wave, inputs_dwt)
+            # 核心改动 6：验证集动态解包
+            for batch in val_loader:
+                if config.USE_DUAL_BRANCH:
+                    inputs_wave, inputs_dwt, labels = batch
+                    inputs_wave = inputs_wave.to(device)
+                    inputs_dwt = inputs_dwt.to(device)
+                    labels = labels.to(device)
+                    outputs, attn_weights = model(inputs_wave, inputs_dwt)
+                else:
+                    inputs_wave, labels = batch
+                    inputs_wave = inputs_wave.to(device)
+                    labels = labels.to(device)
+                    outputs = model(inputs_wave)
                 
                 loss = criterion(outputs, labels)
                 val_running_loss += loss.item()

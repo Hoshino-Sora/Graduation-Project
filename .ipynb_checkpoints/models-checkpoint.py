@@ -96,25 +96,44 @@ class TCN_BiLSTM(nn.Module):
 # 右脑：老中医白盒频域特征提取 (MLP)
 # ==========================================
 class PriorFeatureBranch(nn.Module):
-    def __init__(self, input_dim=378, hidden_dim=128):
-        """
-        专门用来消化 DWT 小波特征的多层感知机
-        :param input_dim: 18个通道 * 21个特征 = 378
-        :param hidden_dim: 必须和左脑输出的维度一致 (默认 128)
-        """
+    def __init__(self, band_dim=21, hidden_dim=128):
         super(PriorFeatureBranch, self).__init__()
-        self.mlp = nn.Sequential(
-
-            nn.Linear(input_dim, 256),
- 
+        
+        # 1. 通道级特征提取（共享权重）不变！
+        self.shared_extractor = nn.Sequential(
+            nn.Linear(band_dim, 64),
             nn.ReLU(),
             nn.Dropout(p=config.DROPOUT_RATE),
-            nn.Linear(256, hidden_dim),
-
+            nn.Linear(64, hidden_dim) # 🌟 注意：这里不除以 2 了，直接输出 hidden_dim
+        )
+        
+        # 🌟 2. 新增：神级通道注意力打分器 (Spatial Attention Scorer)
+        # 它可以看着 18 个通道的特征，判断“哪个通道有真正的棘波，哪个是肌肉伪影”
+        self.channel_attention = nn.Sequential(
+            nn.Linear(hidden_dim, 32),
+            nn.Tanh(),
+            nn.Linear(32, 1) # 给每个通道打一个权重分
         )
 
-    def forward(self, x):
-        return self.mlp(x)
+    def forward(self, x_channels):
+        # x_channels 形状: [Batch, 18, 21]
+        
+        # 1. 提取独立特征 -> [Batch, 18, 128]
+        h_channels = self.shared_extractor(x_channels) 
+        
+        # 🌟 2. 计算通道注意力权重
+        # 对每个通道进行打分 -> [Batch, 18, 1]
+        attn_scores = self.channel_attention(h_channels)
+        # 用 Softmax 让 18 个通道的权重之和为 1
+        attn_weights = F.softmax(attn_scores, dim=1) 
+        
+        # 🌟 3. 加权融合 (不再是暴力的 Max 或 Mean)
+        # 用算出的权重，把 18 个通道融合为一个完美的 128 维特征
+        # [Batch, 18, 128] * [Batch, 18, 1] = [Batch, 18, 128] -> sum(dim=1) -> [Batch, 128]
+        h_fused = torch.sum(h_channels * attn_weights, dim=1)
+        
+        # 依然用 Tanh 封口，保护中央打分器！
+        return torch.tanh(h_fused)
 
 # ==========================================
 # 中央大脑皮层：双分支注意力融合网络 (终极神装)
@@ -128,8 +147,11 @@ class DualBranchAttentionNet(nn.Module):
         # 提取左脑隐层维度 (LSTM_HIDDEN * 2) -> 默认是 64 * 2 = 128
         temporal_out_dim = self.temporal_branch.lstm_hidden_size * 2 
         
-        # 2. 挂载右脑
-        self.frequency_branch = PriorFeatureBranch(input_dim=dwt_feature_dim, hidden_dim=temporal_out_dim)
+        # 2. 挂载右脑 (参数名对齐！)
+        self.frequency_branch = PriorFeatureBranch(
+            band_dim=21,  # 单通道的特征数
+            hidden_dim=temporal_out_dim
+        )
         
         # 3. 核心大招：动态注意力打分器 (Attention Scorer)
         # 它看一眼左脑和右脑的汇总报告 (128 + 128 = 256)，然后决定听谁的！
@@ -148,12 +170,45 @@ class DualBranchAttentionNet(nn.Module):
         )
 
     def forward(self, x_wave, x_dwt):
-        # 1. 左脑出列：计算黑盒时序特征 [Batch, 128]
-        h_t = self.temporal_branch(x_wave, return_features=True)
+        # ==========================================================
+        # 摧毁左脑的【振幅霸权】 (Z-score 标准化)
+        # ==========================================================
+        # 假设 x_wave 形状是 [Batch, 18, 256] (无论最后两维是什么，都在最后一个时间维度上做标准化)
+        wave_mean = x_wave.mean(dim=-1, keepdim=True)
+        wave_std = x_wave.std(dim=-1, keepdim=True) + 1e-8
+        # 强行把所有波形的高度压缩到标准的正态分布里，只留节奏，不留振幅！
+        x_wave_norm = (x_wave - wave_mean) / wave_std
         
-        # 2. 右脑出列：计算白盒频域特征 [Batch, 128]
+        # 左脑现在只能乖乖看“节奏”了
+        h_t = self.temporal_branch(x_wave_norm, return_features=True)
+        
+        # ==========================================================
+        # 摧毁右脑的【能量霸权】 (频段比例化)
+        # ==========================================================
         x_dwt_log = torch.log1p(torch.abs(x_dwt))
-        h_f = self.frequency_branch(x_dwt_log)
+        batch_size = x_dwt_log.size(0)
+        x_dwt_reshaped = x_dwt_log.view(batch_size, 18, 21) 
+        
+        # 杀招：在 21个频段内部 (dim=2) 做 L2 归一化！
+        # 肌肉伪影的爆炸能量瞬间缩水，真正发作的尖锐波峰瞬间凸显！
+        x_dwt_norm = F.normalize(x_dwt_reshaped, p=2, dim=2, eps=1e-8)
+        
+        # 右脑现在只能乖乖看“形状”了
+        h_f = self.frequency_branch(x_dwt_norm)
+        
+        # 模态失活 (Modality Dropout)！
+        # 只在训练阶段 (self.training) 开启，测试时火力全开！
+        if self.training:
+            # 生成一个随机数
+            rand_val = torch.rand(1).item()
+            if rand_val < 0.3:
+                # 30% 的概率，直接把左脑变成植物人 (全填 0)！
+                # 强迫打分器和分类器必须依靠右脑老中医来判断！
+                h_t = torch.zeros_like(h_t)
+            elif rand_val < 0.6:
+                # 30% 的概率，把右脑变成植物人，让左脑独立行走
+                h_f = torch.zeros_like(h_f)
+            # 剩下 40% 的概率，双脑协同开会
         
         # 3. 皮层开会：打分器介入
         # 拼接特征供打分器审阅 [Batch, 256]

@@ -68,8 +68,7 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
                 inputs_dwt = inputs_dwt.to(device)
                 outputs, attn_weights = model(inputs_wave, inputs_dwt)
                 # 临时打印一下这一个 Batch 的注意力平均分配情况
-                if batch_idx % 100 == 0:
-                    print(f"   [抽查 Batch {batch_idx}] 左脑信任度: {attn_weights[:, 0].mean().item():.3f} | 右脑信任度: {attn_weights[:, 1].mean().item():.3f}")
+                print(f"   [左脑信任度: {attn_weights[:, 0].mean().item():.3f} | 右脑信任度: {attn_weights[:, 1].mean().item():.3f}")
             
             probs = torch.softmax(outputs.data, dim=1)
             all_probs.extend(probs[:, 1].cpu().numpy())

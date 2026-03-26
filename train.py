@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import numpy as np
-from sklearn.metrics import f1_score
+from sklearn.metrics import f1_score, average_precision_score, roc_auc_score
 import torch.nn.functional as F
 
 import config
@@ -12,33 +12,47 @@ from models import DualBranchAttentionNet, TCN_BiLSTM
 from load_data import get_unified_dataloaders
 from utils import plot_training_curves
 
-class FocalLoss(nn.Module):
-    def __init__(self, alpha=None, gamma=config.GAMMA, reduction='mean'):
-        super(FocalLoss, self).__init__()
-        self.gamma = gamma
+# class FocalLoss(nn.Module):
+#     def __init__(self, alpha=None, gamma=config.GAMMA, reduction='mean'):
+#         super(FocalLoss, self).__init__()
+#         self.gamma = gamma
+#         self.reduction = reduction
+#         # 将传入的 list 转换为 tensor
+#         self.alpha = torch.tensor(alpha, dtype=torch.float32) if alpha is not None else None
+
+#     def forward(self, inputs, targets):
+#         # 1. 计算纯净的交叉熵，绝对不能在这里加 weight！
+#         ce_loss = F.cross_entropy(inputs, targets, reduction='none')
+#         # 2. 反推真实的概率 p_t
+#         pt = torch.exp(-ce_loss)
+#         # 3. 计算 Focal Loss 的调节因子
+#         focal_loss = ((1 - pt) ** self.gamma) * ce_loss
+        
+#         # 4. 最后手动乘上类别权重 (alpha)
+#         if self.alpha is not None:
+#             self.alpha = self.alpha.to(inputs.device)
+#             alpha_t = self.alpha[targets]
+#             focal_loss = alpha_t * focal_loss
+            
+#         if self.reduction == 'mean':
+#             return focal_loss.mean()
+#         else:
+#             return focal_loss.sum()
+
+class PureWeightedCELoss(nn.Module):
+    def __init__(self, alpha=None, reduction='mean'):
+        super(PureWeightedCELoss, self).__init__()
         self.reduction = reduction
-        # 将传入的 list 转换为 tensor
+        # 接收 config 传来的 [1.0, 50.0]
         self.alpha = torch.tensor(alpha, dtype=torch.float32) if alpha is not None else None
 
     def forward(self, inputs, targets):
-        # 1. 计算纯净的交叉熵，绝对不能在这里加 weight！
-        ce_loss = F.cross_entropy(inputs, targets, reduction='none')
-        # 2. 反推真实的概率 p_t
-        pt = torch.exp(-ce_loss)
-        # 3. 计算 Focal Loss 的调节因子
-        focal_loss = ((1 - pt) ** self.gamma) * ce_loss
-        
-        # 4. 最后手动乘上类别权重 (alpha)
         if self.alpha is not None:
             self.alpha = self.alpha.to(inputs.device)
-            alpha_t = self.alpha[targets]
-            focal_loss = alpha_t * focal_loss
             
-        if self.reduction == 'mean':
-            return focal_loss.mean()
-        else:
-            return focal_loss.sum()
-
+        # 只要你没学好，50倍的梯度大棒就狠狠地砸下去！
+        return F.cross_entropy(inputs, targets, weight=self.alpha, reduction=self.reduction)
+        
 def train_model(test_patient, train_patients):
     print(f"\n" + "="*50)
     print(f"正在启动 【双分支老中医】 炼丹炉 (当前测试靶标: {test_patient})")
@@ -59,6 +73,30 @@ def train_model(test_patient, train_patients):
         extract_dwt=config.EXTRACT_DWT  # 明确开启老中医特征提取
     )
 
+    print("正在扫描训练集，计算极其精确的对抗权重...")
+    total_samples = 0
+    pos_samples = 0
+    # 极速扫描一遍 DataLoader 的标签
+    for batch in train_loader:
+        labels = batch[-1] # 取出最后一项 (labels)
+        total_samples += len(labels)
+        pos_samples += labels.sum().item()
+        
+    neg_samples = total_samples - pos_samples
+    
+    if pos_samples > 0:
+        # 核心物理公式：权重 = 负样本数 / 正样本数
+        # 如果是 chb16，算出来的 dynamic_pos_weight 大概是 750.0！
+        dynamic_pos_weight = neg_samples / pos_samples 
+    else:
+        dynamic_pos_weight = 1.0 # 防止除零异常
+
+    print(f"扫描完毕！总样本: {total_samples}, 发作样本: {pos_samples}")
+    print(f"动态计算得出的极其暴力的正类权重: {dynamic_pos_weight:.2f}")
+
+    # 将算出来的恐怖权重塞进 Loss！
+    dynamic_weights = [1.0, dynamic_pos_weight]
+
     # ==========================================
     # 2. 组装模型与核武器
     # ==========================================
@@ -77,7 +115,7 @@ def train_model(test_patient, train_patients):
             num_classes=config.NUM_CLASSES
         ).to(device)
     
-    criterion = FocalLoss(alpha=config.LOSS_WEIGHTS, gamma=2.0).to(device)
+    criterion = PureWeightedCELoss(alpha=dynamic_weights).to(device)
     optimizer = optim.Adam(model.parameters(), lr=config.LEARNING_RATE, weight_decay=1e-4)
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='max', factor=0.5, patience=config.PATIENCE, min_lr=1e-6)
 
@@ -173,7 +211,7 @@ def train_model(test_patient, train_patients):
         # [阶段 B]：神圣的期末考
         # ----------------------------------
         model.eval() 
-        val_preds, val_trues = [], []
+        val_probs, val_trues = [], []
         val_running_loss = 0.0
         
         print(f"Epoch {epoch+1} 结束，正在进行验证集全量体检...")
@@ -196,28 +234,30 @@ def train_model(test_patient, train_patients):
                 val_running_loss += loss.item()
                 
                 probs = torch.softmax(outputs.data, dim=1) 
-                predicted = (probs[:, 1] > config.PREDICT_THRESHOLD).int()
-
-                val_preds.extend(predicted.cpu().numpy())
+                
+                # 不切断！直接收集原始概率分！
+                val_probs.extend(probs[:, 1].cpu().numpy())
                 val_trues.extend(labels.cpu().numpy())
                 
         avg_val_loss = val_running_loss / len(val_loader)
-        val_f1 = f1_score(val_trues, val_preds, pos_label=1, average='binary', zero_division=0)
+        # 使用 AUPRC (Average Precision) 评估排序能力！
+        # 如果想看 AUROC，也可以用 val_score = roc_auc_score(val_trues, val_probs)
+        val_score = average_precision_score(val_trues, val_probs)
         
         print("-" * 50)
         print(f"   Epoch [{epoch+1}/{config.EPOCHS}] 战报:")
         print(f"   Train Loss: {avg_train_loss:.4f} | Val Loss: {avg_val_loss:.4f}")
-        print(f"   Val F1-Score: {val_f1:.4f}")
+        print(f"   Val AUPRC Score: {val_score:.4f}")
         
         # ----------------------------------
         # [阶段 C]：老中医号脉与防灾备份
         # ----------------------------------
         train_loss_hist.append(avg_train_loss)
         val_loss_hist.append(avg_val_loss)
-        val_f1_hist.append(val_f1)
+        val_f1_hist.append(val_score)
 
         current_lr = optimizer.param_groups[0]['lr']
-        scheduler.step(val_f1)       
+        scheduler.step(val_score)       
         new_lr = optimizer.param_groups[0]['lr']
         
         if new_lr < current_lr:
@@ -235,9 +275,9 @@ def train_model(test_patient, train_patients):
             'val_f1_hist': val_f1_hist
         }, checkpoint_path)
 
-        if val_f1 > best_val_f1:
-            print(f"破纪录了！Val F1 从 {best_val_f1:.4f} 提升至 {val_f1:.4f}，正在保存神级权重...")
-            best_val_f1 = val_f1
+        if val_score > best_val_f1:
+            print(f"破纪录了！Val AUPRC 从 {best_val_f1:.4f} 提升至 {val_score:.4f}，正在保存排序之王权重...")
+            best_val_f1 = val_score
             early_stop_counter = 0  
             torch.save(model.state_dict(), best_model_path)
         else:

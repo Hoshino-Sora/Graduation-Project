@@ -9,16 +9,37 @@ import config
 from models import DualBranchAttentionNet, LeftBrainTemporal # 兼容单/双分支
 from load_data import get_unified_dataloaders
 from utils import plot_training_curves
+import torch.nn.functional as F
 
-class DynamicWeightedCELoss(nn.Module):
-    def __init__(self, pos_weight):
+class AdvancedFocalLoss(nn.Module):
+    def __init__(self, alpha_weight=20.0, gamma=2.0, reduction='mean'):
         super().__init__()
-        # 极度不平衡杀手：动态推算的正类惩罚权重
-        self.weights = torch.tensor([1.0, pos_weight], dtype=torch.float32)
+        self.gamma = gamma
+        self.reduction = reduction
+        # 将传入的动态权重转化为 tensor (0类正常为1.0, 1类发作为alpha_weight)
+        self.alpha = torch.tensor([1.0, alpha_weight], dtype=torch.float32)
 
     def forward(self, inputs, targets):
-        self.weights = self.weights.to(inputs.device)
-        return nn.functional.cross_entropy(inputs, targets, weight=self.weights)
+        self.alpha = self.alpha.to(inputs.device)
+        
+        # 1. 计算标准交叉熵
+        ce_loss = F.cross_entropy(inputs, targets, reduction='none')
+        
+        # 2. 获取模型对真实标签的预测概率 pt
+        pt = torch.exp(-ce_loss)
+        
+        # 3. Focal Loss 核心机制：(1 - pt)^gamma
+        # 预测越准 (pt接近1)，Loss 压得越低！让模型别在简单底噪上浪费精力！
+        focal_term = (1 - pt) ** self.gamma
+        
+        # 4. 结合类别权重
+        alpha_t = self.alpha[targets]
+        focal_loss = alpha_t * focal_term * ce_loss
+        
+        if self.reduction == 'mean':
+            return focal_loss.mean()
+        else:
+            return focal_loss.sum()
 
 def train_model(test_patient, train_patients):
     print(f"\n{'='*50}\n启动 V2.0 超级炼丹炉 (当前靶标: {test_patient})\n{'='*50}")
@@ -38,8 +59,16 @@ def train_model(test_patient, train_patients):
         pos_samples += np.sum(ds.y_disk)
     total_samples = len(train_loader.dataset)
     neg_samples = total_samples - pos_samples
-    dynamic_pos_weight = (neg_samples / pos_samples) if pos_samples > 0 else 50.0
-    print(f"总样本: {total_samples} | 发作: {pos_samples} | 动态暴走惩罚倍率: {dynamic_pos_weight:.2f}")
+    if pos_samples > 0:
+        # 原始比例
+        raw_weight = neg_samples / pos_samples 
+        # 强行截断！绝不许超过 20 倍！防止网络变成被害妄想症！
+        dynamic_pos_weight = min(raw_weight, 20.0) 
+    else:
+        dynamic_pos_weight = 1.0
+
+    print(f"扫描完毕！总样本: {total_samples}, 发作样本: {pos_samples}")
+    print(f"原始算术比例: {raw_weight:.2f} | 截断后装备的狙击权重: {dynamic_pos_weight:.2f}")
 
     # 2. 挂载装甲与弹药
     if config.USE_DUAL_BRANCH:
@@ -48,7 +77,7 @@ def train_model(test_patient, train_patients):
         # 为了代码统一，给纯基线包一层外壳匹配分类器接口
         model = nn.Sequential(LeftBrainTemporal(128), nn.Linear(128, 2)).to(device)
 
-    criterion = DynamicWeightedCELoss(pos_weight=dynamic_pos_weight).to(device)
+    criterion = AdvancedFocalLoss(alpha_weight=dynamic_pos_weight, gamma=2.0).to(device)
     optimizer = optim.Adam(model.parameters(), lr=config.LEARNING_RATE, weight_decay=1e-4)
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='max', factor=0.5, patience=config.PATIENCE)
 

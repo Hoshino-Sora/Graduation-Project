@@ -3,7 +3,7 @@ import os
 import torch
 import numpy as np
 import config
-from models import TCN_BiLSTM, DualBranchAttentionNet
+from models import LeftBrainTemporal, DualBranchAttentionNet
 from load_data import get_unified_dataloaders
 from post_process import majority_voting_filter, extract_events, merge_close_events, filter_short_events
 
@@ -15,7 +15,7 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
     if model_type == "baseline":
-        model = TCN_BiLSTM(out_dim=128).to(device)
+        model = LeftBrainTemporal(out_dim=128).to(device)
         model = torch.nn.Sequential(model, torch.nn.Linear(128, 2)).to(device)
         extract_dwt_flag = False
     else:
@@ -60,7 +60,8 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
                 
                 # 收集权重到内存中
                 all_mod_weights.append(mod_weights.cpu().numpy())
-                all_channel_attns.append(channel_attn.cpu().numpy())
+                if channel_attn is not None:
+                    all_channel_attns.append(channel_attn.cpu().numpy())
             
             probs = torch.softmax(outputs, dim=1)[:, 1].cpu().numpy()
             all_probs.extend(probs)
@@ -70,25 +71,29 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
     true_labels = np.array(all_labels)
 
     # ==========================================
-    # 🌟 惊艳全场的可解释性报告 (XAI Report)
+    # 可解释性报告 (XAI Report)
     # ==========================================
     if model_type == "dual" and len(all_mod_weights) > 0:
-        # 沿 Batch 维度拼接并求全局平均
-        avg_mod = np.concatenate(all_mod_weights, axis=0).mean(axis=0) # 形状: [2]
-        avg_chan = np.concatenate(all_channel_attns, axis=0).mean(axis=0).squeeze() # 形状: [18]
+        avg_mod = np.concatenate(all_mod_weights, axis=0).mean(axis=0)
         
         print("\n" + "*"*15)
         print(f"【AI 原生可解释性分析报告 (XAI)】")
         print(f"模态博弈大盘:")
         print(f"   - 左脑 (时序波形专家) 平均决策权重: {avg_mod[0]*100:.1f}%")
-        print(f"   - 右脑 (频域空间神探) 平均决策权重: {avg_mod[1]*100:.1f}%")
+        print(f"   - 右脑 (频域全局神探) 平均决策权重: {avg_mod[1]*100:.1f}%")
         
-        print(f"空间地形图 Top-3 核心高危通道:")
-        top3_idx = np.argsort(avg_chan)[::-1][:3]
-        for rank, idx in enumerate(top3_idx):
-            ch_name = config.CHBMIT_TARGET_CHANNELS[idx]
-            ch_score = avg_chan[idx]
-            print(f"   - Rank {rank+1}: {ch_name} (全天候平均关注度: {ch_score*100:.1f}%)")
+        # 安全锁：如果有地形图数据，才打印 Top-3
+        if len(all_channel_attns) > 0:
+            avg_chan = np.concatenate(all_channel_attns, axis=0).mean(axis=0).squeeze()
+            print(f"空间地形图 Top-3 核心高危通道:")
+            top3_idx = np.argsort(avg_chan)[::-1][:3]
+            for rank, idx in enumerate(top3_idx):
+                ch_name = config.CHBMIT_TARGET_CHANNELS[idx]
+                ch_score = avg_chan[idx]
+                print(f"   - Rank {rank+1}: {ch_name} (关注度: {ch_score*100:.1f}%)")
+        else:
+            print(f"空间地形图: [已通过消融实验物理切除 (Mean Pooling)]")
+            
         print("*"*15 + "\n")
 
     # 1. TTA: 自适应及格线标定
@@ -107,11 +112,24 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
     raw_ai_events = extract_events(smoothed_predictions, window_duration=config.CHBMIT_WINDOW_SEC)
     real_events = extract_events(true_labels, window_duration=config.CHBMIT_WINDOW_SEC)
     
-    ai_events = merge_close_events(raw_ai_events, min_gap=30) 
+    ai_events = merge_close_events(raw_ai_events, min_gap=90) 
     ai_events = filter_short_events(ai_events, min_duration=5.0)
     
-    # 3. 打印精简版战报
-    print(f"医生标定真实发作: {len(real_events)} 次 | AI 最终报警: {len(ai_events)} 次")
+    # ==========================================
+    # 3. 恢复豪华版：打印极其详细的临床战报！
+    # ==========================================
+    print("\n" + "="*40)
+    print(f"[{patient_id} 全时段临床评估详细报告]")
+    print("="*40)
+    print(f"医生标定的真实发作次数: {len(real_events)} 次")
+    for idx, ev in enumerate(real_events):
+        print(f"   - 真实事件 {idx+1}: 第 {ev['start']} 秒 -> 第 {ev['end']} 秒 (持续 {ev['duration']}s)")
+        
+    print(f"\nAI 最终报警次数 (融合后): {len(ai_events)} 次")
+    for idx, ev in enumerate(ai_events):
+        print(f"   - 报警事件 {idx+1}: 第 {ev['start']} 秒 -> 第 {ev['end']} 秒 (持续 {ev['duration']}s)")
+    print("="*40)
+
     return real_events, ai_events
 
 def get_patient_total_hours(patient_id):

@@ -12,7 +12,7 @@ def run_loocv_pipeline():
     pipeline_start_time = time.time()
     
     FULL_PATIENTS_LIST = [f"chb{i:02d}" for i in range(1, 25)]
-    target_patients = ["chb16"] # 可以随时放开全员
+    target_patients = ["chb01"] # 可以随时放开全员
     
     final_results = []
     global_hits, global_real, global_fa, global_hours, global_delay_sum, global_delay_count = 0, 0, 0, 0.0, 0.0, 0

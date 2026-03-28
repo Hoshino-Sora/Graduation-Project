@@ -69,3 +69,26 @@ TARGRT_PERCENTILE = 98      # 动态 P=98% 截断及格线
 PREDICT_THRESHOLD_TEST = 0.2  # 固定阈值兜底参数
 SMOOTHING_WINDOW = 5        # 滑动平滑消除孤立毛刺
 COLLAR_TOLERANCE = 5.0      # 容差秒数
+# =========================================
+# 核心新增：后处理引擎
+# =========================================
+# 控制发作时长边界 (Duration Boundaries)
+USE_ADAPTIVE_POSTPROCESS = True  # True: 动态提取训练集 1%-99% | False: 使用下方硬编码物理边界
+FIXED_MIN_DURATION = 5.0         # 若关闭自适应，固定的最短发作截断 (秒)
+FIXED_MAX_DURATION = 300.0       # 若关闭自适应，固定的最长发作截断 (秒)
+
+# 控制事件缝合间隔 (Event Fusion) - 临床铁律，保持固定即可
+FIXED_MERGE_GAP = 60.0           # 专家级事件缝合间隔 (秒)
+
+
+# =========================================
+# 6. 靶标编队配置 (Target Patients)
+# =========================================
+# 模式 A：单兵突击 (排查 bug 或专门打磨某一个病人时使用，按需取消注释)
+# TARGET_PATIENTS = ["chb01"] 
+
+# 模式 B：全军出击 (CHB-MIT 24 人满编大名单自动生成！)
+# TARGET_PATIENTS = [f"chb{i:02d}" for i in range(1, 25)]
+
+# 模式 C：剔除毒瘤后的纯净局
+TARGET_PATIENTS = [f"chb{i:02d}" for i in range(1, 25) if f"chb{i:02d}" not in ["chb06", "chb14", "chb16"]]

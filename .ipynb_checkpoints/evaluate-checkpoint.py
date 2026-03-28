@@ -6,6 +6,7 @@ import config
 from models import LeftBrainTemporal, DualBranchAttentionNet
 from load_data import get_unified_dataloaders
 from post_process import majority_voting_filter, extract_events, merge_close_events, filter_short_events
+from prior_stats_prober import extract_seizures_from_npy, calculate_set_stats
 
 def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=True, target_percentile=98, model_type="dual"):
     if threshold is None:
@@ -107,13 +108,53 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
 
     raw_predictions = (all_probs > final_thresh).astype(int)
 
-    # 2. 临床后处理流水线
+    # ==========================================
+    # 2. 🌟 临床后处理引擎 (动态自适应 vs 固定先验)
+    # ==========================================
+    if config.USE_ADAPTIVE_POSTPROCESS:
+        print(f"\n[动态后处理] 正在提取训练集({patient_id} 除外)的统计学先验边界...")
+        all_patients = [f"chb{i:02d}" for i in range(1, 25)]
+        train_patients = [p for p in all_patients if p != patient_id]
+        
+        train_seizures = extract_seizures_from_npy(train_patients, window_sec=config.CHBMIT_WINDOW_SEC)
+        train_stats = calculate_set_stats(train_seizures)
+        
+        if train_stats is not None:
+            p01_dur = train_stats['p01_dur']
+            p99_dur = train_stats['p99_dur']
+            print(f"   -> 提取成功！动态时长软边界: [{p01_dur:.1f}s, {p99_dur:.1f}s]")
+        else:
+            p01_dur, p99_dur = config.FIXED_MIN_DURATION, config.FIXED_MAX_DURATION
+    else:
+        print(f"\n[固定后处理] 已关闭自适应探索，使用硬编码物理边界...")
+        p01_dur = config.FIXED_MIN_DURATION
+        p99_dur = config.FIXED_MAX_DURATION
+        print(f"   -> 锁定边界: [{p01_dur:.1f}s, {p99_dur:.1f}s]")
+        
+    print(f"   -> 专家级事件缝合间隔 (硬编码): {config.FIXED_MERGE_GAP}s")
+
+    # 执行基础的平滑与粗略事件提取
     smoothed_predictions = majority_voting_filter(raw_predictions, window_size=config.SMOOTHING_WINDOW)
     raw_ai_events = extract_events(smoothed_predictions, window_duration=config.CHBMIT_WINDOW_SEC)
     real_events = extract_events(true_labels, window_duration=config.CHBMIT_WINDOW_SEC)
     
-    ai_events = merge_close_events(raw_ai_events, min_gap=90) 
-    ai_events = filter_short_events(ai_events, min_duration=5.0)
+    # 【动作一】缝合断点
+    ai_events = merge_close_events(raw_ai_events, min_gap=config.FIXED_MERGE_GAP) 
+    
+    # 【动作二】冷酷猎杀与截断
+    final_ai_events = []
+    for ev in ai_events:
+        if ev['duration'] < p01_dur:
+            continue # 杀！
+        elif ev['duration'] > p99_dur:
+            # 切！
+            ev['end'] = ev['start'] + p99_dur
+            ev['duration'] = p99_dur
+            final_ai_events.append(ev)
+        else:
+            final_ai_events.append(ev)
+            
+    ai_events = final_ai_events
     
     # ==========================================
     # 3. 恢复豪华版：打印极其详细的临床战报！

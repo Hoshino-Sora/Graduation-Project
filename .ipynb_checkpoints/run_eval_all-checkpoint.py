@@ -118,5 +118,5 @@ if __name__ == "__main__":
     # 统帅，你只需要在这里填入你想狙击的病人名单
     # 如果想跑全量 24 人，直接写 target_patients=None 即可！
     run_global_inference(
-        target_patients=["chb01"]  # 可以是 ["chb06", "chb12", "chb16"] 等
+        target_patients=config.TARGET_PATIENTS
     )

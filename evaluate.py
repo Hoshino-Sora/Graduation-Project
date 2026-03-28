@@ -109,50 +109,51 @@ def evaluate_patient(patient_id="chb01", threshold=None, use_adaptive_threshold=
     raw_predictions = (all_probs > final_thresh).astype(int)
 
     # ==========================================
-    # 2. 🌟 临床自适应后处理引擎 (动态时长 + 专家间隔)
+    # 2. 🌟 临床后处理引擎 (动态自适应 vs 固定先验)
     # ==========================================
-    print(f"\n[动态后处理] 正在提取训练集({patient_id} 除外)的统计学先验边界...")
-    all_patients = [f"chb{i:02d}" for i in range(1, 25)]
-    # 踢掉当前的测试靶标！
-    train_patients = [p for p in all_patients if p != patient_id]
-    
-    # 启动雷达：严格遵循 LOOCV 协议，动态探测软边界！
-    train_seizures = extract_seizures_from_npy(train_patients, window_sec=config.CHBMIT_WINDOW_SEC)
-    train_stats = calculate_set_stats(train_seizures)
-    
-    if train_stats is not None:
-        p01_dur = train_stats['p01_dur']
-        p99_dur = train_stats['p99_dur']
-        print(f"   -> 提取成功！动态时长软边界: [{p01_dur:.1f}s, {p99_dur:.1f}s]")
-    else:
-        p01_dur, p99_dur = 5.0, 300.0 # 极端情况兜底
+    if config.USE_ADAPTIVE_POSTPROCESS:
+        print(f"\n[动态后处理] 正在提取训练集({patient_id} 除外)的统计学先验边界...")
+        all_patients = [f"chb{i:02d}" for i in range(1, 25)]
+        train_patients = [p for p in all_patients if p != patient_id]
         
-    print(f"   -> 事件缝合间隔: 60.0s")
+        train_seizures = extract_seizures_from_npy(train_patients, window_sec=config.CHBMIT_WINDOW_SEC)
+        train_stats = calculate_set_stats(train_seizures)
+        
+        if train_stats is not None:
+            p01_dur = train_stats['p01_dur']
+            p99_dur = train_stats['p99_dur']
+            print(f"   -> 提取成功！动态时长软边界: [{p01_dur:.1f}s, {p99_dur:.1f}s]")
+        else:
+            p01_dur, p99_dur = config.FIXED_MIN_DURATION, config.FIXED_MAX_DURATION
+    else:
+        print(f"\n[固定后处理] 已关闭自适应探索，使用硬编码物理边界...")
+        p01_dur = config.FIXED_MIN_DURATION
+        p99_dur = config.FIXED_MAX_DURATION
+        print(f"   -> 锁定边界: [{p01_dur:.1f}s, {p99_dur:.1f}s]")
+        
+    print(f"   -> 专家级事件缝合间隔 (硬编码): {config.FIXED_MERGE_GAP}s")
 
     # 执行基础的平滑与粗略事件提取
     smoothed_predictions = majority_voting_filter(raw_predictions, window_size=config.SMOOTHING_WINDOW)
     raw_ai_events = extract_events(smoothed_predictions, window_duration=config.CHBMIT_WINDOW_SEC)
     real_events = extract_events(true_labels, window_duration=config.CHBMIT_WINDOW_SEC)
     
-    # 【动作一】缝合断点：基于 60s 临床物理先验，把断裂的警报全部连起来！
-    ai_events = merge_close_events(raw_ai_events, min_gap=60) 
+    # 【动作一】缝合断点
+    ai_events = merge_close_events(raw_ai_events, min_gap=config.FIXED_MERGE_GAP) 
     
-    # 【动作二】冷酷猎杀与截断：基于 1%-99% 动态数据驱动
+    # 【动作二】冷酷猎杀与截断
     final_ai_events = []
     for ev in ai_events:
         if ev['duration'] < p01_dur:
-            # 杀！太短了！
-            continue 
+            continue # 杀！
         elif ev['duration'] > p99_dur:
-            # 杀！太长了！
+            # 切！
             ev['end'] = ev['start'] + p99_dur
             ev['duration'] = p99_dur
             final_ai_events.append(ev)
         else:
-            # 完美命中正常群体发作区间，放行！
             final_ai_events.append(ev)
             
-    # 移交处理完毕的警报清单
     ai_events = final_ai_events
     
     # ==========================================
